@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>U of T Web Dev</title>
+		<meta name="UofT" content="width=device-width, initial-scale=1.0">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<%= stylesheet_link_tag "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div class="container">
+
+			<div class="row">
+				<div class="span4">
+					<%= image_tag("Logo-01.png", height: '820') %>
+				</div>
+
+
+				<div class="span8">
+
+					<div class = "row">
+						<!-- Nested Row -->
+						<div class = "span8" style="height:80px"></div>
+
+						<div class ="span8">
+							<ul class="nav nav-tabs align-bottom">
+								<li class="<%= @currentPage[:home] %>">
+									<%= link_to "Home", "/home" %>
+								</li>
+
+								<li class="<%= @currentPage[:calendar] %>">
+									<%= link_to "Meeting calendar", "/calendar" %>
+								</li>
+
+								<li class="<%= @currentPage[:resources] %>">
+									<%= link_to "Learning resources", "/resources" %>							
+								</li>
+
+								<li class="<%= @currentPage[:jobs] %>">								
+									<%= link_to "Jobs and Opportunites", "/jobs" %>
+								</li>
+
+								<li class="<%= @currentPage[:contact] %>">
+									<%= link_to "Contact", "/contact" %>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class = "span12">
+					<%= yield %>
+				</div>
+			</div>
+
+			<div class="footer">
+				<p>
+					&copy; U of T Web Development club 2013
+				</p>
+			</div>
+
+			<div class="hide">
+				<span id="var_currentPage"></span>				
+			</div>
+
+		</div>
+	</body>
+</html>
