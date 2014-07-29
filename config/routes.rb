@@ -7,10 +7,10 @@ UoftWebSite::Application.routes.draw do
     # You can have the root of your site routed with "root"
   root to: 'static_pages#home'
 
-  match '/calendar',  to: 'static_pages#calendar'
+  match '/developer',  to: 'static_pages#developer'
   match '/jobs',     to: 'static_pages#jobs'
   match '/contact',   to: 'static_pages#contact'
-  match '/resources', to: 'static_pages#resources'
+  match '/entrepreneur', to: 'static_pages#entrepreneur'
   match '/home',      to: 'static_pages#home'
 
   # The priority is based upon order of creation: first created -> highest priority.

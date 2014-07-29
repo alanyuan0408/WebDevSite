@@ -4,12 +4,12 @@ class StaticPagesController < ApplicationController
     @currentPage = {:home => "active"};
   end
 
-  def calendar
-    @currentPage = {:calendar => "active"};
+  def developer
+    @currentPage = {:developer => "active"};
   end
 
-  def resources
-    @currentPage = {:resources => "active"};
+  def entrepreneur
+    @currentPage = {:entrepreneur => "active"};
   end
 
   def jobs
