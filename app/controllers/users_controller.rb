@@ -1,13 +1,12 @@
 class UsersController < ApplicationController
-  
-  layout "userlayout"
 
-  def show 
+  def show
+    @currentPage = {:useraccount => "active"};
   	@user = User.find(params[:id])
-
   end
 
   def create
+    @currentPage = {:useraccount => "active"};
   	@user = User.new(params[:user])
   	if @user.save
   		#Handle a successful save.
@@ -18,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    @currentPage = {:useraccount => "active"};
   	@user = User.new
   end
 

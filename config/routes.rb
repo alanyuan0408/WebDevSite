@@ -9,7 +9,7 @@ UoftWebSite::Application.routes.draw do
 
   match '/developer',  to: 'static_pages#developer'
   match '/jobs',     to: 'static_pages#jobs'
-  match '/contact',   to: 'static_pages#contact'
+  match '/useraccount',   to: 'static_pages#useraccount'
   match '/entrepreneur', to: 'static_pages#entrepreneur'
   match '/home',      to: 'static_pages#home'
 

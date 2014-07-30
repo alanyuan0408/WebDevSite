@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
+ 
   def home
-    
     @currentPage = {:home => "active"};
   end
 
@@ -16,7 +16,15 @@ class StaticPagesController < ApplicationController
     @currentPage = {:jobs => "active"};
   end
 
-  def contact
-    @currentPage = {:contact => "active"};
+  def useraccount
+    @currentPage = {:useraccount => "active"};
+    @user = User.new(params[:user])
+    if @user.save
+      #Handle a successful save.
+      redirect_to @user
+    else 
+      render 'users/new'
+    end
   end
+  
 end
