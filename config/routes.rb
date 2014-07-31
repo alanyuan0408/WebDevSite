@@ -1,11 +1,16 @@
 UoftWebSite::Application.routes.draw do
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.  get "home" => "static_pages#home"
 
     # You can have the root of your site routed with "root"
   root to: 'static_pages#home'
+
+  match '/signup', to: 'users#new'
+  match '/signin', to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
 
   match '/developer',  to: 'static_pages#developer'
   match '/jobs',     to: 'static_pages#jobs'

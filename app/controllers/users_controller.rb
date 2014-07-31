@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   		#Handle a successful save.
   		redirect_to @user
   	else 
+      @currentPage = {:usererror => "true"};
   		render 'new'
   	end
   end
