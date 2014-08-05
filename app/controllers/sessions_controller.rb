@@ -1,8 +1,12 @@
 class SessionsController < ApplicationController
 
 	def show
-    	@currentPage = {:useraccount => "active"};
-  		@user = User.find(params[:id])
+		@user = User.find(params[:id])
+		if signed_in? && cookies.permanent[:remember_token] == @user.remember_token
+    		@currentPage = {:useraccount => "active"};
+  		else 
+  			render 'new'
+  		end
   	end
 
 	def new
@@ -11,13 +15,13 @@ class SessionsController < ApplicationController
 
 	def create
 		@currentPage = {:useraccount => "active"};
-		@user = User.find_by_name(params[:session][:name])
-		if @user.email == params[:session][:email]
-		# Sign the user in and redirect to the user's show page.
-			redirect_to @user
+		user = User.find_by_name(params[:session][:name])
+		if user && user.authenticate(params[:session][:password])
+		# you can access @user in views
+			sign_in user
+			redirect_to user
 		else
-			@currentPage = {:usererror => "true"};
-			@user.errors.add(:email, "email does not match")
+			flash[:error] = 'Invalid email/password combination' # Not quite right!
 			render 'new'
 		end
 	end
