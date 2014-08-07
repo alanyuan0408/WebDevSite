@@ -1,12 +1,8 @@
 class SessionsController < ApplicationController
 
 	def show
-		@user = User.find(params[:id])
-		if signed_in? && cookies.permanent[:remember_token] == @user.remember_token
-    		@currentPage = {:useraccount => "active"};
-  		else 
-  			render 'new'
-  		end
+    	@currentPage = {:useraccount => "active"};
+  		@user = User.find(params[:id])
   	end
 
 	def new
