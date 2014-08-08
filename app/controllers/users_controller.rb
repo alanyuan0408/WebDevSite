@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   	if @user.save
   		#Handle a successful save.
 
-      User_mailer.welcome_email(@user)
+      User_mailer.welcome_email(@user).deliver
 
       sign_in @user
   		redirect_to @user
