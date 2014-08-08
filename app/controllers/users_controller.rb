@@ -22,9 +22,7 @@ class UsersController < ApplicationController
   	if @user.save
   		#Handle a successful save.
 
-      if ENV['RAILS_ENV'].to_s == 'deployment' || ENV['RAILS_ENV'].to_s == ''
-        UserMailer.welcome_email(@user).deliver
-      end
+      UserMailer.welcome_email(@user).deliver
 
       sign_in @user
   		redirect_to @user
