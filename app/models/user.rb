@@ -13,11 +13,18 @@ class User < ActiveRecord::Base
 
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token #create a remember token before saving
+  before_save :create_admin #create an admin user
 
   private 
 
   def create_remember_token
   	self.remember_token = SecureRandom.urlsafe_base64
+  end
+
+  def create_admin
+    if self.name == "UoftWebDev"
+      self.admin = true
+    end
   end
 
 end
