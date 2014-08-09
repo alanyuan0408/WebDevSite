@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
 
   before_save { |user| user.email = email.downcase }
-  before_save :create_remember_token, :create_admin #create an admin user
+  before_save :create_remember_token #create an admin user
 
   private 
 
@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
     if self.name == "UoftWebDev"
       self.admin = true
     end
-    
+
   end
 
 
