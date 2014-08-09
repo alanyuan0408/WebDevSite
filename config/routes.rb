@@ -1,6 +1,7 @@
 UoftWebSite::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :jobposts, only: [:create, :destroy]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.  get "home" => "static_pages#home"

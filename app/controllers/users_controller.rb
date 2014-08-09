@@ -8,7 +8,9 @@ class UsersController < ApplicationController
       #if we view the page again. current_user will call the cookies
       #and grab the value of cookies on the next signin
 
-    if current_user.remember_token == @user.remember_token
+    if @user.admin 
+      render 'adminpanel'
+    elsif current_user.remember_token == @user.remember_token
     	  #render the user page
     else 
       render 'permissiondenied'
@@ -22,7 +24,7 @@ class UsersController < ApplicationController
   	if @user.save
   		#Handle a successful save.
 
-      #UserMailer.welcome_email(@user).deliver
+      UserMailer.welcome_email(@user).deliver
 
       sign_in @user
   		redirect_to @user
