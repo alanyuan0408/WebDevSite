@@ -24,7 +24,10 @@ class UsersController < ApplicationController
   	if @user.save
   		#Handle a successful save.
 
-      UserMailer.welcome_email(@user).deliver
+      if Rails.env.production?
+        UserMailer.welcome_email(@user).deliver
+        #mail is not config for development/
+      end
 
       sign_in @user
   		redirect_to @user

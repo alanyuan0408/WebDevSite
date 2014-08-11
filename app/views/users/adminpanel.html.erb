@@ -2,5 +2,27 @@
 	<div class="span12">
 		<h1>Admin Panel</h1>
 	</div>
+</div>
 
+<div class="row">
+	<div class="span5">
+		<h2>Add Jobs Offer</h2>
+
+		<%= form_for(@JobPost) do |f| %>
+
+			<%= f.label :title %>
+			<%= f.text_field :title %>
+
+			<%= f.label :contact %>
+			<%= f.text_field :contact %>
+
+			<%= f.label :content %>
+			<%= f.text_field :content %>
+
+			<br>
+
+			<%= f.submit "Add Job Post", class: "btn btn-large btn-primary" %>
+		<% end %>
+
+	</div>
 </div>
