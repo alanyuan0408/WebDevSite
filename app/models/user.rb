@@ -21,9 +21,9 @@ class User < ActiveRecord::Base
 
     if self.name == "UoftWebDev"
       self.admin = true
+      #Create the admin account
     end
 
   end
-
 
 end
