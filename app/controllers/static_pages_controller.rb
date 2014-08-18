@@ -14,6 +14,13 @@ class StaticPagesController < ApplicationController
 
   def jobs
     @currentPage = {:jobs => "active"};
+    jobPost = Item.all
+
+    if jobPost.size > 3
+      @jobPosts = Item.all.take(3)
+    else 
+      @jobPosts = Item.all
+    end
   end
 
   def useraccount

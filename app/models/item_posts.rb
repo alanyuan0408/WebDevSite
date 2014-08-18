@@ -1,6 +1,6 @@
-class JobPost < ActiveRecord::Base
+class Itempost < ActiveRecord::Base
+	
   attr_accessible :contact, :content, :title
-  belongs_to :user
 
   validates :contact, presence: true, length: {maximum: 40}
   validates :content, presence: true, length: {maximum: 400}

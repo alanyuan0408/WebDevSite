@@ -3,18 +3,22 @@ class UsersController < ApplicationController
   def show
     @currentPage = {:useraccount => "active"};
 
-    @user = User.find(params[:id])
+    if User.exists?(params[:id])
+      @user = User.find(params[:id])
+
+      if @user.admin 
+        render 'adminpanel'
+      elsif current_user.remember_token == @user.remember_token
+          #render the user page
+      else 
+        render 'permissiondenied'
+      end
+    else
+      render 'permissiondenied'
+    end
 
       #if we view the page again. current_user will call the cookies
       #and grab the value of cookies on the next signin
-
-    if @user.admin 
-      render 'adminpanel'
-    elsif current_user.remember_token == @user.remember_token
-    	  #render the user page
-    else 
-      render 'permissiondenied'
-    end
 
   end
 

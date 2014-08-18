@@ -7,15 +7,13 @@
 		<p>The Web Development Club takes no liabilities for the offers posted on its forms. The third party and members are encouraged to verify their agreements. The club will not participate in any negociations </p>
 
 
-
-		<!--
-		<div class = "calendar-container">
-			<iframe src="https://www.google.com/calendar/embed?title=U%20of%20T%20Web%20development%20club&amp;height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=uoftwebdev%40gmail.com&amp;color=%232952A3&amp;src=en.canadian%23holiday%40group.v.calendar.google.com&amp;color=%238D6F47&amp;ctz=America%2FToronto" style=" border-width:0 " width="700" height="600" frameborder="0" scrolling="no"></iframe> 
-		</div>
-
-		-->
 	</div>
 </div>
+
+
+<% arry = Array.new(['2A', '2B', '2C']) %>
+<% arry2 = Array.new(['tab-pane active', 'tab-pane', 'tab-pane']) %>
+<% i = 0 %>
 
 <div class="row">
 	<div class="span12">
@@ -27,20 +25,22 @@
                <li class=""><a href="#2C" data-toggle="tab">Job #3</a></li>
             </ul>
 
-            <div class="tab-content">
-                <div class="tab-pane" id="2A">
-                	<h3>Job #1</h3>
-                  <p>--populated by databases--</p>
-                </div>
-                <div class="tab-pane" id="2B">
-                	<h3>Job #2</h3>
-                  <p>--populated by databases--</p>
-                </div>
-                <div class="tab-pane active" id="2C">
-                  <h3>Job #3</h3>
-                  <p>--populated by databases--</p>
-                </div>
+    <div class="tab-content">
+        
+        <% @jobPosts.each do |post| %>
+
+            <div class='<%= arry2[i] %>' id='<%= arry[i] %>'>
+                <h4><%= post.title %></h4>
+                <p><%= post.contact %></p>
+                <p><%= post.content %></p>
             </div>
-         </div>
+            <% i = i + 1 %>
+          
+        <% end %>
+
     </div>
+            
+    </div>
+  </div>
+</div>
 </div>

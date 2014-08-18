@@ -1,0 +1,2 @@
+module ItempostHelper
+end

@@ -1,0 +1,2 @@
+class ItempostController < ApplicationController
+end

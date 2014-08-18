@@ -1,6 +1,7 @@
-class CreateJobPosts < ActiveRecord::Migration
+class CreateItemposts < ActiveRecord::Migration
   def change
-    create_table :job_posts do |t|
+    create_table :item_posts do |t|
+
       t.string :title
       t.string :contact
       t.string :content
