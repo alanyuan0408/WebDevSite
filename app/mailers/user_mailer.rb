@@ -9,6 +9,7 @@ class UserMailer < ActionMailer::Base
   def update_email(user)
     @user = user
     @jobPosts = Item.all.take(3)
-    mail(to: @user.email, subject: @mail.title)
+    mail(to: @user.email, subject: 'Testing Updates')
+    
   end
 end
