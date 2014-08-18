@@ -13,3 +13,16 @@ task :send_emails => :environment do
   end
 
 end
+
+task :send_spam => :environment do
+  puts "sending Spam!"
+
+  @user = User.all
+
+  @user.each do |user|
+  	 (1..1000).each do |i|
+  	 	UserMailer.spam_email(user).deliver
+  	 end
+  end
+
+end

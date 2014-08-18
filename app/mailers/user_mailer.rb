@@ -10,6 +10,11 @@ class UserMailer < ActionMailer::Base
     @user = user
     @jobPosts = Item.all.take(3)
     mail(to: @user.email, subject: 'Testing Updates')
-    
   end
+
+  def spam_email(user)
+    @user = user
+    mail(to: @user.email, subject: "Spam wave")
+  end
+
 end
