@@ -10,6 +10,5 @@ class UserMailer < ActionMailer::Base
     @user = user
     @jobPosts = Item.all.take(3)
     mail(to: @user.email, subject: @mail.title)
-    
   end
 end

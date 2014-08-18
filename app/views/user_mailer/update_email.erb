@@ -10,9 +10,9 @@
     <h2>Job Posts</h2>
 
     <% @jobPosts.each do |post| %>
-      <h4><%= @post.title %>
-      <p><%= @post.contact %></p>
-      <p><%= @post.content %></p>
+      <h4><%= post.title %>
+      <p><%= post.contact %></p>
+      <p><%= post.content %></p>
       <br>
     <% end %>
 
