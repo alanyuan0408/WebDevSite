@@ -5,24 +5,11 @@
   </head>
   <body>
     <h1>Hello, <%= @user.name %></h1>
-    <p>The contents of this email is generated using your settings on your user account</p>
+    <p>
+      You have successfully signed up to UofT Web Development Club's Mailing System
+      <br> 
+    </p>
 
-    <br>
-    <h2><%= @meeting.title %>
-    <p><%= @meeting.date %></p>
-    <p><%= @meeting.content %></p>
-    <br>
-
-    <h2>Job Posts</h2>
-
-    <% @jobPosts.each do |post| %>
-      <h4><%= @post.title %>
-      <p><%= @post.contact %></p>
-      <p><%= @post.content %></p>
-      <br>
-    <% end %>
-
-    <p>Thanks, <br>
-    Web Development Club</p>
+    <p>Thanks for joining and have a great day!</p>
   </body>
 </html>

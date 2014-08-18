@@ -1,6 +1,6 @@
 class Club < ActiveRecord::Base
   # attr_accessible :title, :body
 
-  attr_accessible :date, :content, :title
+  attr_accessible :date, :content, :title, :send
 
 end
