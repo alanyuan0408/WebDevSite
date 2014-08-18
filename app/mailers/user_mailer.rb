@@ -8,8 +8,8 @@ class UserMailer < ActionMailer::Base
 
   def update_email(user)
     @user = user
-    @meeting = Club.all.take(1)
-    mail(to: @user.email, subject: @mail.title)
     @jobPosts = Item.all.take(3)
+    mail(to: @user.email, subject: @mail.title)
+    
   end
 end
