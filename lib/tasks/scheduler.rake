@@ -20,7 +20,7 @@ task :send_spam => :environment do
   @user = User.all
 
   @user.each do |user|
-  	 (1..1000).each do |i|
+  	 (1..10).each do |i|
   	 	UserMailer.spam_email(user).deliver
   	 end
   end
