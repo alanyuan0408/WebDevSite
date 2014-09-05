@@ -4,9 +4,10 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Hello, <%= @user.name %></h1>
+    <h2>Hello, <%= @user.name %></h2>
     <p>The contents of this email is generated using your settings on your user account</p>
-
+    
+    <br>
     <h2>Club Meetings</h2>
 
     <% @clubPosts.each do |post| %>
@@ -14,6 +15,7 @@
       <p><%= post.contact %></p>
       <p><%= post.content %></p>
     <% end %>
+    <br>
 
     <h2>Job Posts</h2>
 
@@ -21,7 +23,6 @@
       <h4><%= post.title %></h4>
       <p><%= post.contact %></p>
       <p><%= post.content %></p>
-      <br>
     <% end %>
 
     <p>Thanks, <br>
