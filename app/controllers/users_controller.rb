@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
     if User.exists?(params[:id])
       @user = User.find(params[:id])
+      @user_name = @user.name
 
       if @user.admin 
         render 'adminpanel'
@@ -16,15 +17,12 @@ class UsersController < ApplicationController
     else
       render 'permissiondenied'
     end
-
-      #if we view the page again. current_user will call the cookies
-      #and grab the value of cookies on the next signin
-
   end
 
   def create
     @currentPage = {:useraccount => "active"};
   	@user = User.new(params[:user])
+    @user_name = "Login"
   	if @user.save
   		#Handle a successful save.
 
@@ -44,6 +42,7 @@ class UsersController < ApplicationController
   def new
     @currentPage = {:useraccount => "active"};
   	@user = User.new
+    @user_name = "login"
   end
 
 end
