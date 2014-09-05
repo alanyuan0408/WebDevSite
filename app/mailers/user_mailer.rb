@@ -8,8 +8,8 @@ class UserMailer < ActionMailer::Base
 
   def update_email(user)
     @user = user
-    @jobPosts = Item.all.take(3)
-    @clubPost = Club.all.take(1)
+    @jobPosts = Item.where(type: "JobPost").take(3)
+    @clubPosts = Item.where(type: "ClubPost").take(1)
     mail(to: @user.email, subject: 'Testing Updates')
   end
 
