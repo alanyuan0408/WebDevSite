@@ -22,7 +22,23 @@ ActiveRecord::Schema.define(:version => 20140818201737) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "itemposts", :force => true do |t|
+    t.string   "title"
+    t.string   "contact"
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "items", :force => true do |t|
+    t.string   "title"
+    t.string   "contact"
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "jobposts", :force => true do |t|
     t.string   "title"
     t.string   "contact"
     t.string   "content"
