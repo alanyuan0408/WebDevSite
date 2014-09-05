@@ -12,7 +12,7 @@ class StaticPagesController < ApplicationController
 
   def developer
     @currentPage = {:developer => "active"};
-    if session[:remember_token]
+    if session[:remember_token] && User.exists?(:id => session[:remember_token])
       user = User.find(session[:remember_token])
       @user_name = user.name
     else
@@ -22,7 +22,7 @@ class StaticPagesController < ApplicationController
 
   def entrepreneur
     @currentPage = {:entrepreneur => "active"};
-    if session[:remember_token]
+    if session[:remember_token] && User.exists?(:id => session[:remember_token])
       user = User.find(session[:remember_token])
       @user_name = user.name
     else
@@ -32,7 +32,7 @@ class StaticPagesController < ApplicationController
 
   def jobs
     @currentPage = {:jobs => "active"};
-    if session[:remember_token]
+    if session[:remember_token] && User.exists?(:id => session[:remember_token])
       user = User.find(session[:remember_token])
       @user_name = user.name
     else
@@ -49,7 +49,7 @@ class StaticPagesController < ApplicationController
 
   def useraccount
     @currentPage = {:useraccount => "active"};
-    if session[:remember_token]
+    if session[:remember_token] && User.exists?(:id => session[:remember_token])
       @user = User.find(session[:remember_token])
       @user_name = @user.name
       redirect_to @user
