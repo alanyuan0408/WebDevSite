@@ -10,4 +10,4 @@
   	Item.create(title: "Test Job #2", content: "Hardware Developer at Random Place 2", contact: "Test Contact Information 2")
   	Item.create(title: "Test Job #3", content: "Ruby on Rails Developer at Random Place 3", contact: "Test Contact Information 3")
 
-  	#Club.create(title: "Testing Meeting", date: "September 20, 2014", content: "This is a basic overview of the events the club will be having and asking for inputs", send: "True")  
+  	Club.create(title: "Testing Meeting", date: "September 20, 2014", content: "This is a basic overview of the events the club will be having and asking for inputs", send: "True")  
