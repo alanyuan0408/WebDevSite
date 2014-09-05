@@ -13,23 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20140905205828) do
 
-  create_table "clubs", :force => true do |t|
-    t.string   "title"
-    t.string   "date"
-    t.string   "content"
-    t.string   "send"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "itemposts", :force => true do |t|
-    t.string   "title"
-    t.string   "contact"
-    t.string   "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "items", :force => true do |t|
     t.string   "title"
     t.string   "contact"
@@ -38,14 +21,6 @@ ActiveRecord::Schema.define(:version => 20140905205828) do
     t.datetime "updated_at", :null => false
     t.string   "type"
     t.string   "type_of"
-  end
-
-  create_table "jobposts", :force => true do |t|
-    t.string   "title"
-    t.string   "contact"
-    t.string   "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
