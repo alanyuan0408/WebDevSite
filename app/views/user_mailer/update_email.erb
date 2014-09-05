@@ -9,7 +9,7 @@
 
     <h2>Club Meetings</h2>
 
-    <% @clubPosts do |post| %>
+    <% @clubPosts.each do |post| %>
       <h4><%= post.title %></h4>
       <p><%= post.contact %></p>
       <p><%= post.content %></p>
