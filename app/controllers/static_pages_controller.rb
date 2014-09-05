@@ -2,7 +2,7 @@ class StaticPagesController < ApplicationController
  
   def home
     @currentPage = {:home => "active"};
-    if session[:remember_token]
+    if session[:remember_token] && User.exists?(:id => session[:remember_token])
       user = User.find(session[:remember_token])
       @user_name = user.name
     else
