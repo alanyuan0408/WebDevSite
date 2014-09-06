@@ -3,6 +3,16 @@
 		<h1>Admin Panel</h1>
 	</div>
 
+	<div class = "span12">
+		<% @users.each do |user| %>
+
+	        <h4><%= user.name %></h4>
+	        <p><%= user.email %></p>
+	        <br>
+	          
+	    <% end %>
+	</div>
+
 </div>
 
 </div>
