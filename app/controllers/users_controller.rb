@@ -40,6 +40,13 @@ class UsersController < ApplicationController
   	end
   end
 
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User destroyed."
+    @user = User.find_by_name("UoftWebDev")
+    redirect_to @user
+  end
+
   def new
     @currentPage = {:useraccount => "active"};
   	@user = User.new
