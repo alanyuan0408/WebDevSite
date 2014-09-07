@@ -9,11 +9,14 @@
       		<p><%= user.email %></p>
       		<%= link_to "delete", user, method: :delete, confirm: "You sure?" %>
     	<% end %>
+
+    	</br>
+    	</br>
+		<%= button_to "Sign Out", '/signout', {:class => "btn btn-large btn-primary"} %>
+
 	</div>
 
-	<br>
 
-	<%= button_to "Sign Out", '/signout', {:class => "btn btn-large btn-primary"} %>
 </div>
 
 </div>
