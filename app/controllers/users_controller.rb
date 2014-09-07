@@ -7,7 +7,8 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       @user_name = @user.name
 
-      if @user.admin 
+      if @user.admin
+        @users = User.all
         render 'adminpanel'
       elsif current_user.remember_token == @user.remember_token
           #render the user page

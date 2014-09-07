@@ -17,11 +17,10 @@ ActiveRecord::Schema.define(:version => 20140905233425) do
     t.string   "title"
     t.string   "contact"
     t.string   "content"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "type"
     t.string   "type_of"
-    t.integer  "email_frequency", :default => 7
   end
 
   create_table "users", :force => true do |t|

@@ -3,6 +3,15 @@
 		<h1>Admin Panel</h1>
 	</div>
 
+	<div class="span12">
+		<% @users.each do |user| %>
+      		<h4><%= user.name %></h4>
+      		<p><%= user.email %></p>
+    	<% end %>
+	</div>
+
+	<%= button_to "Sign Out", '/signout', {:class => "btn btn-large btn-primary"} %>
+
 </div>
 
 </div>
