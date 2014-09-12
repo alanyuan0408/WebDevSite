@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140905233425) do
+ActiveRecord::Schema.define(:version => 20140912002006) do
 
   create_table "items", :force => true do |t|
     t.string   "title"
@@ -26,13 +26,18 @@ ActiveRecord::Schema.define(:version => 20140905233425) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
     t.string   "password_digest"
     t.string   "password_confirmation"
     t.string   "remember_token"
     t.boolean  "admin"
     t.integer  "email_frequency",       :default => 7
+    t.boolean  "web_club_newsletter",   :default => true
+    t.boolean  "research",              :default => true
+    t.boolean  "jobs",                  :default => true
+    t.boolean  "cs_events",             :default => true
+    t.boolean  "yncn_events",           :default => true
   end
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
