@@ -53,4 +53,24 @@ class UsersController < ApplicationController
     @user_name = "login"
   end
 
+  def edit
+    @currentPage = {:useraccount => "active"};
+    @user = User.find_by_id(session[:remember_token])
+    @user_name = @user.name
+  end
+
+  def update
+    @currentPage = {:useraccount => "active"};
+    @user = User.find_by_id(session[:remember_token])
+    @user_name = @user.name
+
+    if @user.update_attributes(params[:user])
+        sign_in @user
+        redirect_to @user
+    else
+      @currentPage[:usererror] = "true"
+      render 'edit'
+    end
+  end
+
 end

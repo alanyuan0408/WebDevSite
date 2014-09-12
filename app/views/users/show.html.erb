@@ -4,5 +4,44 @@
 
 <p>Your Email will be sent in a frequency of <%= @user.email_frequency %> days</p>
 
+<br>
+
+<% if @user.web_club_newsletter %>
+	<p>Your Email will include Web Club Updates</p>
+<% else %> 
+	<p>Your Email will not include Web Club Updates</p>
+<% end %>
+<br>
+
+<% if @user.research %>
+	<p>Your Email will include Research Opportunities</p>
+<% else %> 
+	<p>Your Email will not include Research Opportunities</p>
+<% end %>
+<br>
+
+<% if @user.jobs %>
+	<p>Your Email will include Job Updates</p>
+<% else %> 
+	<p>Your Email will not include Job Updates</p>
+<% end %>
+<br>
+
+<% if @user.cs_events %>
+	<p>Your Email will include CS Events</p>
+<% else %> 
+	<p>Your Email will not include CS Events</p>
+<% end %>
+<br>
+
+<% if @user.yncn_events %>
+	<p>Your Email will include YNCN updates</p>
+<% else %> 
+	<p>Your Email will not include YNCN updates</p>
+<% end %>
+<br>
+
+<%= button_to "Update Settings", '/update', {:class => "btn btn-large btn-primary"} %>
+
 <%= button_to "Sign Out", '/signout', {:class => "btn btn-large btn-primary"} %>
 

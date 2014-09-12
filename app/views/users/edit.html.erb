@@ -1,0 +1,40 @@
+<div class="row">
+	<div class="span12">
+
+		<h1>Update your Profile</h1>
+
+		<%= render :partial => "shared/error_messages" if @currentPage[:usererror] == "true" %>
+
+		<%= form_for(@user) do |f| %>
+
+			<%= f.label :jobs, "Job Offers" %>
+			<%= f.check_box :jobs %>
+
+			<%= f.label :research, "Research Offers" %>
+			<%= f.check_box :research %>
+
+			<%= f.label :web_club_newsletter, "Web Club Newsletter" %>
+			<%= f.check_box :web_club_newsletter %>
+
+			<%= f.label :cs_events, "CS Events" %>
+			<%= f.check_box :cs_events %>
+
+			<%= f.label :yncn_events, "YNCN Events" %>
+			<%= f.check_box :yncn_events %>
+
+			<%= f.label :password %>
+			<%= f.password_field :password %>
+
+			<%= f.label :password_confirmation, "Confirmation" %>
+			<%= f.password_field :password_confirmation %>
+
+
+			<br>
+			<br>
+
+			<%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+		
+		<% end %>
+
+	</div>
+</div>
