@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="span12">
+		<h1>YNCN Panel</h1>
+	</div>
+
+	<div class="span12">
+		<h4>Welcome YNCN to your Private post </h2>
+		<p>Here you can manage your future YNCN events and posts</p>
+
+		<% @item.each do |item| %>
+	      	<h4><%= item.title %></h4>
+	      	<p><%= item.contact %></p>
+	      	<p><%= item.content %></p>
+	      	<%= link_to "delete", item, method: :delete, confirm: "You sure?" %>
+    	<% end %>
+
+    	</br>
+    	</br>
+
+    	<%= button_to "Add Post", '/addPost', {:class => "btn btn-large btn-primary"} %>
+
+		<%= button_to "Sign Out", '/signout', {:class => "btn btn-large btn-primary"} %>
+
+	</div>
+
+
+</div>
+
+</div>

@@ -1,5 +1,6 @@
 UoftWebSite::Application.routes.draw do
   resources :users
+  resources :items
   resources :sessions, only: [:new, :create, :destroy]
 
   # The priority is based upon order of creation:
@@ -12,6 +13,7 @@ UoftWebSite::Application.routes.draw do
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy'
   match '/update', to: 'users#edit'
+  match '/addPost', to: 'items#new'
 
   match '/developer',  to: 'static_pages#developer'
   match '/jobs',     to: 'static_pages#jobs'

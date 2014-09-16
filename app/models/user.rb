@@ -23,6 +23,11 @@ class User < ActiveRecord::Base
       #Create the admin account
     end
 
+    if self.name == "YNCN"
+      self.yncn = true
+      #Create the admin account
+    end
+
   end
 
 end

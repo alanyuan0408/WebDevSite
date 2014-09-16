@@ -10,6 +10,9 @@ class UsersController < ApplicationController
       if @user.admin 
         @users = User.all
         render 'adminpanel'
+      elsif @user.yncn
+        @item = Item.where(type_of: "YNCNPost").all
+        render 'yncnpanel'
       elsif current_user.remember_token == @user.remember_token
           #render the user page
       else 
@@ -24,6 +27,7 @@ class UsersController < ApplicationController
     @currentPage = {:useraccount => "active"};
   	@user = User.new(params[:user])
     @user_name = "Login"
+
   	if @user.save
   		#Handle a successful save.
 

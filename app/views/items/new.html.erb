@@ -1,0 +1,24 @@
+<div class="row">
+	<div class="span6">
+		<h1>YNCN Post</h1>
+		<%= form_for(@item) do |f| %>
+
+			<%= render :partial => "shared/error_messages" if @currentPage[:usererror] == "true" %>
+
+			<%= f.label :title %>
+			<%= f.text_field :title %>
+
+			<%= f.label :contact %>
+			<%= f.text_field :contact %>
+
+			<%= f.label :content %>
+			<%= f.text_field :content %>
+
+			<br>
+
+			<%= f.submit "Add YNCN Event", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+
+
+</div>
