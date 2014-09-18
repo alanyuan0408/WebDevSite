@@ -9,9 +9,11 @@ class UsersController < ApplicationController
 
       if @user.admin 
         @users = User.all
+        @clubPost = Item.where(type_of: "ClubPost").all
+        @jobPost = Item.where(type_of: "JobPost").all
         render 'adminpanel'
       elsif @user.yncn
-        @item = Item.where(type_of: "YNCNPost").all
+        @items = Item.where(type_of: "YNCNPost").all
         render 'yncnpanel'
       elsif current_user.remember_token == @user.remember_token
           #render the user page

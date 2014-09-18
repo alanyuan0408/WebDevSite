@@ -2,21 +2,95 @@
 	<div class="span12">
 		<h1>Admin Panel</h1>
 	</div>
+</div>
 
-	<div class="span12">
-		<% @users.each do |user| %>
-      		<h4><%= user.name %></h4>
-      		<p><%= user.email %></p>
-      		<%= link_to "delete", user, method: :delete, confirm: "You sure?" %>
-    	<% end %>
+<div class="row">
 
-    	</br>
-    	</br>
-		<%= button_to "Sign Out", '/signout', {:class => "btn btn-large btn-primary"} %>
+	<div class="span6">
+		<h4>Message to Admin:</h4>
+
+		<p>This is the admin panel for the UofT Web Dev Club. Here you can list the users, 
+			Add new Club Messages and Add Job Posts.</p>
+
+		<br>
+
+		<h4>Add New Web Club Message</h4>
+		<%= form_for Item.create, url: items_path do |f| %> 
+
+			<%= f.label :title %>
+			<%= f.text_field :title %>
+
+			<%= f.label :content %>
+			<%= f.text_area :content, :rows => "3" %>
+
+			<%= f.hidden_field :type_of, :value => "ClubPost" %>
+
+			<%= f.submit "Add Web Club MEssage", class: "btn btn-large btn-primary" %>
+		<% end %>
+
+		<br>
+
+		<h4>Add New Job Post</h4>
+		<%= form_for Item.create, url: items_path do |f| %> 
+
+			<%= f.label :title %>
+			<%= f.text_field :title %>
+
+			<%= f.label :contact %>
+			<%= f.text_field :contact %>
+
+			<%= f.label :content %>
+			<%= f.text_area :content, :rows => "4" %>
+
+			<%= f.hidden_field :type_of, :value => "JobPost" %>
+
+			<%= f.submit "Add Job Post", class: "btn btn-large btn-primary" %>
+		<% end %>
+
 
 	</div>
 
+	<div class="span6">
 
-</div>
+		<h4>Current Users</h4>
+
+		<hr>
+		<% @users.each do |user| %>
+      		<h4><%= user.name %></h4>
+      		<p><%= user.email %></p>
+      		<%= link_to "delete", user, method: :delete %>
+    	<% end %>
+
+		<%= button_to "Sign Out", '/signout', {:class => "btn btn-large btn-primary"} %>
+
+
+		</div>
+
+	</div>
+
+	<div class="row">	
+		<div class="span6">
+			<h4>Club Posts</h4>
+			<hr>
+			<% @clubPost.each do |post| %>
+	      		<h4><%= post.title %></h4>
+	      		<p><%= post.contact %></p>
+	      		p><%= post.content %></p>
+	      		<%= link_to "delete", post, method: :delete %>
+	    	<% end %>
+		</div>
+
+		<div class="span6">
+			<h4>Job Posts</h4>
+			<hr>
+			<% @jobPost.each do |post| %>
+	      		<h4><%= post.title %></h4>
+	      		<p><%= post.contact %></p>
+	      		p><%= post.content %></p>
+	      		<%= link_to "delete", post, method: :delete %>
+	    	<% end %>
+		</div>
+
+	</div>
 
 </div>

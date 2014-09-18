@@ -1,29 +1,57 @@
 <div class="row">
 	<div class="span12">
-		<h1>YNCN Panel</h1>
+		<h1>YNCN Private Administrative Panel</h1>
+
+	</div>
+</div>
+
+<div class="row">
+
+	<div class="span6">
+		<h4>Message to YNCN:</h4>
+
+		<p>The Web Development Club would like to invite You're Next Career Network to add their 
+			future events onto our mailing system. The YNCN events will be mailed.</p>
+
+		<br>
+
+		<h4>Add New YNCN Event</h4>
+		<%= form_for Item.create, url: items_path do |f| %> 
+
+			<%= f.label :title %>
+			<%= f.text_field :title %>
+
+			<%= f.label :contact %>
+			<%= f.text_field :contact %>
+
+			<%= f.label :content %>
+			<%= f.text_area :content, :rows => "4" %>
+
+			<%= f.hidden_field :type_of, :value => "YNCNPost" %>
+
+			<%= f.submit "Add YNCN Event", class: "btn btn-large btn-primary" %>
+		<% end %>
 	</div>
 
-	<div class="span12">
-		<h4>Welcome YNCN to your Private post </h2>
-		<p>Here you can manage your future YNCN events and posts</p>
+	<div class="span6">
 
-		<% @item.each do |item| %>
-	      	<h4><%= item.title %></h4>
-	      	<p><%= item.contact %></p>
-	      	<p><%= item.content %></p>
-	      	<%= link_to "delete", item, method: :delete, confirm: "You sure?" %>
-    	<% end %>
+		<h4>Current Posts by YNCN</h4>
 
-    	</br>
-    	</br>
-
-    	<%= button_to "Add Post", '/addPost', {:class => "btn btn-large btn-primary"} %>
+		<hr>
+		<% @items.each do |items| %>
+		    <h4><%= items.title %></h4>
+		    <p><b>Contact: </b><%= items.contact %></p>
+		    <p><b>Date: </b><%= items.created_at.to_formatted_s(:long) %></p>
+		    <p><%= items.content %></p>
+		    <%= link_to "delete", items, method: :delete %>
+		    <hr>
+	    <% end %>
 
 		<%= button_to "Sign Out", '/signout', {:class => "btn btn-large btn-primary"} %>
 
+
+		</div>
+
 	</div>
-
-
-</div>
 
 </div>
