@@ -13,6 +13,3 @@ task :send_emails => :environment do
   end
 
 end
-
-
-end

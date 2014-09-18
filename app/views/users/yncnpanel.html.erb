@@ -42,7 +42,7 @@
 		    <h4><%= items.title %></h4>
 		    <p><b>Contact: </b><%= items.contact %></p>
 		    <p><b>Date: </b><%= items.created_at.to_formatted_s(:long) %></p>
-		    <p><%= items.content %></p>
+		    <%= safe_join(items.content.split("\r\n"), "<br />".html_safe) %>
 		    <%= link_to "delete", items, method: :delete %>
 		    <hr>
 	    <% end %>
