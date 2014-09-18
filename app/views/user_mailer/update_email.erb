@@ -5,21 +5,20 @@
   </head>
   <body>
     <h2>Hello, <%= @user.name %></h2>
-    <p>The contents of this email is generated using your settings on your user account</p>
+    <p>Web Club Automated Email System</p>
     
     <br>
     <h2>Club Meetings</h2>
 
     <% @clubPosts.each do |post| %>
       <h4><%= post.title %></h4>
-      <p><%= post.contact %></p>
       <p><%= post.content %></p>
     <% end %>
     <br>
 
-    <h2>Job Posts</h2>
+    <h2>YNCN Event Post</h2>
 
-    <% @jobPosts.each do |post| %>
+    <% @YNCNPosts.each do |post| %>
       <h4><%= post.title %></h4>
       <p><%= post.contact %></p>
       <p><%= post.content %></p>

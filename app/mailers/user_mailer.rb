@@ -8,14 +8,9 @@ class UserMailer < ActionMailer::Base
 
   def update_email(user)
     @user = user
-    @jobPosts = Item.where(type_of: "JobPost").take(3)
-    @clubPosts = Item.where(type_of: "ClubPost").take(1)
-    mail(to: @user.email, subject: 'Testing Updates')
-  end
-
-  def spam_email(user)
-    @user = user
-    mail(to: @user.email, subject: "Spam wave")
+    @YNCNPosts = Item.where(type_of: "YNCNPost").take(3)
+    @clubPosts = Item.where(type_of: "ClubPost").take(3)
+    mail(to: @user.email, subject: 'Automated Web Club Email')
   end
 
 end
