@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   def create_remember_token
   	self.remember_token = SecureRandom.urlsafe_base64
 
+    self.nextsend = Time.now + self.email_frequency.days
+
     if self.name == "UoftWebDev"
       self.admin = true
       #Create the admin account
