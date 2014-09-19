@@ -34,7 +34,7 @@
 	</div>
 
 	<% arry = Array.new(['2A', '2B', '2C', '2D', '2E', '2F', '2G']) %>
-	<% arry2 = Array.new(['YNCN 1', 'YNCN 2', 'YNCN 3', 'YNCN 4', 'YNCN 5', 'YNCN 6', 'YNCN 7']) %>
+	<% arry2 = Array.new(['Page 1', 'Page 2', 'Page 3', 'Page 4', 'Page 5', 'Page 6', 'Page 7']) %>
 	<% arry3 = Array.new(['tab-pane active', 'tab-pane', 'tab-pane', 'tab-pane', 'tab-pane' ,'tab-pane', 'tab-pane']) %>
 	<% arry4 = Array.new(['active', '', '', '', '' ,'', '']) %>
 	<% i = 0 %>
@@ -64,7 +64,6 @@
 							<p><b>Contact: </b><%= items.contact %></p>
 							<p style="white-space:pre-wrap;"><%= items.content %></p>
 							<%= link_to "delete", items, method: :delete %>
-							<%= j %>
 							<hr>
 						<% end %>
 					</div>
