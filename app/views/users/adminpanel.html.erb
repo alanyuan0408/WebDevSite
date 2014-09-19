@@ -74,7 +74,7 @@
 			</ul>
 
 			<div class="tab-content">
-				<% @users.in_groups_of(15, false) do |batch| %>
+				<% @users.in_groups_of(10, false) do |batch| %>
 
 					<div class='<%= arry3[j] %>' id='<%= arryB[j] %>'>
 						<% batch.each do |items| %>	
