@@ -12,7 +12,7 @@
 
     <% @clubPosts.each do |post| %>
       <h4><%= post.title %></h4>
-      <p><%= post.content %></p>
+      <p style="white-space:pre-wrap;"><%= post.content %></p>
     <% end %>
     <br>
 
@@ -21,7 +21,7 @@
     <% @YNCNPosts.each do |post| %>
       <h4><%= post.title %></h4>
       <p><%= post.contact %></p>
-      <p><%= post.content %></p>
+      <p style="white-space:pre-wrap;"><%= post.content %></p>
     <% end %>
 
     <p>Thanks, <br>
