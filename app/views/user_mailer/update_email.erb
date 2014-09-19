@@ -8,20 +8,34 @@
     <p>Web Club Automated Email System</p>
     
     <br>
-    <h2>Club Meetings</h2>
 
-    <% @clubPosts.each do |post| %>
-      <h4><%= post.title %></h4>
-      <p style="white-space:pre-wrap;"><%= post.content %></p>
+    <% if @user.web_club_newsletter %>
+
+      <h2>Club Meetings</h2>
+
+      <% @clubPosts.each do |post| %>
+        <h4><%= post.title %></h4>
+        <p style="white-space:pre-wrap;"><%= post.content %></p>
+      <% end %>
+      <br>
+
+    <% else %>
+      <%= i = 1 %>
     <% end %>
-    <br>
 
-    <h2>YNCN Event Post</h2>
+    <% if @user.yncn_events %>
 
-    <% @YNCNPosts.each do |post| %>
-      <h4><%= post.title %></h4>
-      <p><%= post.contact %></p>
-      <p style="white-space:pre-wrap;"><%= post.content %></p>
+      <h2>YNCN Event Post</h2>
+
+      <% @YNCNPosts.each do |post| %>
+        <h4><%= post.title %></h4>
+        <p><%= post.contact %></p>
+        <p style="white-space:pre-wrap;"><%= post.content %></p>
+      <% end %>
+      <br>
+
+    <% else %>
+      <%= i = 1 %>
     <% end %>
 
     <p>Thanks, <br>
