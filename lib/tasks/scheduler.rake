@@ -18,7 +18,8 @@ task :update_time => :environment do
   @user = User.all
 
   @user.each do |user|
-  	user.nextsend = Time.now + user.email_frequency.days
+    n = user.email_frequency
+  	user.nextsend = Time.now + n.days
   end
 
 end
