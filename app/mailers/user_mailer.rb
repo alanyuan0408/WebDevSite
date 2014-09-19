@@ -7,9 +7,9 @@ class UserMailer < ActionMailer::Base
   end
 
   def update_email(user)
-    if user.nextsend < Time.now
-      @user = user
-      @user.nextsend = Time.now + user.email_frequency.days
+    @user = user
+    if @user.nextsend < Time.now
+      @user.nextsend = Time.now + @user.email_frequency.days
       @YNCNPosts = Item.where(created_at: (Time.now - @user.email_frequency.days)..Time.now).where(type_of: "YNCNPost")
       @clubPosts = Item.where(created_at: (Time.now - @user.email_frequency.days)..Time.now).where(type_of: "ClubPost")
       mail(to: @user.email, subject: 'Automated Web Club Email')
