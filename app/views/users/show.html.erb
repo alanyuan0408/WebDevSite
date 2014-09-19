@@ -41,8 +41,6 @@
 <% end %>
 <br>
 
-<p>Your Next Email will be sent on <%= @user.nextsend.to_formatted_s(:long)   %></p>
-
 <%= button_to "Update Settings", '/update', {:class => "btn btn-large btn-primary"} %>
 
 <%= button_to "Sign Out", '/signout', {:class => "btn btn-large btn-primary"} %>
