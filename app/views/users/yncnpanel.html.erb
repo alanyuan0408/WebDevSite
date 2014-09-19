@@ -33,22 +33,50 @@
 		<% end %>
 	</div>
 
+	<% arry = Array.new(['2A', '2B', '2C', '2D', '2E', '2F', '2G']) %>
+	<% arry2 = Array.new(['YNCN 1', 'YNCN 2', 'YNCN 3', 'YNCN 4', 'YNCN 5', 'YNCN 6', 'YNCN 7']) %>
+	<% arry3 = Array.new(['tab-pane active', 'tab-pane', 'tab-pane', 'tab-pane', 'tab-pane' ,'tab-pane', 'tab-pane']) %>
+	<% arry4 = Array.new(['active', '', '', '', '' ,'', '']) %>
+	<% i = 0 %>
+	<% j = 0 %>
+
 	<div class="span6">
 
 		<h4>Current Posts by YNCN</h4>
 
-		<hr>
-		<% @items.each do |items| %>
-		    <h4><%= items.title %></h4>
-		    <p><b>Contact: </b><%= items.contact %></p>
-		    <p><b>Date: </b><%= items.created_at.to_formatted_s(:long) %></p>
-		    <%= safe_join(items.content.split("\r\n"), "<br />".html_safe) %>
-		    <%= link_to "delete", items, method: :delete %>
-		    <hr>
-	    <% end %>
+		<div class="tabbable">
+
+			<% length = (@items.length.to_f / 3.to_f).ceil %>
+
+			<ul class="nav nav-tabs">
+				<% while i < length %>
+					<li class="<%= arry4[i] %>"><a href='<%= "#" + arry[i] %>' data-toggle="tab"><%= arry2[i] %></a></li>
+					<% i = i + 1 %>
+				<% end %>	
+			</ul>
+
+			<div class="tab-content">
+				<% @items.in_groups_of(3, false) do |batch| %>
+
+					<div class='<%= arry3[j] %>' id='<%= arry[j] %>'>
+						<% batch.each do |items| %>	
+							<h4><%= items.title %></h4>
+							<p><b>Contact: </b><%= items.contact %></p>
+							<p style="white-space:pre-wrap;"><%= items.content %></p>
+							<%= link_to "delete", items, method: :delete %>
+							<%= j %>
+							<hr>
+						<% end %>
+					</div>
+
+					<% j = j + 1 %>
+				<% end %>
+
+			</div>
+
+		</div>
 
 		<%= button_to "Sign Out", '/signout', {:class => "btn btn-large btn-primary"} %>
-
 
 		</div>
 

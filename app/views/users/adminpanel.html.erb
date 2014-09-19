@@ -76,7 +76,7 @@
 			<% @clubPost.each do |post| %>
 	      		<h4><%= post.title %></h4>
 	      		<p><%= post.contact %></p>
-	      		p><%= post.content %></p>
+	      		<p style="white-space:pre-wrap;"><%= post.content %></p>
 	      		<%= link_to "delete", post, method: :delete %>
 	    	<% end %>
 		</div>
@@ -87,7 +87,7 @@
 			<% @jobPost.each do |post| %>
 	      		<h4><%= post.title %></h4>
 	      		<p><%= post.contact %></p>
-	      		p><%= post.content %></p>
+	      		<p style="white-space:pre-wrap;"><%= post.content %></p>
 	      		<%= link_to "delete", post, method: :delete %>
 	    	<% end %>
 		</div>
