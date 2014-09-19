@@ -12,6 +12,8 @@ task :send_emails => :environment do
   	 UserMailer.update_email(user).deliver
   end
 
+end
+
 task :update_time => :environment do
   puts "updateTime emails"
 
