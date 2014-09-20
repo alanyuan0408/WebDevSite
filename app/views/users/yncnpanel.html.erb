@@ -18,6 +18,8 @@
 		<h4>Add New YNCN Event</h4>
 		<%= form_for Item.create, url: items_path do |f| %> 
 
+				<%= render :partial => "shared/error_messagesitems" if @currentPage[:usererror] == "true" %>
+
 			<%= f.label :title %>
 			<%= f.text_field :title %>
 
