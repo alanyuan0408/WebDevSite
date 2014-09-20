@@ -34,7 +34,27 @@ class ItemsController < ApplicationController
         end
     	else 
         @currentPage = {:usererror => "true"};
-    	  render 'new'
+    	   if @item.type_of == "YNCNPost"
+          @user = User.find_by_name("YNCN")
+          format.html {redirect_to @user}
+          format.json {render json: @item}
+        elsif @item.type_of == "CSSUPost"
+          @user = User.find_by_name("CSSU")
+          format.html {redirect_to @user}
+          format.json {render json: @item}
+        elsif @item.type_of == "CSSUPostAdmin"
+          @user = User.find_by_name("CSadmin")
+          format.html {redirect_to @user}
+          format.json {render json: @item}
+        elsif @item.type_of == "JobPostAdmin"
+          @user = User.find_by_name("CSadmin")
+          format.html {redirect_to @user}
+          format.json {render json: @item}
+        else 
+          @user = User.find_by_name("UoftWebDev")
+          format.html {redirect_to @user}
+          format.json {render json: @item}
+        end
     	end
 
     end
