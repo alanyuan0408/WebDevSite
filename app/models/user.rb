@@ -25,6 +25,16 @@ class User < ActiveRecord::Base
       #Create the admin account
     end
 
+    if self.name == "CSSU"
+      self.cssu = true
+      #Create the admin account
+    end
+
+    if self.name == "CSadmin"
+      self.csadmin = true
+      #Create the admin account
+    end
+
     if self.name == "YNCN"
       self.yncn = true
       #Create the admin account

@@ -1,0 +1,85 @@
+<div class="row">
+	<div class="span12">
+		<h1>CSSU Panel</h1>
+	</div>
+</div>
+
+<div class="row">
+
+	<div class="span6">
+		<h4>Message to CSSU:</h4>
+
+		<p>This is the admin panel for the CSSU. Here you can 
+			Add new CSSU Events and Add Job Posts.</p>
+
+		<br>
+
+		<h4>Add New CSSU Event Post/ Message</h4>
+		<%= form_for Item.create, url: items_path do |f| %> 
+
+			<%= f.label :title %>
+			<%= f.text_field :title %>
+
+			<%= f.label :contact %>
+			<%= f.text_field :contact %>
+
+			<%= f.label :content %>
+			<%= f.text_area :content, :rows => "3" %>
+
+			<%= f.hidden_field :type_of, :value => "CSSUPost" %>
+
+			<%= f.submit "Add CSSU Event Post", class: "btn btn-large btn-primary" %>
+		<% end %>
+
+		<br>
+
+		<%= button_to "Sign Out", '/signout', {:class => "btn btn-large btn-primary"} %>
+
+
+	</div>
+	<% arryA = Array.new(['1A', '1B', '1C', '1D', '1E', '1F', '1G']) %>
+	<% arryB = Array.new(['2A', '2B', '2C', '2D', '2E', '2F', '2G']) %>
+	<% arryC = Array.new(['3A', '3B', '3C', '3D', '3E', '3F', '3G']) %>
+	<% arry2 = Array.new(['Page 1', 'Page 2', 'Page 3', 'Page 4', 'Page 5', 'Page 6', 'Page 7']) %>
+	<% arry3 = Array.new(['tab-pane active', 'tab-pane', 'tab-pane', 'tab-pane', 'tab-pane' ,'tab-pane', 'tab-pane']) %>
+	<% arry4 = Array.new(['active', '', '', '', '' ,'', '']) %>
+	<% i = 0 %>
+	<% j = 0 %>
+
+		<div class="span6">
+			<h4>CSSU Posts + Messages</h4>
+			<hr>
+			<div class="tabbable">
+
+			<% length = (@clubPost.length.to_f / 3.to_f).ceil %>
+
+			<ul class="nav nav-tabs">
+				<% while i < length %>
+					<li class="<%= arry4[i] %>"><a href='<%= "#" + arryB[i] %>' data-toggle="tab"><%= arry2[i] %></a></li>
+					<% i = i + 1 %>
+				<% end %>	
+			</ul>
+
+			<div class="tab-content">
+				<% @clubPost.in_groups_of(3, false) do |batch| %>
+
+					<div class='<%= arry3[j] %>' id='<%= arryB[j] %>'>
+						<% batch.each do |items| %>	
+							<h4><%= items.title %></h4>
+							<p><b>Contact: </b><%= items.contact %></p>
+							<p style="white-space:pre-wrap;"><%= items.content %></p>
+							<%= link_to "delete", items, method: :delete %>
+							<hr>
+						<% end %>
+					</div>
+
+					<% j = j + 1 %>
+				<% end %>
+
+			</div>
+		</div>
+		</div>
+
+	</div>
+
+</div>
