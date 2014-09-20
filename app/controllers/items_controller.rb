@@ -46,6 +46,18 @@ class ItemsController < ApplicationController
       Item.find(params[:id]).destroy
       @user = User.find_by_name("YNCN")
       redirect_to @user
+    elsif Item.find(params[:id]).type_of == "CSSUPost"
+      Item.find(params[:id]).destroy
+      @user = User.find_by_name("CSSU")
+      redirect_to @user
+    elsif Item.find(params[:id]).type_of == "CSSUPostAdmin"
+      Item.find(params[:id]).destroy
+      @user = User.find_by_name("CSadmin")
+      redirect_to @user
+    elsif Item.find(params[:id]).type_of == "JobPostAdmin"
+      Item.find(params[:id]).destroy
+      @user = User.find_by_name("CSadmin")
+      redirect_to @user
     else 
       Item.find(params[:id]).destroy
       @user = User.find_by_name("UoftWebDev")
