@@ -7,6 +7,7 @@ class UserMailer < ActionMailer::Base
   end
 
   def update_email(user)
+    
     @user = user
     if @user.nextsend < Time.now
       newtime = Time.now + @user.email_frequency.days
