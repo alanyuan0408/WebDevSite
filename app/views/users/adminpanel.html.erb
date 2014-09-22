@@ -22,8 +22,8 @@
 			<%= f.label :title %>
 			<%= f.text_field :title %>
 
-			<%= f.label :content %>
-			<%= f.text_area :content, :rows => "3" %>
+			<%= f.label :information %>
+			<%= f.text_area :information, :rows => "3" %>
 
 			<%= f.hidden_field :type_of, :value => "ClubPost" %>
 			<%= f.hidden_field :contact, :value => "UoftWebDev.president@gmail.com" %>
@@ -42,8 +42,8 @@
 			<%= f.label :contact %>
 			<%= f.text_field :contact %>
 
-			<%= f.label :content %>
-			<%= f.text_area :content, :rows => "4" %>
+			<%= f.label :information %>
+			<%= f.text_area :information, :rows => "4" %>
 
 			<%= f.hidden_field :type_of, :value => "JobPost" %>
 
@@ -124,7 +124,7 @@
 						<% batch.each do |items| %>	
 							<h4><%= items.title %></h4>
 							<p><b>Contact: </b><%= items.contact %></p>
-							<p style="white-space:pre-wrap;"><%= items.content %></p>
+							<p style="white-space:pre-wrap;"><%= items.information %></p>
 							<%= link_to "delete", items, method: :delete %>
 							<hr>
 						<% end %>
@@ -161,7 +161,7 @@
 						<% batch.each do |items| %>	
 							<h4><%= items.title %></h4>
 							<p><b>Contact: </b><%= items.contact %></p>
-							<p style="white-space:pre-wrap;"><%= items.content %></p>
+							<p style="white-space:pre-wrap;"><%= items.information %></p>
 							<%= link_to "delete", items, method: :delete %>
 							<hr>
 						<% end %>

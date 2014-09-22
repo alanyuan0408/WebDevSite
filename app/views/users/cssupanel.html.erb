@@ -23,8 +23,8 @@
 			<%= f.label :contact %>
 			<%= f.text_field :contact %>
 
-			<%= f.label :content %>
-			<%= f.text_area :content, :rows => "3" %>
+			<%= f.label :information %>
+			<%= f.text_area :information, :rows => "4" %>
 
 			<%= f.hidden_field :type_of, :value => "CSSUPost" %>
 
@@ -67,7 +67,7 @@
 						<% batch.each do |items| %>	
 							<h4><%= items.title %></h4>
 							<p><b>Contact: </b><%= items.contact %></p>
-							<p style="white-space:pre-wrap;"><%= items.content %></p>
+							<p style="white-space:pre-wrap;"><%= items.information %></p>
 							<%= link_to "delete", items, method: :delete %>
 							<hr>
 						<% end %>
