@@ -36,7 +36,10 @@ class ItemsController < ApplicationController
         @currentPage = {:usererror => "true"};
     	   if @item.type_of == "YNCNPost"
           @user = User.find_by_name("YNCN")
-          format.html {redirect_to @user}
+          @currentPage = {:useraccount => "active", :usererror => "true"};
+          @items = Item.where(type_of: "YNCNPost").all
+          @user_name = @user.name
+          format.html{render 'users/yncnpanel'}
           format.json {render json: @item}
         elsif @item.type_of == "CSSUPost"
           @user = User.find_by_name("CSSU")
