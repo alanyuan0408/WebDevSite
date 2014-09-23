@@ -18,13 +18,13 @@
 		<%= form_for Item.create, url: items_path do |f| %> 
 
 			<%= f.label :title %>
-			<%= f.text_field :title %>
+			<%= f.text_field :title, :size=>"150", placeholder: "Title of Event" %>
 
 			<%= f.label :contact %>
-			<%= f.text_field :contact %>
+			<%= f.text_field :contact, :size=>"150", placeholder: "Job Contact" %>
 
 			<%= f.label :information %>
-			<%= f.text_area :information, :rows => "4" %>
+			<%= f.text_area :information, :rows => "6", placeholder: "Event Infromation" %>
 
 			<%= f.hidden_field :type_of, :value => "CSSUPost" %>
 

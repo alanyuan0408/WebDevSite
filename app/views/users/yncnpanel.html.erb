@@ -21,18 +21,22 @@
 				<%= render :partial => "shared/error_messagesitems" if @currentPage[:usererror] == "true" %>
 
 			<%= f.label :title %>
-			<%= f.text_field :title %>
+			<%= f.text_field :title, :size=>"150", placeholder: "Title of Event" %>
 
 			<%= f.label :contact %>
-			<%= f.text_field :contact %>
+			<%= f.text_field :contact, :size=>"150", placeholder: "Event Contact" %>
 
 			<%= f.label :information %>
-			<%= f.text_area :information, :rows => "5" %>
+			<%= f.text_area :information, :rows => "6", placeholder: "Event Information" %>
 
 			<%= f.hidden_field :type_of, :value => "YNCNPost" %>
 
 			<%= f.submit "Add YNCN Event", class: "btn btn-large btn-primary" %>
 		<% end %>
+
+		<hr>
+
+		<%= button_to "Sign Out", '/signout', {:class => "btn btn-large btn-primary"} %>
 	</div>
 
 	<% arry = Array.new(['2A', '2B', '2C', '2D', '2E', '2F', '2G']) %>
@@ -48,7 +52,7 @@
 
 		<div class="tabbable">
 
-			<% length = (@items.length.to_f / 6.to_f).ceil %>
+			<% length = (@items.length.to_f / 5.to_f).ceil %>
 
 			<ul class="nav nav-tabs">
 				<% while i < length %>
@@ -58,7 +62,7 @@
 			</ul>
 
 			<div class="tab-content">
-				<% @items.in_groups_of(6, false) do |batch| %>
+				<% @items.in_groups_of(5, false) do |batch| %>
 
 					<div class='<%= arry3[j] %>' id='<%= arry[j] %>'>
 						<% batch.each do |items| %>	
@@ -76,8 +80,6 @@
 			</div>
 
 		</div>
-
-		<%= button_to "Sign Out", '/signout', {:class => "btn btn-large btn-primary"} %>
 
 		</div>
 

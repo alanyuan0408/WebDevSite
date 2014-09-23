@@ -1,6 +1,7 @@
 <div class="row">
 	<div class="span12">
 
+
 		<h1>Update your Profile</h1>
 
 		<%= render :partial => "shared/error_messages" if @currentPage[:usererror] == "true" %>
@@ -22,8 +23,11 @@
 			<%= f.label :yncn_events, "YNCN Events" %>
 			<%= f.check_box :yncn_events %>
 
-			<%= f.label :email_frequency, "Days between emails [1-7]" %>
-			<%= f.text_field :email_frequency %>
+			<div style="width:40%">
+
+				<%= f.label :email_frequency, "Days between emails [1-7]" %>
+				<%= f.text_field :email_frequency %>
+			</div>
 
 			<!-- <%= f.label :password %>
 			<%= f.password_field :password %>

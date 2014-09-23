@@ -9,8 +9,12 @@
 	<div class="span6">
 		<h4>Message to Admin:</h4>
 
-		<p>This is the admin panel for the UofT Web Dev Club. Here you can list the users, 
-			Add new Club Messages and Add Job Posts.</p>
+			<hr>
+
+			<div class="midwidth">
+
+				<p>This is the admin panel for the UofT Web Dev Club. Here you can list the users, add new Club Web Messages and job Posts.</p>
+			</div>
 
 		<br>
 
@@ -20,15 +24,18 @@
 		<%= render :partial => "shared/error_messagesitems" if @currentPage[:usererror] == "true" %>
 
 			<%= f.label :title %>
-			<%= f.text_field :title %>
+			<%= f.text_field :title, :size=>"150", placeholder: "Title of Event" %>
+
+			<%= f.label :contact %>
+			<%= f.text_field :contact, :value => "UoftWebDev.president@gmail.com" %>
 
 			<%= f.label :information %>
-			<%= f.text_area :information, :rows => "3" %>
+			<%= f.text_area :information, :rows => "6", placeholder: "Web Club Message" %>
 
 			<%= f.hidden_field :type_of, :value => "ClubPost" %>
-			<%= f.hidden_field :contact, :value => "UoftWebDev.president@gmail.com" %>
+			
 
-			<%= f.submit "Add Web Club Message", class: "btn btn-large btn-primary" %>
+			<%= f.submit "Add New Message", class: "btn btn-large btn-primary" %>
 		<% end %>
 
 		<br>
@@ -36,18 +43,20 @@
 		<h4>Add New Job Post</h4>
 		<%= form_for Item.create, url: items_path do |f| %> 
 
+		<%= render :partial => "shared/error_messagesitems" if @currentPage[:usererror] == "true" %>
+
 			<%= f.label :title %>
-			<%= f.text_field :title %>
+			<%= f.text_field :title, placeholder: "Job Title" %>
 
 			<%= f.label :contact %>
-			<%= f.text_field :contact %>
+			<%= f.text_field :contact, placeholder: "Contact Information" %>
 
 			<%= f.label :information %>
-			<%= f.text_area :information, :rows => "4" %>
+			<%= f.text_area :information, :rows => "6", placeholder: "Job Description" %>
 
 			<%= f.hidden_field :type_of, :value => "JobPost" %>
 
-			<%= f.submit "Add Job Post", class: "btn btn-large btn-primary" %>
+			<%= f.submit "Add New Job Post", class: "btn btn-large btn-primary" %>
 		<% end %>
 
 		<hr>
@@ -95,6 +104,8 @@
 
 			</div>
 		</div>
+		<br>
+		<hr>
 		</div>
 
 	</div>
