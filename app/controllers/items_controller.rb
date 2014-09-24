@@ -12,9 +12,12 @@ class ItemsController < ApplicationController
     	if @item.save
     		#Handle a successful save.
         if @item.type_of == "YNCNPost"
+          @item_saved = 1
+          @items = Item.where(type_of: "YNCNPost").all
           @user = User.find_by_name("YNCN")
           format.html {redirect_to @user}
-      		format.json {render json: @item}
+          format.json {render json: @item}
+          format.js
         elsif @item.type_of == "CSSUPost"
           @user = User.find_by_name("CSSU")
           format.html {redirect_to @user}
@@ -36,11 +39,12 @@ class ItemsController < ApplicationController
         @currentPage = {:usererror => "true"};
     	   if @item.type_of == "YNCNPost"
           @user = User.find_by_name("YNCN")
-          @currentPage = {:useraccount => "active", :usererror => "true"};
+          @item_saved = 0
           @items = Item.where(type_of: "YNCNPost").all
           @user_name = @user.name
-          format.html{render 'users/yncnpanel'}
+          format.html{redirect_to @user}
           format.json {render json: @item}
+          format.js
         elsif @item.type_of == "CSSUPost"
           @user = User.find_by_name("CSSU")
           format.html {redirect_to @user}
@@ -68,7 +72,11 @@ class ItemsController < ApplicationController
     if Item.find(params[:id]).type_of == "YNCNPost"
       Item.find(params[:id]).destroy
       @user = User.find_by_name("YNCN")
-      redirect_to @user
+      @items = Item.where(type_of: "YNCNPost").all
+      respond_to do |format|
+          format.html{redirect_to @user}
+          format.js
+      end
     elsif Item.find(params[:id]).type_of == "CSSUPost"
       Item.find(params[:id]).destroy
       @user = User.find_by_name("CSSU")

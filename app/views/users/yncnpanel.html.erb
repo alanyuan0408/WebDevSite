@@ -16,9 +16,9 @@
 		<br>
 
 		<h4>Add New YNCN Event</h4>
-		<%= form_for Item.create, url: items_path do |f| %> 
+		<%= form_for Item.create, url: items_path, remote: true, :html=> {:id => 'item_form'} do |f| %> 
 
-		<%= render :partial => "shared/error_messagesitems" if @currentPage[:usererror] == "true" %>
+		<div id="errorMessage"></div>
 
 			<%= f.label :title %>
 			<%= f.text_field :title, :size=>"150", placeholder: "Title of Event" %>
@@ -39,14 +39,14 @@
 		<%= button_to "Sign Out", '/signout', {:class => "btn btn-large btn-primary"} %>
 	</div>
 
-	<% arry = Array.new(['2A', '2B', '2C', '2D', '2E', '2F', '2G']) %>
-	<% arry2 = Array.new(['Page 1', 'Page 2', 'Page 3', 'Page 4', 'Page 5', 'Page 6', 'Page 7']) %>
-	<% arry3 = Array.new(['tab-pane active', 'tab-pane', 'tab-pane', 'tab-pane', 'tab-pane' ,'tab-pane', 'tab-pane']) %>
-	<% arry4 = Array.new(['active', '', '', '', '' ,'', '']) %>
+	<% arry = Array.new(['2A', '2B', '2C', '2D', '2E', '2F', '2G', '2H']) %>
+	<% arry2 = Array.new(['Page 1', 'Page 2', 'Page 3', 'Page 4', 'Page 5', 'Page 6', 'Page 7', 'Page 8']) %>
+	<% arry3 = Array.new(['tab-pane active', 'tab-pane', 'tab-pane', 'tab-pane', 'tab-pane' ,'tab-pane', 'tab-pane', 'tab-pane']) %>
+	<% arry4 = Array.new(['active', '', '', '', '' ,'', '', '']) %>
 	<% i = 0 %>
 	<% j = 0 %>
 
-	<div class="span6">
+	<div class="span6" id = "postDisplay">
 
 		<h4>Current Posts by YNCN</h4>
 
@@ -69,7 +69,7 @@
 							<h4><%= items.title %></h4>
 							<p><b>Contact: </b><%= items.contact %></p>
 							<p style="white-space:pre-wrap;"><%= items.information %></p>
-							<%= link_to "delete", items, method: :delete %>
+							<%= link_to "delete", items, remote: true, method: :delete %>
 							<hr>
 						<% end %>
 					</div>

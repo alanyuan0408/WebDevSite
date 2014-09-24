@@ -1,0 +1,39 @@
+			<% arry = Array.new(['2A', '2B', '2C', '2D', '2E', '2F', '2G', '2H']) %>
+	<% arry2 = Array.new(['Page 1', 'Page 2', 'Page 3', 'Page 4', 'Page 5', 'Page 6', 'Page 7', 'Page 8']) %>
+	<% arry3 = Array.new(['tab-pane active', 'tab-pane', 'tab-pane', 'tab-pane', 'tab-pane' ,'tab-pane', 'tab-pane', 'tab-pane']) %>
+	<% arry4 = Array.new(['active', '', '', '', '' ,'', '', '']) %>
+	<% i = 0 %>
+	<% j = 0 %>
+
+		<h4>Current Posts by YNCN</h4>
+
+		<div class="tabbable">
+
+			<% length = (@items.length.to_f / 5.to_f).ceil %>
+
+			<ul class="nav nav-tabs">
+				<% while i < length %>
+					<li class="<%= arry4[i] %>"><a href='<%= "#" + arry[i] %>' data-toggle="tab"><%= arry2[i] %></a></li>
+					<% i = i + 1 %>
+				<% end %>	
+			</ul>
+
+			<div class="tab-content">
+				<% @items.in_groups_of(5, false) do |batch| %>
+
+					<div class='<%= arry3[j] %>' id='<%= arry[j] %>'>
+						<% batch.each do |items| %>	
+							<h4><%= items.title %></h4>
+							<p><b>Contact: </b><%= items.contact %></p>
+							<p style="white-space:pre-wrap;"><%= items.information %></p>
+							<%= link_to "delete", items, method: :delete %>
+							<hr>
+						<% end %>
+					</div>
+
+					<% j = j + 1 %>
+				<% end %>
+
+			</div>
+
+		</div>
