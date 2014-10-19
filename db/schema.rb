@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140922220950) do
+ActiveRecord::Schema.define(:version => 20141019003836) do
 
   create_table "items", :force => true do |t|
     t.string   "title"
@@ -40,9 +40,9 @@ ActiveRecord::Schema.define(:version => 20140922220950) do
     t.boolean  "cs_events",             :default => true
     t.boolean  "yncn_events",           :default => true
     t.boolean  "yncn",                  :default => false
-    t.time     "nextsend"
     t.boolean  "cssu"
     t.boolean  "csadmin"
+    t.time     "nextsend"
   end
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
