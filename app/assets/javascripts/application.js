@@ -16,7 +16,6 @@
 //= require_tree .
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require bootstrap
 //= require codemirror
 //= require codemirror/modes/ruby
 //= require codemirror/modes/sass
