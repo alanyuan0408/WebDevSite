@@ -19,43 +19,39 @@
 		<br>
 
 		<h4>Add New Web Club Message</h4>
-		<%= form_for Item.create, url: items_path do |f| %> 
+		<%= simple_form_for Item.create, url: items_path, html: { novalidate: true }, include_id: false do |f| %> 
 
 		<%= render :partial => "shared/error_messagesitems" if @currentPage[:usererror] == "true" %>
 
-			<%= f.label :title %>
-			<%= f.text_field :title, :size=>"150", placeholder: "Title of Event" %>
+		<%= f.input :title, placeholder: "Title of Event" %>
 
-			<%= f.label :contact %>
-			<%= f.text_field :contact, :value => "UoftWebDev.president@gmail.com" %>
+		<%= f.input :contact, :placeholder => "Contact Information", :value => "UoftWebDev.president@gmail.com" %>
 
-			<%= f.label :information %>
-			<%= f.text_area :information, :rows => "6", placeholder: "Web Club Message" %>
+		<%= f.input :information, :as => :string,  placeholder: "Web Club Message", input_html: { class: 'summernote', id: "clubMsgInput"} %>
 
-			<%= f.hidden_field :type_of, :value => "ClubPost" %>
+		<%= f.hidden_field :type_of, :value => "ClubPost" %>
 			
 
-			<%= f.submit "Add New Message", class: "btn btn-large btn-primary" %>
+		<%= f.submit "Add New Message", class: "btn btn-large btn-primary" %>
+
+			
 		<% end %>
 
 		<br>
 
 		<h4>Add New Job Post</h4>
-		<%= form_for Item.create, url: items_path do |f| %> 
+		<%= simple_form_for Item.create, url: items_path, html: { novalidate: true }, :include_id => false do |f| %> 
 
 		<%= render :partial => "shared/error_messagesitems" if @currentPage[:usererror] == "true" %>
 
-			<%= f.label :title %>
-			<%= f.text_field :title, placeholder: "Job Title" %>
+		<%= f.input :title, placeholder: "Job Title" %>
+	
+		<%= f.input :contact, placeholder: "Contact information" %>
 
-			<%= f.label :contact %>
-			<%= f.text_field :contact, placeholder: "Contact Information" %>
+		<%= f.input :information, :as => :string, input_html: { class: 'summernote', id: "jobInfoInput"} %>
 
-			<%= f.label :information %>
-			<%= f.text_area :information, :rows => "6", placeholder: "Job Description" %>
-
-			<%= f.hidden_field :type_of, :value => "JobPost" %>
-
+		<%= f.hidden_field :type_of, :value => "JobPost" %>
+			
 			<%= f.submit "Add New Job Post", class: "btn btn-large btn-primary" %>
 		<% end %>
 
@@ -88,7 +84,7 @@
 				<% end %>	
 			</ul>
 
-			<div class="tab-content">
+			<div class="tab-information">
 				<% @users.in_groups_of(10, false) do |batch| %>
 
 					<div class='<%= arry3[j] %>' id='<%= arryB[j] %>'>
@@ -128,14 +124,14 @@
 				<% end %>	
 			</ul>
 
-			<div class="tab-content">
+			<div class="tab-information">
 				<% @clubPost.in_groups_of(3, false) do |batch| %>
 
 					<div class='<%= arry3[j] %>' id='<%= arryB[j] %>'>
 						<% batch.each do |items| %>	
 							<h4><%= items.title %></h4>
 							<p><b>Contact: </b><%= items.contact %></p>
-							<p style="white-space:pre-wrap;"><%= items.information %></p>
+							<p style="white-space:pre-wrap;"><%= items.information.html_safe %></p>
 							<%= link_to "delete", items, method: :delete %>
 							<hr>
 						<% end %>
@@ -165,14 +161,14 @@
 				<% end %>	
 			</ul>
 
-			<div class="tab-content">
+			<div class="tab-information">
 				<% @jobPost.in_groups_of(3, false) do |batch| %>
 
 					<div class='<%= arry3[j] %>' id='<%= arryC[j] %>'>
 						<% batch.each do |items| %>	
 							<h4><%= items.title %></h4>
 							<p><b>Contact: </b><%= items.contact %></p>
-							<p style="white-space:pre-wrap;"><%= items.information %></p>
+							<p style="white-space:pre-wrap;"><%= items.information.html_safe %></p>
 							<%= link_to "delete", items, method: :delete %>
 							<hr>
 						<% end %>

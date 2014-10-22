@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@import "bootstrap";
 body {
   padding-top: 20px;
   padding-bottom: 60px;
@@ -49,4 +48,9 @@ body {
 }
 .footer{
   text-align: center;
+}
+
+.editor{
+  overflow: scroll;
+  max-height: 300px;
 }
