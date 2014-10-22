@@ -54,3 +54,32 @@ body {
   overflow: scroll;
   max-height: 300px;
 }
+
+
+/* box */
+div.box{
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 4px 0px;
+  color: #222;
+  font-family: arial,sans-serif;
+  font-size: 13px;
+  line-height: 16.1167px;
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  margin-bottom: 0px;
+  margin-left: 2px;
+  margin-top: 6px;
+  padding-bottom: 1px;
+}
+
+div.boxContent{
+  padding: 10px 8px 10px 8px;
+}
+
+/* even odd items */
+.even{
+
+  background-color: #EEEEEE;
+  margin: -10px -8px -10px -8px;
+  padding: 10px 8px 0px 8px;
+}

@@ -14,6 +14,7 @@ UoftWebSite::Application.routes.draw do
   match '/signout', to: 'sessions#destroy'
   match '/update', to: 'users#edit'
   match '/addPost', to: 'items#new'
+  match '/items',   to: 'items#create'
 
   match '/developer',  to: 'static_pages#developer'
   match '/jobs',     to: 'static_pages#jobs'

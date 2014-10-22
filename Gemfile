@@ -4,13 +4,28 @@ gem 'rails', '3.2.16'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby', '~> 3.0.1'
 
+# BEGIN gems for Summernote
+gem 'simple_form'
+
+# You'll need to include the following dependencies of Summernote
+gem "font-awesome-rails"
+
+# This is the right gem to use summernote editor in Rails projects.
+gem 'summernote-rails'
+gem 'codemirror-rails'
+
+# To solve the problems on the turbolinks
+gem 'jquery-turbolinks'
+# END gems for Summernote
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development do 
-	gem 'sqlite3', '1.3.5'
+	gem 'sqlite3'
 	gem 'rspec-rails', '2.9.0'
 	gem 'annotate', '~> 2.4.1.beta'
+	gem 'meta_request'
 end
 
 gem 'turbolinks'
