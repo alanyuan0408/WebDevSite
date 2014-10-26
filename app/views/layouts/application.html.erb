@@ -33,7 +33,7 @@
 
 						        <li class="<%= @currentPage[:events] %> stick bg-red"><%= link_to "<i class='icon-cog'></i>Computer Science Events".html_safe, "/event" %></li>
 
-						         <li class="<%= @currentPage[:useraccount] %> stick bg-green"><%= link_to "<i class='icon-mail'></i>".html_safe <%= @user_name %>, "/useraccount" %></li>
+						         <li class="<%= @currentPage[:useraccount] %> stick bg-green"><%= link_to "<i class='icon-mail'></i>".html_safe @user_name, "/useraccount" %></li>
 
 						         <li class="<%= @currentPage[:entrepreneur] %> stick bg-yellow"><%= link_to "<i class='icon-home'></i>Entrepreneur & Research Expo".html_safe, "/entrepreneur" %></li>
 
