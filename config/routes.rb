@@ -21,6 +21,7 @@ UoftWebSite::Application.routes.draw do
   match '/useraccount',   to: 'static_pages#useraccount'
   match '/entrepreneur', to: 'static_pages#entrepreneur'
   match '/home',      to: 'static_pages#home'
+  match '/event',      to: 'static_pages#events'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

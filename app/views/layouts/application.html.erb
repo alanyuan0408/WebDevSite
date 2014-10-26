@@ -30,13 +30,14 @@
 						        
 						        <!-- Computer science Section -->
 						        <li class="title">Computer Science</li>
-						        <li class="stick bg-red"><a href="#"><i class="icon-newspaper"></i>Computer Science Events</a></li>
 
-						      	<li class="<%= @currentPage[:useraccount] %> stick bg-green"><a href="#"><i class="icon-mail"></i>Mail Login</a></li>
+						        <li class="<%= @currentPage[:events] %> stick bg-red"><%= link_to "<i class='icon-cog'></i>Computer Science Events".html_safe, "/event" %></li>
 
-						        <li class="<%= @currentPage[:entrepreneur] %> stick bg-yellow"><a href="#"><i class="icon-lines"></i>Entrepreneur & Research Expo</a></li>
+						         <li class="<%= @currentPage[:useraccount] %> stick bg-green"><%= link_to "<i class='icon-cog'></i>Mail Login".html_safe, "/signup" %></li>
 
-						        <li class="<%= @currentPage[:jobs] %> stick bg-red"><a href="#"><i class="icon-newspaper"></i>Jobs and Opportunities</a></li>
+						         <li class="<%= @currentPage[:entrepreneur] %> stick bg-yellow"><%= link_to "<i class='icon-line'></i>Entrepreneur & Research Expo".html_safe, "/entrepreneur" %></li>
+
+						         <li class="<%= @currentPage[:jobs] %> stick bg-red"><%= link_to "<i class='icon-newspaper'></i>Entrepreneur & Research Expo".html_safe, "/jobs" %></li>
 						    </ul>
 						</nav>
 					</div>
