@@ -30,6 +30,16 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def events
+    @currentPage = {:events => "active"};
+    if session[:remember_token] && User.exists?(:id => session[:remember_token])
+      user = User.find(session[:remember_token])
+      @user_name = user.name
+    else
+      @user_name = "Login"
+    end
+  end
+
   def jobs
     @currentPage = {:jobs => "active"};
     if session[:remember_token] && User.exists?(:id => session[:remember_token])
