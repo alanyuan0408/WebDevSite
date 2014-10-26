@@ -22,6 +22,7 @@ UoftWebSite::Application.configure do
   config.serve_static_assets = true
   config.assets.precompile += ['metro/*', 'prettify/*', 'holder/*', 'jquery/*']
   config.assets.precompile += %w( .svg .eot .woff .ttf )
+  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 
   # Compress JavaScripts and CSS
   config.assets.compress = true
