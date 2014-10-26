@@ -12,9 +12,10 @@
  *= require_tree .
  */
 
-@import "bootstrap";
-@import "font-awesome";
+/*@import "bootstrap";
+*@import "font-awesome";
+*body {padding-top:3em;}
+*/
 @import "summernote";
 @import "codemirror";
 @import "codemirror/themes/solarized";
-body {padding-top:3em;}
