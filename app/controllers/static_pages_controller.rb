@@ -6,7 +6,7 @@ class StaticPagesController < ApplicationController
       user = User.find(session[:remember_token])
       @user_name = user.name
     else
-      @user_name = "Login"
+      @user_name = "Mail Login"
     end
   end
 
@@ -16,7 +16,7 @@ class StaticPagesController < ApplicationController
       user = User.find(session[:remember_token])
       @user_name = user.name
     else
-      @user_name = "Login"
+      @user_name = "Mail Login"
     end
   end
 
@@ -26,7 +26,7 @@ class StaticPagesController < ApplicationController
       user = User.find(session[:remember_token])
       @user_name = user.name
     else
-      @user_name = "Login"
+      @user_name = "Mail Login"
     end
   end
 
@@ -36,7 +36,7 @@ class StaticPagesController < ApplicationController
       user = User.find(session[:remember_token])
       @user_name = user.name
     else
-      @user_name = "Login"
+      @user_name = "Mail Login"
     end
   end
 
@@ -46,7 +46,7 @@ class StaticPagesController < ApplicationController
       user = User.find(session[:remember_token])
       @user_name = user.name
     else
-      @user_name = "Login"
+      @user_name = "Mail Login"
     end
 
     jobPost = Item.all

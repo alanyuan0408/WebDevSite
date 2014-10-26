@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
 	def new
 		@currentPage = {:useraccount => "active"};
-		@user_name = "Login"
+		@user_name = "Mail Login"
 	end
 
 	def create
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
 
 	def destroy
 		@currentPage = {:useraccount => "active"};
-		@user_name = "Login"
+		@user_name = "Mail Login"
 		self.current_user = nil
 		cookies.delete(:remember_token)
 		session[:remember_token] = nil
