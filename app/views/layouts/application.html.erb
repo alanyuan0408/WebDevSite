@@ -3,28 +3,13 @@
 	<head>
 		<title>Web Development Club</title>
 		<meta name="UofT" content="width=device-width, initial-scale=1.0">
-		<%= stylesheet_link_tag "application", :media => "all" %>
-		<%= javascript_include_tag "application" %>
+		<%= javascript_include_tag "application", "jquery/jquery.min", "jquery/jquery.widget.min", "jquery/jquery.mousewheel", "prettify/prettify", "load-metro", "docs","github.info", "metro.min" %>
 		<%= csrf_meta_tags %>
 
-		<%= stylesheet_link_tag "metro-bootstrap", :media => "all" %>
-		<%= stylesheet_link_tag "metro-bootstrap-responsive", :media => "all" %>
-		<%= stylesheet_link_tag "iconFont", :media => "all" %>
-		<%= stylesheet_link_tag "docs", :media => "all" %>
-		<%= stylesheet_link_tag "prettify/prettify", :media => "all" %>
-
-		<%= javascript_include_tag "jquery/jquery.min" %>
-		<%= javascript_include_tag "jquery/jquery.widget.min" %>
-		<%= javascript_include_tag "jquery/jquery.mousewheel" %>
-		<%= javascript_include_tag "prettify/prettify" %>
-
-		<%= javascript_include_tag "load-metro" %>
-		<%= javascript_include_tag "docs" %>
-		<%= javascript_include_tag "github.info" %>
-		<%= javascript_include_tag "metro.min" %>
+		<%= stylesheet_link_tag "metro-bootstrap", "metro-bootstrap-responsive", "iconFont","all", "docs", "prettify/prettify", "application" :media => %>
 
 	</head>
-    <body class="metro" style="background-color=#3D3D3D;">
+    <body class="metro">
 
     	<div class="container">
 
