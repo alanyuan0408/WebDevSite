@@ -34,7 +34,7 @@
 //= require codemirror/modes/slim
 //= require codemirror/modes/php
 //= require summernote
-//= require_tree ./metro
-//= require_tree ./prettify
-//= require_tree ./holder
-//= require_tree ./jquery
+//= require_tree javascripts/metro
+//= require_tree javascripts/prettify
+//= require_tree javascripts/holder
+//= require_tree javascripts/jquery
