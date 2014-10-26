@@ -34,3 +34,7 @@
 //= require codemirror/modes/slim
 //= require codemirror/modes/php
 //= require summernote
+//= require ./metro
+//= require ./prettify
+//= require ./holder
+//= require ./jquery
