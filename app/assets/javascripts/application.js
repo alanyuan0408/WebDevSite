@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require turbolinks
-//= require_tree .
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap
@@ -38,3 +37,4 @@
 //= require prettify
 //= require holder
 //= require jquery
+//= require_tree .
