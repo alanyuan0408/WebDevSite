@@ -24,10 +24,13 @@ class UsersController < ApplicationController
         render 'csadmin'
       elsif current_user.remember_token == @user.remember_token
           #render the user page
-      else 
+      else
+        @user = User.find(params[:id])
+        @user_name = @user.name
         render 'permissiondenied'
       end
     else
+      @user = "Mail Login"
       render 'permissiondenied'
     end
   end
@@ -35,7 +38,7 @@ class UsersController < ApplicationController
   def create
     @currentPage = {:useraccount => "active"};
   	@user = User.new(params[:user])
-    @user_name = "Login"
+    @user_name = "Mail Login"
 
   	if @user.save
   		#Handle a successful save.
@@ -63,7 +66,7 @@ class UsersController < ApplicationController
   def new
     @currentPage = {:useraccount => "active"};
   	@user = User.new
-    @user_name = "login"
+    @user_name = "Mail login"
   end
 
   def edit

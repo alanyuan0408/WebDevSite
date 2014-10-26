@@ -1,7 +1,6 @@
 <div class="span9 offset1">
-	<blockquote>
-		<h2>Welcome <%= @user.name %></h2>
-	</blockquote>
+		
+	<h4>Welcome <%= @user.name %></h4>
 
 	<p>The Web Development Club would like to keep you posted with new job offers, entrepreneurship events and research opportunities as well as our club's regular newsletters and events. Here you can change your settings on future emails and newsletters to best accomodate your personal needs.</p>
 
@@ -14,37 +13,37 @@
 	<br>
 
 	<% if @user.web_club_newsletter %>
-		<i class='icon-checkmark'></i><p>Your Email <b>will</b> include Web Club Updates</p>
+		<p><i class='icon-checkmark'></i> Your Email <b>will</b> include Web Club Updates</p>
 	<% else %> 
-		<i class='icon-cancel-2'></i><p>Your Email <b>will not</b> include Web Club Updates</p>
+		<p><i class='icon-cancel-2'></i> Your Email <b>will not</b> include Web Club Updates</p>
 	<% end %>
 	<br>
 
 	<% if @user.research %>
-		<i class='icon-checkmark'></i><p>Your Email <b>will</b> include Research Opportunities</p>
+		<p><i class='icon-checkmark'></i> Your Email <b>will</b> include Research Opportunities</p>
 	<% else %> 
-		<i class='icon-cancel-2'></i><p>Your Email <b>will not</b> include Research Opportunities</p>
+		<p><i class='icon-cancel-2'></i> Your Email <b>will not</b> include Research Opportunities</p>
 	<% end %>
 	<br>
 
 	<% if @user.jobs %>
-		<i class='icon-checkmark'></i><p>Your Email <b>will</b> include Job Updates</p>
+		<p><i class='icon-checkmark'></i> Your Email <b>will</b> include Job Updates</p>
 	<% else %> 
-		<i class='icon-cancel-2'></i><p>Your Email <b>will not</b> include Job Updates</p>
+		<p><i class='icon-cancel-2'></i> Your Email <b>will not</b> include Job Updates</p>
 	<% end %>
 	<br>
 
 	<% if @user.cs_events %>
-		<i class='icon-checkmark'></i><p>Your Email <b>will</b> include CS Events</p>
+		<p><i class='icon-checkmark'></i> Your Email <b>will</b> include CS Events</p>
 	<% else %> 
-		<i class='icon-cancel-2'></i><p>Your Email <b>will not</b> include CS Events</p>
+		<p><i class='icon-cancel-2'></i> Your Email <b>will not</b> include CS Events</p>
 	<% end %>
 	<br>
 
 	<% if @user.yncn_events %>
-		<i class='icon-checkmark'></i><p>Your Email <b>will</b> include YNCN updates</p>
+		<p><i class='icon-checkmark'></i> Your Email <b>will</b> include YNCN updates</p>
 	<% else %> 
-		<i class='icon-cancel-2'></i><p>Your Email <b>will not</b> include YNCN updates</p>
+		<p><i class='icon-cancel-2'></i> Your Email <b>will not</b> include YNCN updates</p>
 	<% end %>
 	<br>
 
