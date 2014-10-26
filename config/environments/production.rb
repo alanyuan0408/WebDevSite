@@ -21,7 +21,7 @@ UoftWebSite::Application.configure do
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = true
   config.assets.precompile += ['metro/*', 'prettify/*', 'holder/*', 'jquery/*']
-  config.assets.compress = true
+  config.assets.precompile += %w( .svg .eot .woff .ttf )
 
   # Compress JavaScripts and CSS
   config.assets.compress = true
