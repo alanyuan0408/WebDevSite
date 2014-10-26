@@ -1,51 +1,54 @@
-<h1>Welcome <%= @user.name %></h1>
+<div class="span9 offset1">
 
-<p>The Web Development Club would like to keep you posted with new job offers, entrepreneurship events and research opportunities as well as our club's regular newsletters and events. Here you can change your settings on future emails and newsletters to best accomodate your personal needs.</p>
+	<h1>Welcome <%= @user.name %></h1>
 
-<br>
+	<p>The Web Development Club would like to keep you posted with new job offers, entrepreneurship events and research opportunities as well as our club's regular newsletters and events. Here you can change your settings on future emails and newsletters to best accomodate your personal needs.</p>
 
-<h4>Here are your current settings</h4>
+	<br>
 
-<p>Your Email will be sent in a frequency of <%= @user.email_frequency %> days</p>
+	<h4>Here are your current settings</h4>
 
-<br>
+	<p>Your Email will be sent in a frequency of <%= @user.email_frequency %> days</p>
 
-<% if @user.web_club_newsletter %>
-	<p>Your Email <b>will</b> include Web Club Updates</p>
-<% else %> 
-	<p>Your Email <b>will not</b> include Web Club Updates</p>
-<% end %>
-<br>
+	<br>
 
-<% if @user.research %>
-	<p>Your Email <b>will</b> include Research Opportunities</p>
-<% else %> 
-	<p>Your Email <b>will not</b> include Research Opportunities</p>
-<% end %>
-<br>
+	<% if @user.web_club_newsletter %>
+		<p>Your Email <b>will</b> include Web Club Updates</p>
+	<% else %> 
+		<p>Your Email <b>will not</b> include Web Club Updates</p>
+	<% end %>
+	<br>
 
-<% if @user.jobs %>
-	<p>Your Email <b>will</b> include Job Updates</p>
-<% else %> 
-	<p>Your Email <b>will not</b> include Job Updates</p>
-<% end %>
-<br>
+	<% if @user.research %>
+		<p>Your Email <b>will</b> include Research Opportunities</p>
+	<% else %> 
+		<p>Your Email <b>will not</b> include Research Opportunities</p>
+	<% end %>
+	<br>
 
-<% if @user.cs_events %>
-	<p>Your Email <b>will</b> include CS Events</p>
-<% else %> 
-	<p>Your Email <b>will not</b> include CS Events</p>
-<% end %>
-<br>
+	<% if @user.jobs %>
+		<p>Your Email <b>will</b> include Job Updates</p>
+	<% else %> 
+		<p>Your Email <b>will not</b> include Job Updates</p>
+	<% end %>
+	<br>
 
-<% if @user.yncn_events %>
-	<p>Your Email <b>will</b> include YNCN updates</p>
-<% else %> 
-	<p>Your Email <b>will not</b> include YNCN updates</p>
-<% end %>
-<br>
+	<% if @user.cs_events %>
+		<p>Your Email <b>will</b> include CS Events</p>
+	<% else %> 
+		<p>Your Email <b>will not</b> include CS Events</p>
+	<% end %>
+	<br>
 
-<%= button_to "Update Settings", '/update', {:class => "btn btn-large btn-primary"} %>
+	<% if @user.yncn_events %>
+		<p>Your Email <b>will</b> include YNCN updates</p>
+	<% else %> 
+		<p>Your Email <b>will not</b> include YNCN updates</p>
+	<% end %>
+	<br>
 
-<%= button_to "Sign Out", '/signout', {:class => "btn btn-large btn-primary"} %>
+	<%= button_to "Update Settings", '/update', {:class => "large"} %>
 
+	<%= button_to "Sign Out", '/signout', {:class => "large"} %>
+
+</div>

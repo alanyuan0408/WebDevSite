@@ -1,13 +1,9 @@
 <div class="row">
-	<div class="span12">
-		<h1>YNCN Private Administrative Panel</h1>
 
-	</div>
-</div>
+	<h1>YNCN Private Administrative Panel</h1>
 
-<div class="row">
 
-	<div class="span6">
+	<div class="span5">
 		<h4>Message to YNCN:</h4>
 
 		<p>The Web Development Club would like to invite You're Next Career Network to add their 
@@ -31,12 +27,12 @@
 
 			<%= f.hidden_field :type_of, :value => "YNCNPost" %>
 
-			<%= f.submit "Add YNCN Event", class: "btn btn-large btn-primary" %>
+			<%= f.submit "Add YNCN Event", class: "large" %>
 		<% end %>
 
 		<hr>
 
-		<%= button_to "Sign Out", '/signout', {:class => "btn btn-large btn-primary"} %>
+		<%= button_to "Sign Out", '/signout', {:class => "large"} %>
 	</div>
 
 	<% arry = Array.new(['2A', '2B', '2C', '2D', '2E', '2F', '2G', '2H']) %>
@@ -46,7 +42,7 @@
 	<% i = 0 %>
 	<% j = 0 %>
 
-	<div class="span6" id = "postDisplay">
+	<div class="span5" id = "postDisplay">
 
 		<h4>Current Posts by YNCN</h4>
 
@@ -82,7 +78,5 @@
 		</div>
 
 		</div>
-
-	</div>
 
 </div>
