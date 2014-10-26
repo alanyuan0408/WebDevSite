@@ -22,9 +22,6 @@ UoftWebSite::Application.configure do
   config.serve_static_assets = true
   config.assets.precompile += ['directory/*']
 
-  config.assets.css_compressor = :yui
-  config.assets.js_compressor = :uglify
-
   # Compress JavaScripts and CSS
   config.assets.compress = true
 
