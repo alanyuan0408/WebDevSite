@@ -6,21 +6,83 @@
         </div>  
                 
         <div class="panel-content">
-            We have worked specifically with the department to move the job postings on the CS job board to this location for better user experience. The job postings are not screened, the Web Development Club takes no responsibilities for the postings<br></br>
+            We have worked specifically with the department to move the job postings on the CS job board to this location for better user experience. The job postings are not screened, the Web Development Club takes no responsibilities for the postings<br>
         </div>
     </div>
 
     <br>
+    <style>
+        .hidden_class {
+            display: none;
+        }
+    </style>
 
-    <div class="panel">
-        <div class="panel-header bg-lightBlue fg-white">
-              Current Job Listings
-        </div>  
-                
-        <div class="panel-content">
+    <script>
+        var top_element = 0
+        var bottom_element = <%= @jobPosts.length %> * 2;
+        var iterator_start = 0;
+        var iterator_end = 21;
 
-        </div>
+        function jobpost(direction){
+            var jobPosts = document.getElementById("jobPosts").childNodes;
+            if (direction == 1 && iterator_end < bottom_element){
+                iterator_start += 20;
+                iterator_end += 20;
+            } else if (direction == 0 && iterator_start > top_element){
+                iterator_start -= 20;
+                iterator_end -= 20;
+            }  else {
+                console.log("Do nothing");
+            }
+                        
+            for (i=0; i<jobPosts.length; i++){
+                if (i > iterator_start && i < iterator_end) {
+                    jobPosts[i].className = ""
+                } else {
+                    jobPosts[i].className = "hidden_class";
+                }
+            }
+
+        }
+
+        function jobposts(){
+            var jobPosts = document.getElementById("jobPosts").childNodes;
+            var top_element = 0;
+            var bottom_element = 21;
+            console.log("loaded");
+
+            for (i=0; i<jobPosts.length; i++){
+                if (i > top_element && i < bottom_element) {
+                    jobPosts[i].className = ""
+                } else {
+                    jobPosts[i].className = "hidden_class";
+                }
+            }
+
+        }
+
+        window.onload = jobposts;
+    </script>
+
+    <ul id="jobPosts" class="nav nav-tabs nav-stacked" >
+
+        <% @jobPosts.each do |post| %>
+            <li id="<%= post.id %>"><a href="#"><%= post.title %></a></li>
+        <% end %>
+
+    </ul>
+
+<div class="row">
+    <div class="span1 offset1">
+        <button id="prev" class="btn" onclick="jobpost(0)">Prev</button>
     </div>
+
+    <div class="span1"></div>
+        <button id="next" class="btn" onclick="jobpost(1)">Next</button>
+    <div class="span1">
+
+    </div>
+</div>
 
              
 </div>

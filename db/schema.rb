@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(:version => 20141021235118) do
     t.boolean  "yncn",                  :default => false
     t.boolean  "cssu"
     t.boolean  "csadmin"
-    t.time     "nextsend"
   end
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"

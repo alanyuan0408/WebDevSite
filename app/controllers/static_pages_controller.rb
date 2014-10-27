@@ -49,12 +49,8 @@ class StaticPagesController < ApplicationController
       @user_name = "Mail Login"
     end
 
-    jobPost = Item.all
-    if jobPost.size > 3
-      @jobPosts = Item.all.take(3)
-    else 
-      @jobPosts = Item.all
-    end
+    @jobPosts = Item.where(type_of: "JobPost").order("id desc")
+
   end
 
   def useraccount
@@ -64,7 +60,7 @@ class StaticPagesController < ApplicationController
       @user_name = @user.name
       redirect_to @user
     else
-      @user_name = "Login"
+      @user_name = "Mail Login"
       @user = User.new(params[:user])
       if @user.save
         #Handle a successful save.

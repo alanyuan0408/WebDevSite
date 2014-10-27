@@ -4,6 +4,9 @@ gem 'rails', '3.2.16'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby', '~> 3.0.1'
 
+gem 'execjs'
+gem "therubyracer"
+
 # BEGIN gems for Summernote
 gem 'simple_form'
 
