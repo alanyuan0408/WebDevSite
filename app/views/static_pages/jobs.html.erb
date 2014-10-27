@@ -61,10 +61,11 @@
 
         }
 
-        window.onload = jobposts;
+        $(document).ready(jobposts)
+
     </script>
 
-    <ul id="jobPosts" class="nav nav-tabs nav-stacked" >
+    <ul id="jobPosts" class="nav nav-tabs nav-stacked">
 
         <% @jobPosts.each do |post| %>
             <li id="<%= post.id %>"><a href="#"><%= post.title %></a></li>
