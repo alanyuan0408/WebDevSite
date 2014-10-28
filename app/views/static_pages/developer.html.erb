@@ -1,41 +1,109 @@
+<style>
+    .hidden_class {
+        display: none;
+    }
+</style>
+
+<script>
+
+    function change(direction){
+        var jobPosts = document.getElementById("button_group").childNodes;
+            if (direction == 0){
+                document.getElementById("tutorial").className = "panel";
+                document.getElementById("network").className = "panel hidden_class";
+                document.getElementById("project").className = "panel hidden_class";
+            } else if (direction == 1) {
+                document.getElementById("tutorial").className = "panel hidden_class";
+                document.getElementById("network").className = "panel";
+                document.getElementById("project").className = "panel hidden_class";
+            } else {
+                document.getElementById("tutorial").className = "panel hidden_class";
+                document.getElementById("network").className = "panel hidden_class";
+                document.getElementById("project").className = "panel";
+            }
+
+    }
+
+</script>
+
  <div class="span5">
 
-            <div class="panel">
+    <div class="panel">
 
-              <div class="panel-header bg-lightBlue fg-white">
-                    Web Club Developers
-                </div>  
-                <div class="panel-content">
-                    The Web Development Club organizes tutorials on a bi-weekly bases on various topics of Web Development to better prepare students for both the competitive job market as well as preparing students for Toronto's entreprenuership scene.
-                    <br>
-
-              </div>
-            </div>
-
-
+        <div class="panel-header bg-lightBlue fg-white">
+            Web Club Developers
+        </div>  
+                
+        <div class="panel-content">
+            The Web Development Club organizes tutorials on a bi-weekly bases on various topics of Web Development to better prepare students for both the competitive job market as well as preparing students for Toronto's entreprenuership scene.
             <br>
 
-            <div class="panel">
-                <div class="panel-header bg-darkRed fg-white">
-                    Tutorial Team Executives
-                </div>  
-                <div class="panel-content">
-                    <i class="icon-newspaper"></i> Rakshit Shukla [Leader]<br><br>
-                    <i class="icon-newspaper"></i> ?? <br><br>
-                    <i class="icon-newspaper"></i> ?? <br><br>
-                    <i class="icon-newspaper"></i> ?? <br>
+        </div>
+    </div>
 
-                </div>
-            </div>
+    <br>
+
+    <div class="panel" id ="tutorial">
+                
+        <div class="panel-header bg-darkRed fg-white">
+            Tutorial Team Executives
+        </div>  
+                
+        <div class="panel-content">
+            The Tutorials Team of the Web Development Club is responsible for organizing web development related tutorials for students. They hold seminars often once every two weeks. Their past tutorial links are posted on the right and you can check our main page for information on future events.
+            <br><br>
+            <b>Executives:</b><br><br>
+            <i class="icon-newspaper"></i> Rakshit Shukla [Leader]<br><br>
+            <i class="icon-newspaper"></i> Suhail Dawood <br><br>
+        </div>
+    </div>
+
+    <div class="panel hidden_class" id ="network">
+                
+        <div class="panel-header bg-darkRed fg-white">
+            Event Team Executives 
+        </div>  
+                
+        <div class="panel-content">
+            The Event Team of the Web Development Club is responsible for organizing non- tutorial events such as the Research and Entrepreneur Expo as well as connecting and bringing outside companies and clubs for recruiting events and talks.
+            <br><br><br>
+            <b>Executives:</b><br><br>
+            <i class="icon-newspaper"></i> Dhyey Sejpal [Leader]<br><br>
+            <i class="icon-newspaper"></i> Carlos Lee <br><br>
+        </div>
+    </div>
+
+    <div class="panel hidden_class" id ="project">
+                
+        <div class="panel-header bg-darkRed fg-white">
+            Project Team Executives
+        </div>  
+                
+        <div class="panel-content">
+            The Tutorials Team of the Web Development Club is responsible for organizing web development related tutorials for students. They hold seminars often once every two weeks. Their past tutorial links are posted on the right and you can check our main page for information on future events.
+            <br><br>
+            <b>Executives:</b><br><br>
+            <i class="icon-newspaper"></i> Suhail Dawood [Leader]<br><br>
+            <i class="icon-newspaper"></i> Alan Yuan <br><br>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="button_group" class="span4 offset1">
+            <button id="Tutorial" class="btn" onclick="change(0)">Tutorials</button>
+            <button id="Events" class="btn" onclick="change(1)">Events</button>
+            <button id="Project" class="btn" onclick="change(2)">Project</button>
+        </div>
+    </div>
              
-          </div>
+</div>
 
 
           <div class="span5">
 
             <div class="panel">
                 <div class="panel-header">
-                    Past Tutorials
+                    Past Tutorial Links
                 </div>
                 <div class="panel-content">
 
