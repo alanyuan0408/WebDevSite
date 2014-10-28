@@ -1,38 +1,50 @@
 <div class="span5">
-	<h2>Sign Up</h2>
 
-		<%= form_for(@user) do |f| %>
+	<div class="panel">
+        <div class="panel-header">
+            Sign Up
+        </div>
+ 		<div class="panel-content">
+			<%= form_for(@user) do |f| %>
 
-			<%= render :partial => "shared/error_messages" if @currentPage[:usererror] == "true" %>
+				<%= render :partial => "shared/error_messages" if @currentPage[:usererror] == "true" %>
 
-			<%= f.label :name %>
-			<%= f.text_field :name %>
+				<%= f.label :name %>
+				<%= f.text_field :name %>
 
-			<%= f.label :email %>
-			<%= f.text_field :email %>
+				<%= f.label :email %>
+				<%= f.text_field :email %>
 
-			<%= f.label :password %>
-			<%= f.password_field :password %>
+				<%= f.label :password %>
+				<%= f.password_field :password %>
 
-			<%= f.label :password_confirmation, "Confirmation" %>
-			<%= f.password_field :password_confirmation %>
+				<%= f.label :password_confirmation, "Confirmation" %>
+				<%= f.password_field :password_confirmation %>
 
-			<br>
+				<br>
 
-			<%= f.submit "Create my Account", class: "large" %>
-		<% end %>
+				<%= f.submit "Create my Account", class: "large" %>
+			<% end %>
+		</div>
+	</div>
 
 </div>
 
 <div class="span5">
-	<h1> Sign In </h1>
 
-	<br>
+	<div class="panel">
+        <div class="panel-header">
+            Sign In
+        </div>
+ 		<div class="panel-content">
 
-	<p>Already created an account? Sign in</p>
+ 			<br><br><br><br><br><br>
+			<p>Already created an account? Sign in</p>
 
-	<br>
+			<br><br><br><br><br>
 
-	<%= button_to "Sign In", '/signin', {:class => "large"} %>
+			<%= button_to "Sign In", '/signin', {:class => "large"} %>
+		</div>
+	</div>
+
 </div>
-

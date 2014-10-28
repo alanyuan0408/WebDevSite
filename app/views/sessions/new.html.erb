@@ -1,19 +1,25 @@
-<div class="span5 offset1">
+<div class="span5">
 
-	<h1> Sign In </h1>
-	<%= form_for(:session, url: sessions_path) do |f| %>		
-			
-		<%= f.label :name %>
-		<%= f.text_field :name %>
+	<div class="panel">
+        <div class="panel-header">
+            Sign In
+        </div>
+ 		<div class="panel-content">
 
-		<%= f.label :password %>
-		<%= f.password_field :password %>
+			<%= form_for(:session, url: sessions_path) do |f| %>		
+					
+				<%= f.label :name %>
+				<%= f.text_field :name %>
 
-		<br>
-		<br>
+				<%= f.label :password %>
+				<%= f.password_field :password %>
 
-		<%= f.submit "Sign in", class: "large" %>
-	<% end %>
+				<br>
+				<br>
 
+				<%= f.submit "Sign in", class: "large" %>
+			<% end %>
+		</div>
+	</div>
 
 </div>
