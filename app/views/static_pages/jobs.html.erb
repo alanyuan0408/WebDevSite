@@ -45,7 +45,7 @@
 
         }
 
-        function jobposts(){
+        function initialize(){
             var jobPosts = document.getElementById("jobPosts").childNodes;
             var top_element = 0;
             var bottom_element = 21;
@@ -59,16 +59,35 @@
                 }
             }
 
+
+            $("a").click(function(){
+
+                console.log($(this).attr('id'));
+
+                var jobPosting = document.getElementById("posts").childNodes;
+
+                for(i=0; i<jobPosting.length; i++){
+                    if (jobPosting[i].className == "selected"){
+                        jobPosting[i].className = "hidden_class";
+                    }
+
+                    if (jobPosting[i].id == $(this).attr('id')){
+                        jobPosting[i].className = "selected";
+                    }
+                }
+
+            });
+
         }
 
-        $(document).ready(jobposts)
+        $(document).ready(initialize);
 
     </script>
 
     <ul id="jobPosts" class="nav nav-tabs nav-stacked">
 
         <% @jobPosts.each do |post| %>
-            <li id="<%= post.id %>"><a href="#"><%= post.title %></a></li>
+            <li><a id="<%= post.id %>" href="#"><%= post.title %></a></li>
         <% end %>
 
     </ul>
@@ -95,8 +114,17 @@
             Posting Information
         </div>
 
-        <div class="panel-content">
-
+        <div class="panel-content" id= "posts">
+            <% @jobPosts.each do |post| %>
+                <div id="<%= post.id %>" class="hidden_class">
+                    <h2><%= post.title %></h2>
+                    <br>
+                    <p>Contact: <%= post.contact %></p>
+                    <br>
+                    <p>Content: <%= post.content %></p>
+                    <br>
+                </div>
+            <% end %>
         </div>
              
     </div>
