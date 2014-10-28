@@ -12,16 +12,6 @@ class UsersController < ApplicationController
         @clubPost = Item.where(type_of: "ClubPost").all
         @jobPost = Item.where(type_of: "JobPost").all
         render 'adminpanel'
-      elsif @user.yncn
-        @items = Item.where(type_of: "YNCNPost").all
-        render 'yncnpanel'
-      elsif @user.cssu
-        @clubPost = Item.where(type_of: "CSSUPost").all
-        render 'cssupanel'
-      elsif @user.csadmin
-        @clubPost = Item.where(type_of: "CSSUPostAdmin").all
-        @jobPost = Item.where(type_of: "JobPostAdmin").all
-        render 'csadmin'
       elsif current_user.remember_token == @user.remember_token
           #render the user page
       else

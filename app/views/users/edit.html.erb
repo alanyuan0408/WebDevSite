@@ -1,48 +1,42 @@
+<div class="span9 offset1">
 
-	<div class="span9 offset1">
+	<h2>Update your Profile</h2>
+	<p>Updating the content and frequency of your emails will assist us in delivering the neccessary content to your mailbox as well as reducing unneccessary posts and spam.</p>
 
+	<br>
 
-		<h2>Update your Profile</h2>
+	<h4>Modifiy your selections</h4>
+
+	<%= render :partial => "shared/error_messages" if @currentPage[:usererror] == "true" %>
+
+	<%= form_for(@user) do |f| %>
+
+		<%= f.label :web_club_newsletter, "Web Club Newsletter" %>
+		<%= f.check_box :web_club_newsletter %>
+
+		<%= f.label :research, "Research Offers" %>
+		<%= f.check_box :research %>
+
+		<%= f.label :jobs, "Job Offers" %>
+		<%= f.check_box :jobs %>
+
+		<%= f.label :cs_events, "CS Events" %>
+		<%= f.check_box :cs_events %>
+
+		<%= f.label :yncn_events, "YNCN Events" %>
+		<%= f.check_box :yncn_events %>
+
+		<div style="width:40%">
+
+			<%= f.label :email_frequency, "Days between emails [1-7]" %>
+			<%= f.text_field :email_frequency %>
+		</div>
+
+		<br>
 		<br>
 
-		<%= render :partial => "shared/error_messages" if @currentPage[:usererror] == "true" %>
-
-		<%= form_for(@user) do |f| %>
-
-			<%= f.label :jobs, "Job Offers" %>
-			<%= f.check_box :jobs %>
-
-			<%= f.label :research, "Research Offers" %>
-			<%= f.check_box :research %>
-
-			<%= f.label :web_club_newsletter, "Web Club Newsletter" %>
-			<%= f.check_box :web_club_newsletter %>
-
-			<%= f.label :cs_events, "CS Events" %>
-			<%= f.check_box :cs_events %>
-
-			<%= f.label :yncn_events, "YNCN Events" %>
-			<%= f.check_box :yncn_events %>
-
-			<div style="width:40%">
-
-				<%= f.label :email_frequency, "Days between emails [1-7]" %>
-				<%= f.text_field :email_frequency %>
-			</div>
-
-			<!-- <%= f.label :password %>
-			<%= f.password_field :password %>
-
-			<%= f.label :password_confirmation, "Confirmation" %>
-			<%= f.password_field :password_confirmation %>
-			-->
-
-
-			<br>
-			<br>
-
-			<%= f.submit "Save changes", class: "large" %>
+		<%= f.submit "Save changes", class: "large" %>
 		
-		<% end %>
+	<% end %>
 
-	</div>
+</div>
