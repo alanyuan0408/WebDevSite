@@ -6,18 +6,28 @@
                     Entrepreneur and Research Expo
                 </div>  
                 <div class="panel-content">
-                    The entrepreneur and research expo is the Web Development Club's signature event. Every year, we bring together researchers and entrepreneurs looking to recruit computer science students for their projects and venture. We intend to bring together around 20 startups and researchs to each pitch their projects for 5-7 minutes infront of a large audience and later give students an opportunities to discuss about future participation<br><br>
+                    The entrepreneur and research expo is the Web Development Club's signature event. Every year, we bring together researchers and entrepreneurs looking to recruit computer science students for their projects and venture. We intend to bring together around 20 startups and researchs to each pitch their projects for 5-7 minutes infront of a large audience and later give students an opportunities to discuss about future participation<br>
 
               </div>
             </div>
 
+            <br>
+
                <div class="panel">
 
-              <div class="panel-header bg-red fg-white">
-                    Next Expo:
+              <div class="panel-header bg-darkRed fg-white">
+                    Next Expo: [Not Finalized]
                 </div>  
                 <div class="panel-content">
-                    The time for next year's expo has not been confirmed. We are looking towards scheduling the event for the upcoming Janurary. Please stay tuned for further information.<br><br>
+                    <h5><i class="icon-clock"></i> Expo Date:</h5>
+                    Janurary 12, 2014 <br>
+                    <h5><i class="icon-location"></i> Location:</h5>
+                    Bahen Center, Room 1130. University of Toronto <br>
+                    <h5><i class="icon-newspaper"></i> Schedule:</h5>
+                    3-5 Presentations [Bahen Center, Room 1130]<br>
+                    5-7 Networking Session [Bahen Center, Great Hall]<br>
+                    <h5><i class="icon-mail"></i> Contact:</h5>
+                    alan.yuan@mail.utoronto.ca
 
               </div>
             </div>
@@ -28,15 +38,37 @@
           </div>
 
 
-          <div class="span5">
+<div class="span5">
 
-            <div class="panel">
-                <div class="panel-header">
-                    Expo Participants
-                </div>
-                <div class="panel-content">
-                	The information about the expo's participants will be posted after the expo. This is decision was made to encourage students to come to the expo instead of directly contacting all expo presenters through mass emails.
+    <div class="panel">
+                
+        <div class="panel-header">
+            Expo Participants
+        </div>
+                
+        <div class="panel-content">
+            <h5><i class="icon-newspaper"></i> Registered Participants:</h5>
+            <%= @number_of_participants %> <br><br>
 
-            </div>
+            <% if @user %>
+
+              <% if !@user.expo_ticket %>
+                  <p>Register for the Expo</p>
+                  <%= button_to "Register", '/register_expo', {:class => "large"} %>
+              <% else %>
+                  <p>Thank you for registering.</p>
+                  <%= button_to "Unregister", '/unregister_expo', {:class => "large"} %>
+              <% end %>
+
+            <% else %>
+              <p>You need to login to register</p>
+              <button class="large">Register</button>
+              <br><br>
+            <% end %>
+
+          <h5><i class="icon-newspaper"></i> Presenters:</h5>
+
+        </div>
              
-          </div>
+    </div>
+</div>

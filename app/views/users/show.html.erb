@@ -33,19 +33,13 @@
 	<% end %>
 	<br>
 
-	<% if @user.cs_events %>
-		<p><i class='icon-checkmark'></i>  Your Email <b>will</b> include CS Events</p>
+	<% if @user.events %>
+		<p><i class='icon-checkmark'></i>  Your Email <b>will</b> include Events</p>
 	<% else %> 
-		<p><i class='icon-cancel-2'></i>  Your Email <b>will not</b> include CS Events</p>
+		<p><i class='icon-cancel-2'></i>  Your Email <b>will not</b> include Events</p>
 	<% end %>
 	<br>
 
-	<% if @user.yncn_events %>
-		<p><i class='icon-checkmark'></i>  Your Email <b>will</b> include YNCN updates</p>
-	<% else %> 
-		<p><i class='icon-cancel-2'></i>  Your Email <b>will not</b> include YNCN updates</p>
-	<% end %>
-	<br>
 
 	<%= button_to "Update Settings", '/update', {:class => "large"} %>
 

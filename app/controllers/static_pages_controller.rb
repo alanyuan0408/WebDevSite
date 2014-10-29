@@ -22,9 +22,11 @@ class StaticPagesController < ApplicationController
 
   def entrepreneur
     @currentPage = {:entrepreneur => "active"};
+    @number_of_participants = User.where(:expo_ticket => true).length;
+
     if session[:remember_token] && User.exists?(:id => session[:remember_token])
-      user = User.find(session[:remember_token])
-      @user_name = user.name
+      @user = User.find(session[:remember_token])
+      @user_name = @user.name
     else
       @user_name = "Mail Login"
     end

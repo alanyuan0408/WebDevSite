@@ -79,4 +79,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def register_expo
+    @user = User.find_by_id(session[:remember_token])
+    @user.update_attribute(:expo_ticket, true);
+    @currentPage = {:entrepreneur => "active"};
+    @user_name = @user.name
+    @number_of_participants = User.where(:expo_ticket => true).length;
+    render 'static_pages/entrepreneur'
+  end 
+
+  def unregister_expo
+    @user = User.find_by_id(session[:remember_token])
+    @user.update_attribute(:expo_ticket, false);
+    @currentPage = {:entrepreneur => "active"};
+    @user_name = @user.name
+    @number_of_participants = User.where(:expo_ticket => true).length;
+    render 'static_pages/entrepreneur'
+  end 
+
 end

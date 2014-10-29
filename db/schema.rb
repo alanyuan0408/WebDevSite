@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141028195357) do
+ActiveRecord::Schema.define(:version => 20141029001925) do
 
   create_table "items", :force => true do |t|
     t.string   "title"
@@ -23,11 +23,24 @@ ActiveRecord::Schema.define(:version => 20141028195357) do
     t.text     "information", :limit => 15728640
   end
 
+  create_table "poster", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.boolean  "account_created",       :default => false
+    t.boolean  "expo_registration",     :default => false
+    t.boolean  "account_approval",      :default => false
+    t.string   "password_digest"
+    t.string   "password_confirmation"
+    t.string   "remember_token"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
     t.string   "password_digest"
     t.string   "password_confirmation"
     t.string   "remember_token"
@@ -36,10 +49,10 @@ ActiveRecord::Schema.define(:version => 20141028195357) do
     t.boolean  "web_club_newsletter",   :default => true
     t.boolean  "research",              :default => true
     t.boolean  "jobs",                  :default => true
-    t.boolean  "cs_events",             :default => true
-    t.boolean  "yncn_events",           :default => true
-    t.boolean  "expo_ticket",           :default => true
+    t.boolean  "events",                :default => true
+    t.boolean  "expo_ticket",           :default => false
     t.datetime "nextsend"
+    t.boolean  "account_created",       :default => false
   end
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"

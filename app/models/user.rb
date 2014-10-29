@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation, :email_frequency, :web_club_newsletter, :research, :jobs, :cs_events, :yncn_events
+  attr_accessible :email, :name, :password, :password_confirmation, :email_frequency, :web_club_newsletter, :research, :jobs, :events, :expo_ticket
   has_secure_password
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -16,28 +16,11 @@ class User < ActiveRecord::Base
   private 
 
   def create_remember_token
-  	self.remember_token = SecureRandom.urlsafe_base64
 
-    self.nextsend = Time.now + self.email_frequency.days
-
-    if self.name == "UoftWebDev"
-      self.admin = true
-      #Create the admin account
-    end
-
-    if self.name == "CSSU"
-      self.cssu = true
-      #Create the admin account
-    end
-
-    if self.name == "CSadmin"
-      self.csadmin = true
-      #Create the admin account
-    end
-
-    if self.name == "YNCN"
-      self.yncn = true
-      #Create the admin account
+    if (!self.account_created)
+  	  self.remember_token = SecureRandom.urlsafe_base64
+      self.nextsend = Time.now + self.email_frequency.days
+      self.account_created = true
     end
 
   end
