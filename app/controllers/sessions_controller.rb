@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
 	def new
 		@currentPage = {:useraccount => "active"};
-		@user_name = "Mail Login"
+		@user_name = "Account Login"
 	end
 
 	def create
@@ -14,14 +14,14 @@ class SessionsController < ApplicationController
 			redirect_to user
 		else
 			flash[:error] = 'Invalid email/password combination'
-			@user_name = "Mail Login"
+			@user_name = "Account Login"
 			render 'new'
 		end
 	end
 
 	def destroy
 		@currentPage = {:useraccount => "active"};
-		@user_name = "Mail Login"
+		@user_name = "Account Login"
 		self.current_user = nil
 		cookies.delete(:remember_token)
 		session[:remember_token] = nil

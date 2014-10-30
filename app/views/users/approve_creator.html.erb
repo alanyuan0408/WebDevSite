@@ -1,0 +1,39 @@
+ <div class="span6">
+
+    <style>
+        .css_text {
+            width: 85%;
+        }
+    </style>
+
+    <div class="panel">
+        <div class="panel-header bg-lightBlue fg-white">
+            Request Content Creator Account
+        </div>  
+                    
+        <div class="panel-content">
+            Thank you for signing up for a content creator account. To activiate the posting functionally of your account, we ask you to please send the admin a personalized message about who you are and the organization you represent. This is intended to protect our system from spam.<br><br>
+
+            Thank you for your cooperation. We hope to have your approval verified in one business day.
+            <br><br>
+            <%= form_for(@user) do |f| %>
+
+                <%= f.label :name %>
+                <%= f.text_field :name, :value => @user.name, :class => "css_text" %>
+
+                <%= f.label :organization %>
+                <%= f.text_field :organization, placeholder: "organization", :class => "css_text" %>
+
+                <%= f.label :approval_message, "Message to Admin" %>
+                <%= f.text_area :approval_message, :rows => "6", placeholder: "Message for Administrators", :class => "css_text"  %>
+
+                <br><br>
+
+                <%= f.submit "Request Account", class: "large" %>
+            <% end %>
+
+        </div>
+    </div>
+
+    <br>          
+</div>

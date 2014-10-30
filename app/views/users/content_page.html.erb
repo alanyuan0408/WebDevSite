@@ -1,0 +1,67 @@
+ <div class="span5">
+
+    <style>
+        .css_text {
+            width: 85%;
+        }
+    </style>
+
+    <div class="panel">
+        <div class="panel-header bg-lightBlue fg-white">
+            Hello <%= @user.name %>
+        </div>  
+                    
+        <div class="panel-content">
+            <br>
+            <% if @user.content_approved %>
+            	You're account is approved by the admin. All your future posts will be linked directly to our boards. Please note, the Admin reserves the right to suspend your posting privileges if the content becomes unprofessional.
+            <% elsif %>
+            	You're request for a content creator account is pending. Your current posts will be posted on the boards when your approval has been approved by the admin.
+            <% end %>
+            
+            <br><br>
+			<%= form_for Item.create, url: items_path do |f| %> 
+
+				<%= f.label :title %>
+				<%= f.text_field :title, :size=>"150", placeholder: "Title of Post", :class => "css_text"  %>
+
+				<%= f.label :contact %>
+				<%= f.text_field :contact, :size=>"150", :value => @user.email, :class => "css_text"  %>
+
+				<%= f.label :content %>
+				<%= f.text_area :content, :rows => "6", placeholder: "Event Message", :class => "css_text"  %>
+
+				<br><br>
+
+				<%= f.submit "Add New Post", class: "large" %>
+
+				<br>
+
+			<% end %>
+
+			<%= button_to "Sign Out", '/signout', {:class => "large"} %>
+
+        </div>
+    </div>
+
+    <br>          
+</div>
+
+ <div class="span5">
+
+    <div class="panel">
+        <div class="panel-header bg-lightBlue fg-white">
+            Current Posts
+        </div>  
+                    
+        <div class="panel-content">
+
+
+        </div>
+    </div>
+
+    <br>          
+</div>
+
+
+

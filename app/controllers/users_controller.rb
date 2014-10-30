@@ -7,20 +7,30 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       @user_name = @user.name
 
-      if @user.admin 
+      if (!@user.account_selected)
+        render 'account_select'
+
+      elsif @user.content_creator && (!@user.sent_approval)
+        render 'approve_creator'
+
+      elsif @user.content_creator && @user.sent_approval
+        render 'content_page'
+
+      elsif @user.admin 
         @users = User.all
         @clubPost = Item.where(type_of: "ClubPost").all
         @jobPost = Item.where(type_of: "JobPost").all
         render 'adminpanel'
-      elsif current_user.remember_token == @user.remember_token
-          #render the user page
+
+      elsif @user.student_account && current_user.remember_token == @user.remember_token
+          #render the student page
       else
         @user = User.find(params[:id])
         @user_name = @user.name
         render 'permissiondenied'
       end
     else
-      @user = "Mail Login"
+      @user = "Account Login"
       render 'permissiondenied'
     end
   end
@@ -28,7 +38,7 @@ class UsersController < ApplicationController
   def create
     @currentPage = {:useraccount => "active"};
   	@user = User.new(params[:user])
-    @user_name = "Mail Login"
+    @user_name = "Account Login"
 
   	if @user.save
   		#Handle a successful save.
@@ -49,14 +59,14 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "User destroyed."
-    @user = User.find_by_name("UoftWebDev")
+    @user = User.where(:admin => "true");
     redirect_to @user
   end
 
   def new
     @currentPage = {:useraccount => "active"};
   	@user = User.new
-    @user_name = "Mail login"
+    @user_name = "Account login"
   end
 
   def edit
@@ -71,6 +81,9 @@ class UsersController < ApplicationController
     @user_name = @user.name
 
     if @user.update_attributes(params[:user])
+        if @user.content_creator
+          @user.update_attribute(:sent_approval, true);
+        end
         sign_in @user
         redirect_to @user
     else
@@ -96,5 +109,23 @@ class UsersController < ApplicationController
     @number_of_participants = User.where(:expo_ticket => true).length;
     render 'static_pages/entrepreneur'
   end 
+
+  def student_account
+    @user = User.find_by_id(session[:remember_token])
+    @user.update_attribute(:student_account, true);
+    @user.update_attribute(:account_selected, true);
+    @currentPage = {:useraccount => "active"};
+    @user_name = @user.name
+    redirect_to @user
+  end
+
+  def creator_account
+    @user = User.find_by_id(session[:remember_token])
+    @user.update_attribute(:content_creator, true);
+    @user.update_attribute(:account_selected, true);
+    @currentPage = {:useraccount => "active"};
+    @user_name = @user.name
+    redirect_to @user
+  end
 
 end

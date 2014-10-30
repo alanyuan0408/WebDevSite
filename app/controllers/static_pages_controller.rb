@@ -6,7 +6,7 @@ class StaticPagesController < ApplicationController
       user = User.find(session[:remember_token])
       @user_name = user.name
     else
-      @user_name = "Mail Login"
+      @user_name = "Account Login"
     end
   end
 
@@ -16,7 +16,7 @@ class StaticPagesController < ApplicationController
       user = User.find(session[:remember_token])
       @user_name = user.name
     else
-      @user_name = "Mail Login"
+      @user_name = "Account Login"
     end
   end
 
@@ -28,7 +28,7 @@ class StaticPagesController < ApplicationController
       @user = User.find(session[:remember_token])
       @user_name = @user.name
     else
-      @user_name = "Mail Login"
+      @user_name = "Account Login"
     end
   end
 
@@ -38,7 +38,7 @@ class StaticPagesController < ApplicationController
       user = User.find(session[:remember_token])
       @user_name = user.name
     else
-      @user_name = "Mail Login"
+      @user_name = "Account Login"
     end
   end
 
@@ -48,7 +48,7 @@ class StaticPagesController < ApplicationController
       user = User.find(session[:remember_token])
       @user_name = user.name
     else
-      @user_name = "Mail Login"
+      @user_name = "Account Login"
     end
 
     @jobPosts = Item.where(type_of: "JobPost").order("id desc")
@@ -62,7 +62,7 @@ class StaticPagesController < ApplicationController
       @user_name = @user.name
       redirect_to @user
     else
-      @user_name = "Mail Login"
+      @user_name = "Account Login"
       @user = User.new(params[:user])
       if @user.save
         #Handle a successful save.
@@ -71,8 +71,6 @@ class StaticPagesController < ApplicationController
         render 'users/new'
       end
     end
-
-
   end
   
 end

@@ -1,6 +1,7 @@
 UoftWebSite::Application.routes.draw do
   resources :users
   resources :items
+  resources :posters
   resources :sessions, only: [:new, :create, :destroy]
 
   # The priority is based upon order of creation:
@@ -25,6 +26,9 @@ UoftWebSite::Application.routes.draw do
 
   match '/register_expo', to: 'users#register_expo'
   match '/unregister_expo', to: 'users#unregister_expo'
+
+  match '/student_account', to: 'users#student_account'
+  match '/creator_account', to: 'users#creator_account'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

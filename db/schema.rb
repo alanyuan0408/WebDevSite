@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141029001925) do
+ActiveRecord::Schema.define(:version => 20141030202214) do
 
   create_table "items", :force => true do |t|
     t.string   "title"
@@ -53,6 +53,13 @@ ActiveRecord::Schema.define(:version => 20141029001925) do
     t.boolean  "expo_ticket",           :default => false
     t.datetime "nextsend"
     t.boolean  "account_created",       :default => false
+    t.boolean  "account_selected",      :default => false
+    t.boolean  "content_creator",       :default => false
+    t.boolean  "student_account",       :default => false
+    t.boolean  "content_approved",      :default => false
+    t.string   "approval_message"
+    t.string   "organization"
+    t.string   "sent_approval"
   end
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"

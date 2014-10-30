@@ -1,0 +1,51 @@
+<div class="row">
+
+    <div class="span9 offset1">
+      <nav class="horizontal-menu">
+        <h2>Welcome <%= @user.name %></h2>
+        <br>
+        Thank you for creating an mailing account. Please indiciate your account type
+        <br><br>
+      </nav>
+    </div>
+
+    <div class="span5">
+
+        <div class="panel">
+            <div class="panel-header bg-lightBlue fg-white">
+                Student Account
+            </div>  
+                    
+            <div class="panel-content">
+                Student accounts will give students a registered mailing account that will keep students up to date with all future relevant events, jobs and posts. <br><br>
+
+                Click here to create your Student Account.
+                <br><br>
+                <%= button_to "Student Account", '/student_account', {:class => "large"} %>
+
+            </div>
+        </div>
+
+        <br>          
+    </div>
+
+    <div class="span5">
+
+        <div class="panel">
+            <div class="panel-header">
+                Content Creator Account
+            </div>
+        <div class="panel-content">
+            The Content Creator Account [once approved] will have full permission to post future job offers, events and other messages for all computer science students. <br><br>
+
+            Click here to create your Content Creator Account.
+            <br><br>
+            <%= button_to "Content Creator Account", '/creator_account', {:class => "large"} %>
+
+        </div>
+                 
+        </div>
+
+    </div>
+
+</div>
