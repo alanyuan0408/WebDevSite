@@ -29,6 +29,8 @@ UoftWebSite::Application.routes.draw do
 
   match '/student_account', to: 'users#student_account'
   match '/creator_account', to: 'users#creator_account'
+
+  match '/approve', to: 'users#approve_creator'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -7,20 +7,19 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       @user_name = @user.name
 
-      if (!@user.account_selected)
+      if @user.admin 
+        @post_request = User.where(sent_approval: true).where(content_approved: false).all
+        render 'admin_page'
+
+      elsif (!@user.account_selected)
         render 'account_select'
 
       elsif @user.content_creator && (!@user.sent_approval)
         render 'approve_creator'
 
       elsif @user.content_creator && @user.sent_approval
+        @jobPosts = Item.where(type_of: "JobPost").where(user_id: @user.id).all
         render 'content_page'
-
-      elsif @user.admin 
-        @users = User.all
-        @clubPost = Item.where(type_of: "ClubPost").all
-        @jobPost = Item.where(type_of: "JobPost").all
-        render 'adminpanel'
 
       elsif @user.student_account && current_user.remember_token == @user.remember_token
           #render the student page

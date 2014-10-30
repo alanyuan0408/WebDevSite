@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141030202214) do
+ActiveRecord::Schema.define(:version => 20141030214232) do
 
   create_table "items", :force => true do |t|
     t.string   "title"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20141030202214) do
     t.string   "type_of"
     t.binary   "content",     :limit => 15728640
     t.text     "information", :limit => 15728640
+    t.string   "user_id"
   end
 
   create_table "poster", :force => true do |t|
@@ -59,7 +60,7 @@ ActiveRecord::Schema.define(:version => 20141030202214) do
     t.boolean  "content_approved",      :default => false
     t.string   "approval_message"
     t.string   "organization"
-    t.string   "sent_approval"
+    t.boolean  "sent_approval",         :default => false
   end
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"

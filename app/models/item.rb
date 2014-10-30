@@ -1,7 +1,6 @@
 class Item < ActiveRecord::Base
-  # attr_accessible :title, :body
 
-  attr_accessible :contact, :title, :type_of, :information, :content
+  attr_accessible :contact, :title, :type_of, :information, :content, :user_id
 
   # validates :contact, presence: true, length: {maximum: 40}
   # validates :title, presence: true, length: {maximum: 40}

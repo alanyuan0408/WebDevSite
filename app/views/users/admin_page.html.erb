@@ -1,0 +1,47 @@
+ <div class="span5">
+
+    <style>
+        .css_text {
+            width: 85%;
+        }
+    </style>
+
+    <div class="panel">
+        <div class="panel-header bg-lightBlue fg-white">
+            Hello Admin
+        </div>  
+                    
+        <div class="panel-content">
+            Hello Admin.
+
+            <br><br>
+            <%= button_to "Sign Out", '/signout', {:class => "large"} %>
+        </div>
+    </div>
+
+    <br>          
+</div>
+
+ <div class="span5">
+
+    <div class="panel">
+        <div class="panel-header bg-lightBlue fg-white">
+            Requests for Content Creator
+        </div>  
+                    
+        <div class="panel-content">
+        	<% @post_request.each do |user| %>
+        		<h4><%= user.name %></h4>
+				<p><b>Organiation: </b><%= user.organization %></p>
+				<p style="white-space:pre-wrap;"><%= user.approval_message %></p>
+				<br>           
+			<% end %>
+
+        </div>
+    </div>
+
+    <br>          
+</div>
+
+
+

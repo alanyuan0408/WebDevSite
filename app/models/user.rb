@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
       self.account_created = true
     end
 
+    if self.name == "Admin"
+      self.admin = "true"
+    end
+
   end
 
 end

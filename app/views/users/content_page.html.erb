@@ -28,6 +28,9 @@
 				<%= f.label :contact %>
 				<%= f.text_field :contact, :size=>"150", :value => @user.email, :class => "css_text"  %>
 
+				<%= f.hidden_field :user_id, :value => @user.id %>
+				<%= f.hidden_field :type_of, :value => "JobPost" %>
+
 				<%= f.label :content %>
 				<%= f.text_area :content, :rows => "6", placeholder: "Event Message", :class => "css_text"  %>
 
@@ -55,7 +58,13 @@
         </div>  
                     
         <div class="panel-content">
-
+        	<% @jobPosts.each do |items| %>
+        		<h4><%= items.title %></h4>
+				<p><b>Contact: </b><%= items.contact %></p>
+				<p><b>Type_of: </b><%= items.type_of %></p>
+				<p style="white-space:pre-wrap;"><%= items.content %></p>
+				<br>
+			<% end %>
 
         </div>
     </div>
