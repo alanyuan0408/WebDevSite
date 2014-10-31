@@ -30,12 +30,14 @@
         </div>  
                     
         <div class="panel-content">
-        	<% @post_request.each do |user| %>
-        		<h4><%= user.name %></h4>
-				<p><b>Organiation: </b><%= user.organization %></p>
-				<p style="white-space:pre-wrap;"><%= user.approval_message %></p>
-				<br>           
-			<% end %>
+            <% if !(@post_request.empty?) %>
+            	<% @post_request.each do |user| %>
+            		<h4><%= user.name %></h4>
+    				<p><b>Organiation: </b><%= user.organization %></p>
+    				<p style="white-space:pre-wrap;"><%= user.approval_message %></p>
+    				<br>           
+    			<% end %>
+            <% end %>
 
         </div>
     </div>
