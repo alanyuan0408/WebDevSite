@@ -28,7 +28,7 @@
 				<%= f.label :contact %>
 				<%= f.text_field :contact, :size=>"150", :value => @user.email, :class => "css_text"  %>
 
-				<%= f.hidden_field :user_id, :value => @user.id %>
+				<%= f.hidden_field :owner, :value => @user.name %>
 				<%= f.hidden_field :type_of, :value => "JobPost" %>
 
 				<%= f.label :content %>
