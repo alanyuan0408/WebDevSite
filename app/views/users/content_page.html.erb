@@ -30,6 +30,17 @@
 
 				<%= f.hidden_field :owner, :value => @user.name %>
 				<%= f.hidden_field :type_of, :value => "JobPost" %>
+                <br><br>
+
+                <select>
+                  <option>Job Offer</option>
+                  <option>Event</option>
+                  <option>Research Opportunity</option>
+                  <option>Important Reminder</option>
+                  <option>Entreprenuership Offer</option>
+                </select>
+
+                <br><br>
 
 				<%= f.label :content %>
 				<%= f.text_area :content, :rows => "6", placeholder: "Event Message", :class => "css_text"  %>
