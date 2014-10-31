@@ -11,19 +11,46 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141030214232) do
+ActiveRecord::Schema.define(:version => 20141031032254) do
 
-  create_table "poster", :force => true do |t|
+  create_table "items", :force => true do |t|
+    t.string   "title"
+    t.string   "contact"
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
+    t.string   "type_of"
+    t.binary   "content",     :limit => 15728640
+    t.text     "information", :limit => 15728640
+    t.string   "owner"
+    t.boolean  "confirmed",                       :default => false
+  end
+
+  create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.boolean  "account_created",       :default => false
-    t.boolean  "expo_registration",     :default => false
-    t.boolean  "account_approval",      :default => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
     t.string   "password_digest"
     t.string   "password_confirmation"
     t.string   "remember_token"
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.boolean  "admin"
+    t.integer  "email_frequency",       :default => 7
+    t.boolean  "web_club_newsletter",   :default => true
+    t.boolean  "research",              :default => true
+    t.boolean  "jobs",                  :default => true
+    t.boolean  "events",                :default => true
+    t.boolean  "expo_ticket",           :default => false
+    t.datetime "nextsend"
+    t.boolean  "account_created",       :default => false
+    t.boolean  "account_selected",      :default => false
+    t.boolean  "content_creator",       :default => false
+    t.boolean  "student_account",       :default => false
+    t.boolean  "content_approved",      :default => false
+    t.string   "approval_message"
+    t.string   "organization"
+    t.boolean  "sent_approval",         :default => false
   end
+
+  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
 end

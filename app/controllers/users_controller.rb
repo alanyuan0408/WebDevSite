@@ -7,17 +7,17 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       @user_name = @user.name
 
-      if @user.admin 
+      if @user.admin && current_user.remember_token == @user.remember_token
         @post_request = User.where(sent_approval: true).where(content_approved: false).all
         render 'admin_page'
 
-      elsif (!@user.account_selected)
+      elsif (!@user.account_selected) && current_user.remember_token == @user.remember_token
         render 'account_select'
 
-      elsif @user.content_creator && (!@user.sent_approval)
+      elsif @user.content_creator && (!@user.sent_approval) && current_user.remember_token == @user.remember_token
         render 'approve_creator'
 
-      elsif @user.content_creator && @user.sent_approval
+      elsif @user.content_creator && @user.sent_approval && current_user.remember_token == @user.remember_token
         @jobPosts = Item.where(type_of: "JobPost").where(owner: @user.name).all
         render 'content_page'
 
