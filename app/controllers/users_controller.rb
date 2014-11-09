@@ -128,7 +128,7 @@ class UsersController < ApplicationController
   end
 
   def confirmMail
-    @user = User.find_by_id(params[:id]);
+    @user = User.find(params[:id]);
     @user.update_attribute(:confirmationMail, true);
     @currentPage = {:useraccount => "active"};
     @user_name = @user.name
