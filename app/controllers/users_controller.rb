@@ -127,11 +127,4 @@ class UsersController < ApplicationController
     redirect_to @user
   end
 
-  def confirmMail
-    @user = User.find(params[:id]);
-    @user.update_attribute(:confirmationMail, true);
-    @currentPage = {:useraccount => "active"};
-    @user_name = @user.name
-  end
-
 end
