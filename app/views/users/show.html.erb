@@ -4,6 +4,10 @@
 
 	<p>The Web Development Club would like to keep you posted with new job offers, entrepreneurship events and research opportunities as well as our club's regular newsletters and events. Here you can change your settings on future emails and newsletters to best accomodate your personal needs.</p>
 
+	<% if @user.confirmationMail %>
+		<p>Your email address has not been confirmed. We will not send any email unless your email address has been confirmed</p>
+	<% end %>
+
 	<br>
 
 	<h4>Here are your current settings</h4>

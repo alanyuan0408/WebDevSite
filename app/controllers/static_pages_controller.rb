@@ -3,6 +3,8 @@ class StaticPagesController < ApplicationController
   helper_method :login_method
 
   def login_method
+    #helper method to find the cookie login or the user + set the name on the template
+
     current_user
 
     if signed_in?

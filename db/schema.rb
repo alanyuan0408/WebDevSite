@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141031032254) do
+ActiveRecord::Schema.define(:version => 20141109205021) do
 
   create_table "items", :force => true do |t|
     t.string   "title"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20141031032254) do
     t.string   "approval_message"
     t.string   "organization"
     t.boolean  "sent_approval",         :default => false
+    t.boolean  "confirmationMail",      :default => false
   end
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"

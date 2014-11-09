@@ -1,4 +1,27 @@
-<script type="text/javascript">$(initSummernote);</script>
+<script type="text/javascript">var initSummernote = function() {
+	$('.summernote').each(function(){
+		var summer_note;
+	    summer_note = $("#"+$(this).attr('id'));
+	    console.log(summer_note);
+	    summer_note.summernote({
+	      height: 500,
+	      lang: 'en-US',
+	      codemirror: {
+	        lineNumbers: true,
+	        tabSize: 2,
+	        theme: "solarized light"
+	      }
+	    });
+	    summer_note.code(summer_note.val());
+	    return summer_note.closest('form').submit(function() {
+	      summer_note.val(summer_note.code());
+	      return true;
+	    });
+	})
+}
+
+$(initSummernote);</script>
+
 
 <div class="span5">
 

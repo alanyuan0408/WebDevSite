@@ -8,11 +8,11 @@ class ItemsController < ApplicationController
   	@item = Item.new(params[:item])
   	@user = User.find_by_id(session[:remember_token])
 
-	if @item.save
-		redirect_to @user
-	else 
-		redirect_to @user
-	end
+  	if @item.save
+  		redirect_to @user
+  	else 
+  		redirect_to @user
+  	end
   end
 
   def destroy
