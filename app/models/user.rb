@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token #create an admin user
 
+  after_create :send_confirmation_email, :if => :email_confirmation_token_is_nil
+
   private 
 
   def create_remember_token
@@ -27,6 +29,17 @@ class User < ActiveRecord::Base
       self.admin = "true"
     end
 
+  end
+
+  def send_confirmation_email
+    # send user email of confirmation if they haven't confirmed their email yet
+    if self.email_confirmation_token != "confirmed"
+      self.update_column(:email_confirmation_token, SecureRandom.urlsafe_base64)
+      self.update_column(:confirmationMail, "true")
+      UserMailer.welcome_email(self).deliver
+    else
+      # do nothing
+    end
   end
 
 end

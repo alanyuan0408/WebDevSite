@@ -42,11 +42,6 @@ class UsersController < ApplicationController
   	if @user.save
   		#Handle a successful save.
 
-      if Rails.env.production?
-        UserMailer.welcome_email(@user).deliver
-        #mail is not config for development/
-      end
-
       sign_in @user
   		redirect_to @user
   	else 
@@ -127,4 +122,11 @@ class UsersController < ApplicationController
     redirect_to @user
   end
 
+  def confirmation_token
+    @user = User.find_by_email_confirmation_token(params[:id]);
+    @currentPage = {:useraccount => "active"};
+    @user_name = @user.name
+    @user.update_column(:email_confirmation_token, "confirmed")
+
+  end 
 end

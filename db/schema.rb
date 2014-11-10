@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141109205021) do
+ActiveRecord::Schema.define(:version => 20141110213502) do
 
   create_table "items", :force => true do |t|
     t.string   "title"
@@ -28,28 +28,29 @@ ActiveRecord::Schema.define(:version => 20141109205021) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
     t.string   "password_digest"
     t.string   "password_confirmation"
     t.string   "remember_token"
     t.boolean  "admin"
-    t.integer  "email_frequency",       :default => 7
-    t.boolean  "web_club_newsletter",   :default => true
-    t.boolean  "research",              :default => true
-    t.boolean  "jobs",                  :default => true
-    t.boolean  "events",                :default => true
-    t.boolean  "expo_ticket",           :default => false
+    t.integer  "email_frequency",          :default => 7
+    t.boolean  "web_club_newsletter",      :default => true
+    t.boolean  "research",                 :default => true
+    t.boolean  "jobs",                     :default => true
+    t.boolean  "events",                   :default => true
+    t.boolean  "expo_ticket",              :default => false
     t.datetime "nextsend"
-    t.boolean  "account_created",       :default => false
-    t.boolean  "account_selected",      :default => false
-    t.boolean  "content_creator",       :default => false
-    t.boolean  "student_account",       :default => false
-    t.boolean  "content_approved",      :default => false
+    t.boolean  "account_created",          :default => false
+    t.boolean  "account_selected",         :default => false
+    t.boolean  "content_creator",          :default => false
+    t.boolean  "student_account",          :default => false
+    t.boolean  "content_approved",         :default => false
     t.string   "approval_message"
     t.string   "organization"
-    t.boolean  "sent_approval",         :default => false
-    t.boolean  "confirmationMail",      :default => false
+    t.boolean  "sent_approval",            :default => false
+    t.boolean  "confirmationMail",         :default => false
+    t.string   "email_confirmation_token"
   end
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
