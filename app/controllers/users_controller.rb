@@ -127,6 +127,6 @@ class UsersController < ApplicationController
     @currentPage = {:useraccount => "active"};
     @user_name = @user.name
     @user.update_column(:email_confirmation_token, "confirmed")
-
+    render 'users/confirmMail'
   end 
 end
