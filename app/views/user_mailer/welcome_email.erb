@@ -11,7 +11,7 @@
     </p>
 
    
-    <%= url_for controller: "users", action: "confirmation_token", id: @user, host: "http://whispering-dusk-7191.herokuapp.com" %>
+    <a href ="<%= url_for controller: "users", action: "confirmation_token", id: @user, host: "http://whispering-dusk-7191.herokuapp.com" %>"Confirm your email</a>
 
     <p>Have a great day!</p>
   </body>
