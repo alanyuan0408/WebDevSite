@@ -6,7 +6,7 @@ end
 task :send_emails => :environment do
   puts "sending emails"
 
-  @user = User.all
+  @user = User.where(:email_confirmation_token, "confirmed")
 
   @user.each do |user|
   	 UserMailer.update_email(user).deliver
