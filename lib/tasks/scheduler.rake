@@ -17,7 +17,7 @@ end
 task :update_time => :environment do
   puts "updateTime emails"
 
-  @user = User.all
+  @user = User.where(:email_confirmation_token, "confirmed")
 
   @user.each do |user|
     n = user.email_frequency

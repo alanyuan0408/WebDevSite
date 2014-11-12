@@ -29,7 +29,7 @@ class UsersController < ApplicationController
         render 'permissiondenied'
       end
     else
-      @user = "Account Login"
+      @user_name = "Account Login"
       render 'permissiondenied'
     end
   end
