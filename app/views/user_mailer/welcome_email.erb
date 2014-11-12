@@ -11,8 +11,8 @@
     </p>
 
    
-    <%= link_to "Confirm Email", controller: "users", action: "confirmation_token", id: @user %>
-    
+    <%= url_for controller: "users", action: "confirmation_token", id: @user %>
+
     <p>Have a great day!</p>
   </body>
 </html>
