@@ -32,9 +32,14 @@ class User < ActiveRecord::Base
   end
 
   def send_confirmation_email
-    # send user email of confirmation if they haven't confirmed their email yet
-      self.update_column(:email_confirmation_token, SecureRandom.urlsafe_base64)
-      UserMailer.welcome_email(self).deliver
+      if self.confirmationMail == "true"
+        #Nothing
+      else
+          # send user email of confirmation if they haven't confirmed their email yet
+         self.update_column(:email_confirmation_token, SecureRandom.urlsafe_base64)
+         self.update_column(:confirmationMail, "true")
+         UserMailer.welcome_email(self).deliver
+      end
   end
 
 end
