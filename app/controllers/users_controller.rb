@@ -123,7 +123,7 @@ class UsersController < ApplicationController
   end
 
   def confirmation_token
-    @user = User.find_by_email_confirmation_token(params[:email_confirmation_token]);
+    @user = User.find_by(:email_confirmation_token, params[:email_confirmation_token]).first;
     @currentPage = {:useraccount => "active"};
     @user_name = @user.name
     @user.update_column(:email_confirmation_token, "confirmed")
