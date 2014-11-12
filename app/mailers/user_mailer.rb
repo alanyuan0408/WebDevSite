@@ -2,8 +2,12 @@ class UserMailer < ActionMailer::Base
   default from: "uoftwebdev.president@gmail.com"
 
   def welcome_email(user)
-    @user = user
-    mail(to: @user.email, subject: 'Testing new mailing feature')
+
+    if (@user.confirmationMail != "true")
+      @user.update_column(:confirmationMail, "true")
+      @user = user
+      mail(to: @user.email, subject: 'Testing new mailing feature')
+    end
   end
 
   def update_email(user)
