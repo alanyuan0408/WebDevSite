@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token #create an admin user
 
-  after_commit :send_confirmation_email
+  after_commit :send_confirmation_email, on: :create
 
   private 
 
