@@ -19,21 +19,17 @@ $(initSummernote)</script>
             <br>
             <% if @user.content_approved %>
             	You're account is approved by the admin. All your future posts will be linked directly to our boards. Please note, the Admin reserves the right to suspend your posting privileges if the content becomes unprofessional.
-            <% elsif %>
-            	You're request for a content creator account is pending. Your current posts will be posted on the boards when your approval has been approved by the admin.
-            <% end %>
-            
-            <br><br>
-			<%=simple_form_for Item.create, url: items_path do |f| %> 
 
-				<%= f.label :title %>
-				<%= f.text_field :title, :size=>"150", placeholder: "Title of Post", :class => "css_text"  %>
+                            <%=simple_form_for Item.create, url: items_path do |f| %> 
 
-				<%= f.label :contact %>
-				<%= f.text_field :contact, :size=>"150", :value => @user.email, :class => "css_text"  %>
+                <%= f.label :title %>
+                <%= f.text_field :title, :size=>"150", placeholder: "Title of Post", :class => "css_text"  %>
 
-				<%= f.hidden_field :owner, :value => @user.name %>
-				<%= f.hidden_field :type_of, :value => "JobPost" %>
+                <%= f.label :contact %>
+                <%= f.text_field :contact, :size=>"150", :value => @user.email, :class => "css_text"  %>
+
+                <%= f.hidden_field :owner, :value => @user.name %>
+                <%= f.hidden_field :type_of, :value => "JobPost" %>
                 <br><br>
 
                 <select>
@@ -46,16 +42,31 @@ $(initSummernote)</script>
 
                 <br><br>
 
-				<%= f.label :content %>
-				<%= f.text_area :content, :rows => "6", placeholder: "Event Message", :class => "css_text", input_html: { class: 'summernote', id: "jobInfoInput"} %>
+                <%= f.label :content %>
+                <%= f.text_area :content, :rows => "6", placeholder: "Event Message", :class => "css_text", input_html: { class: 'summernote', id: "jobInfoInput"} %>
 
-				<br><br>
+                <br><br>
 
-				<%= f.submit "Add New Post", class: "large" %>
+                <%= f.submit "Add New Post", class: "large" %>
 
-				<br>
+                <br>
 
-			<% end %>
+            <% end %>
+            <% elsif %>
+            	You're request for a content creator account is pending. Your current posts will be posted on the boards when your approval has been approved by the admin.
+
+                <br><br>
+
+                <% if @user.email_confirmation_token != "confirmed" %>
+                    <div class="alert alert-error">
+                        Content Creators may only make posts after the Admin has approved their Account.
+                    </div>
+                <% end %>
+
+            <% end %>
+            
+            <br><br>
+
 
 			<%= button_to "Sign Out", '/signout', {:class => "large"} %>
 

@@ -125,13 +125,13 @@ class UsersController < ApplicationController
   def confirmation_token
     @user = User.find_by_email_confirmation_token(params[:email_confirmation_token]);
 
-    if @user 
+    if @user.blank?
+      render 'permissiondenied'
+    else 
       @currentPage = {:useraccount => "active"};
       @user_name = @user.name
       @user.update_column(:email_confirmation_token, "confirmed")
       render 'users/confirmMail'
-    else 
-      render 'permissiondenied'
     end 
   end 
 end
