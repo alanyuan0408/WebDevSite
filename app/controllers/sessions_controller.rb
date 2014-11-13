@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
 	def create
 		@currentPage = {:useraccount => "active"};
-		user = User.find_by_name(params[:session][:email])
+		user = User.find_by_name(params[:session][:name])
 		if user && user.authenticate(params[:session][:password])
 		# you can access @user in views
 			sign_in user
