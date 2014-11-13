@@ -25,7 +25,7 @@ class UsersController < ApplicationController
           #render the student page
       else
         @user = User.find(params[:id])
-        @user_name = @user.name
+        @user_name = "Account Login"
         render 'permissiondenied'
       end
     else
