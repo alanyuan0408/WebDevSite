@@ -26,3 +26,12 @@ task :update_time => :environment do
   end
 
 end
+
+task :parse_xml => :environment do
+  puts "parsing XML"
+
+  doc = Nokogiri::XML(File.open("https://csc.cdf.toronto.edu/mybb/syndication.php?limit=15")) do |config|
+  config.strict.nonet
+end
+
+end

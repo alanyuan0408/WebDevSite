@@ -10,6 +10,7 @@ gem "therubyracer"
 # BEGIN gems for Summernote
 gem 'simple_form'
 
+
 # You'll need to include the following dependencies of Summernote
 gem "font-awesome-rails"
 

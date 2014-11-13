@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "uoftwebdev.president@gmail.com"
+  default from: "alan.yuan@mail.utoronto.ca"
 
   def welcome_email(user)
 
