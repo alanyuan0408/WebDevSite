@@ -23,6 +23,7 @@ class StaticPagesController < ApplicationController
     login_method
 
     @currentPage = {:home => "active"};
+    @number_of_users = User.all.length;
   end
 
   def developer
@@ -43,7 +44,6 @@ class StaticPagesController < ApplicationController
 
     @currentPage = {:events => "active"};
 
-    @number_of_users = User.length;
   end
 
   def jobs
