@@ -12,8 +12,8 @@ class StaticPagesController < ApplicationController
     end
 
     if session[:remember_token] && User.exists?(:id => session[:remember_token])
-      user = User.find(session[:remember_token])
-      @user_name = user.name
+      @user = User.find(session[:remember_token])
+      @user_name = @user.name
     else
       @user_name = "Account Login"
     end
