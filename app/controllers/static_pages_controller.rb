@@ -42,6 +42,8 @@ class StaticPagesController < ApplicationController
     login_method
 
     @currentPage = {:events => "active"};
+
+    @number_of_users = User.length;
   end
 
   def jobs
