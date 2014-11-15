@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
       if @user.admin && current_user.remember_token == @user.remember_token
         @post_request = User.where(sent_approval: true).where(content_approved: false).all
+        @users = User.all
         render 'admin_page'
 
       elsif (!@user.account_selected) && current_user.remember_token == @user.remember_token

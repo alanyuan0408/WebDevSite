@@ -32,11 +32,9 @@
         </div>  
                     
         <div class="panel-content">
-            <% if !(@post_request.empty?) %>
-            	<% @post_request.each do |user| %>
+            <% if !(@users.empty?) %>
+            	<% @users.each do |user| %>
             		<h4><%= user.name %></h4>
-    				<p><b>Organiation: </b><%= user.organization %></p>
-    				<p style="white-space:pre-wrap;"><%= user.approval_message %></p>
     				<br>           
     			<% end %>
             <% end %>

@@ -1,45 +1,65 @@
-          <div class="span5">
+<script>
 
-            <div class="panel">
+    function change(direction){
+        var jobPosts = document.getElementById("button_group").childNodes;
+            if (direction == 0){
+                document.getElementById("tutorial").className = "panel";
+                document.getElementById("network").className = "panel hidden_class";
+                document.getElementById("project").className = "panel hidden_class";
+            } else if (direction == 1) {
+                document.getElementById("tutorial").className = "panel hidden_class";
+                document.getElementById("network").className = "panel";
+                document.getElementById("project").className = "panel hidden_class";
+            } else {
+                document.getElementById("tutorial").className = "panel hidden_class";
+                document.getElementById("network").className = "panel hidden_class";
+                document.getElementById("project").className = "panel";
+            }
 
-              <div class="panel-header bg-lightBlue fg-white">
-                    Club Introduction
-                </div>  
-                <div class="panel-content">
-                    The Web Development Club is a student led group by students that seeks to improve the Web Development skills of students to assist students with future job and entreprenuership opportunities.
-                    <br><br>
+    }
 
-                    Our club is also extensively involved with startups and the Computer Science Department to create the mailing system as well as the job board on this site as well as other activities to improve the job opportunities of computer science students.
+</script>
 
-                    <br><br>
+<div class="span5">
 
-                    President of Web Dev Club, Hengwei Guo<br>
+    <div class="panel">
 
-                    <i class="icon-mail"></i> Uoftwebdev.president@mail.utoronto.ca
+        <div class="panel-header bg-lightBlue fg-white">
+            Club Introduction
+        </div>  
+                
+        <div class="panel-content">
+            The Web Development Club is a student led group by students that seeks to improve the Web Development skills of students to assist students with future job and entreprenuership opportunities.
+            <br><br>
 
-                    <br>
+            Our club is also extensively involved with startups and the Computer Science Department to create the mailing system as well as the job board on this site as well as other activities to improve the job opportunities of computer science students.
+            <br><br>
 
-              </div>
-            </div>
-
-
+            President of Web Dev Club, Hengwei Guo<br>
+            <i class="icon-mail"></i> Uoftwebdev.president@mail.utoronto.ca
             <br>
 
-            <div class="panel">
+        </div>
+    </div>
 
-              <div class="panel-header bg-darkRed fg-white">
-                    Mailing System Information:
-                </div>  
-                <div class="panel-content">
-                    <h5><i class="icon-clock"></i> Scheduled Completion Date:</h5>
-                    December 10, 2014 <br>
-                    <h5><i class="icon-mail"></i> Contact:</h5>
-                    alan.yuan@mail.utoronto.ca
-                    <h5><i class="icon-mail"></i> Current Number of Signups:</h5>
-                    <%= @number_of_users %>
-                    <br><br>
+    <br>
 
-                    <%= button_to "Sign Up", "/useraccount" , {:class => "large"} %>
+    <div class="panel">
+
+        <div class="panel-header bg-darkRed fg-white">
+            Mailing System Information:
+        </div>  
+                
+        <div class="panel-content">
+            <h5><i class="icon-clock"></i> Scheduled Completion Date:</h5>
+                December 10, 2014 <br>
+            <h5><i class="icon-mail"></i> Contact:</h5>
+                alan.yuan@mail.utoronto.ca
+            <h5><i class="icon-mail"></i> Current Number of Signups:</h5>
+                <%= @number_of_users %>
+                <br><br>
+
+                <%= button_to "Sign Up", "/useraccount" , {:class => "large"} %>
                     
               </div>
             </div>
