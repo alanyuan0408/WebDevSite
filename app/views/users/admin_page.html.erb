@@ -36,8 +36,7 @@
             	<% @users.each do |user| %>
             		<b><p><%= user.name %></p></b>
     				<p><%= user.email %></p>   
-                    <p><%= link_to "delete", users, method: :delete %></p>
-                    <p><%= user.email_confirmation_token %></p>          
+                    <br>  
     			<% end %>
             <% end %>
 
