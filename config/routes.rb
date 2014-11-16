@@ -35,6 +35,9 @@ UoftWebSite::Application.routes.draw do
 
   match '/confirmation_token', to: 'users#confirmation_token'
   
+  match "/404" => 'users#permissiondenied'
+  match "/500" => 'users#permissiondenied'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
