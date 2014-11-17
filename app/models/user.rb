@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  validates :name, 	presence: true, uniqueness: true
-  validates :email,	presence: true, format: { with: VALID_EMAIL_REGEX }
+  validates :name, 	presence: true
+  validates :email,	presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }, on: :create
   validates :password_confirmation, presence: true, on: :create
   validates :email_frequency, presence: true, :numericality => {:only_integer => true, :greater_than_or_equal_to => 1, :less_than_or_equal_to => 7 }
@@ -25,9 +25,10 @@ class User < ActiveRecord::Base
       self.account_created = true
     end
 
-    if self.name == "Admin"
-      self.admin = "true"
-    end
+    #if self.name == "Admin" && self.email = "alan.yuan@mail.utoronto.ca"
+    #  self.admin = "true"
+    #end
+    # We will create future Admin accounts by seed NOT by this horrible method
 
   end
 
