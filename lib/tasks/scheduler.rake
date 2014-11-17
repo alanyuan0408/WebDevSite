@@ -27,6 +27,17 @@ task :update_time => :environment do
 
 end
 
+task :customized_email => :environment do
+  puts "updateTime emails"
+
+  @user = User.all
+
+  @user.each do |user|
+    UserMailer.custom_email(user).deliver
+  end
+
+end
+
 task :parse_xml => :environment do
   puts "parsing XML"
 
