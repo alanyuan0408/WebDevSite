@@ -5,11 +5,11 @@ gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby', '~> 3.0.1'
 
 gem 'execjs'
-gem "therubyracer"
 
 # BEGIN gems for Summernote
 gem 'simple_form'
 
+gem 'therubyracer'
 
 # You'll need to include the following dependencies of Summernote
 gem "font-awesome-rails"

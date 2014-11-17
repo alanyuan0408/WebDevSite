@@ -10,6 +10,7 @@ class UsersController < ApplicationController
       if @user.admin && current_user.remember_token == @user.remember_token
         @post_request = User.where(sent_approval: true).where(content_approved: false).all
         @users = User.all
+        @confirmed_users = User.where(email_confirmation_token: "confirmed").length
         render 'admin_page'
 
       elsif (!@user.account_selected) && current_user.remember_token == @user.remember_token
@@ -55,7 +56,8 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "User destroyed."
-    redirect_to users_url
+    @admin_user = User.find_by_name("Admin");
+    redirect_to @admin_user 
   end
 
   def new

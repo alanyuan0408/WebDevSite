@@ -12,9 +12,13 @@
         <div class="panel-header bg-lightBlue fg-white">
             Hello Admin
         </div>  
+
+
                     
         <div class="panel-content">
             Hello Admin.
+            <br><br>
+            The number of confirmed users is <%= @confirmed_users %>
 
             <br><br>
             <%= button_to "Sign Out", '/signout', {:class => "large"} %>
@@ -28,16 +32,19 @@
 
     <div class="panel">
         <div class="panel-header bg-lightBlue fg-white">
-            Requests for Content Creator
+            Current Users
         </div>  
                     
         <div class="panel-content">
             <% if !(@users.empty?) %>
-            	<% @users.each do |user| %>
-            		<b><p><%= user.name %></p></b>
-    				<p><%= user.email %></p>   
-                    <br>  
-    			<% end %>
+                <% @users.each do |user| %>
+                    <% if !user.admin %>
+                		<b><p><%= user.name %></p></b>
+        				<p><%= user.email %></p>
+                        <p><%= link_to "delete", user, method: :delete %></p>   
+                        <br>
+                    <% end %>  
+        		<% end %>
             <% end %>
 
         </div>
