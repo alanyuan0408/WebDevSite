@@ -27,7 +27,7 @@ task :update_time => :environment do
 
 end
 
-task :customized_email => :environment do
+task :custom_email => :environment do
   puts "updateTime emails"
 
   @user = User.all
