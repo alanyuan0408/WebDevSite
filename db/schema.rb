@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141110213502) do
+ActiveRecord::Schema.define(:version => 20141201183729) do
+
+  create_table "feedbanks", :force => true do |t|
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.text     "item_id"
+    t.text     "item_url"
+    t.text     "item_title"
+    t.text     "item_date"
+    t.text     "item_content"
+  end
 
   create_table "items", :force => true do |t|
     t.string   "title"

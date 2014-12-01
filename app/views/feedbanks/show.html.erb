@@ -1,0 +1,18 @@
+<div class="span9 offset1">
+		
+	<h2>FeedBank Posts</h2>
+
+	<div class="panel-content">
+        <% if !(@feedbanks.empty?) %>
+            <% @feedbanks.each do |feedbank| %>
+                <% if !user.admin %>
+                	<b><p><%= user.name %></p></b>
+        			<p><%= user.email %></p> 
+                    <br>
+                <% end %>  
+        	<% end %>
+        <% end %>
+
+    </div>
+
+</div>
