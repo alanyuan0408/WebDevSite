@@ -5,11 +5,12 @@
 	<div class="panel-content">
         <% if !(@feedbanks.empty?) %>
             <% @feedbanks.each do |feedbank| %>
-                <% if !user.admin %>
-                	<b><p><%= user.name %></p></b>
-        			<p><%= user.email %></p> 
+                
+                	<b><p><%= feedbank.item_id %></p></b>
+        			<p><%= feedbank.item_url %></p>
+        			<p><%= feedbank.item_date %></p> 
                     <br>
-                <% end %>  
+
         	<% end %>
         <% end %>
 
