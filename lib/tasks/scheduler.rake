@@ -46,5 +46,3 @@ task :alan_test => :environment do
   UserMailer.custom_email(user).deliver
 
 end
-
-end
