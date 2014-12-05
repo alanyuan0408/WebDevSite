@@ -25,7 +25,7 @@
 
         var page_number = 1;
 
-        function jobpost(direction){
+        function navdirection(direction){
             var jobPosts = document.getElementById("jobPosts").childNodes;
             if (direction == 1 && iterator_end < bottom_element){
                 iterator_start += 20;
@@ -102,13 +102,13 @@
 
 <div class="row">
     <div class="span1 offset1">
-        <button id="prev" class="btn" onclick="jobpost(0)">Prev</button>
+        <button id="prev" class="btn" onclick="navdirection(0)">Prev</button>
     </div>
 
     <div id= "pagenumber" class="span1" style="text-align:right">1</div>
 
     <div class="span1 offset1">
-        <button id="next" class="btn" onclick="jobpost(1)">Next</button>
+        <button id="next" class="btn" onclick="navdirection(1)">Next</button>
 
     </div>
 </div>
@@ -126,11 +126,11 @@
         <div class="panel-content" id= "posts">
             <% @jobPosts.each do |post| %>
                 <div id="<%= post.id %>" class="hidden_class">
-                    <h2><%= post.title %></h2>
+                    <h2><%= post.item_title %></h2>
                     <br>
-                    <p>Contact: <%= post.contact %></p>
+                    <p>Date: <%= post.item_date %></p>
                     <br>
-                    <p>Content: <%= post.content %></p>
+                    <p>Content: <%= post.item_text %></p>
                     <br>
                 </div>
             <% end %>
