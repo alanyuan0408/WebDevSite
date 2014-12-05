@@ -3,11 +3,11 @@ class UpdateFeedBank < ActiveRecord::Migration
   def change
 	create_table :feedbanks do |t|
 
-	  	add_column :feedbanks, :item_id, :string
-	  	add_column :feedbanks, :item_url, :string
-	  	add_column :feedbanks, :item_title, :string
-	  	add_column :feedbanks, :item_date, :datetime
-	  	add_column :feedbanks, :item_text, :text
+	  	t.string :item_id
+	  	t.string :item_url
+	  	t.string :item_title
+	  	t.datetime :item_date
+	  	t.text :item_text
 
   end
 
