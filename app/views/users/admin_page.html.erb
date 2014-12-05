@@ -39,10 +39,9 @@
             <% if !(@users.empty?) %>
                 <% @users.each do |user| %>
                     <% if !user.admin %>
-                		<b><p><%= user.name %></p></b>
-        				<p><%= user.email %></p>
-                        <p><%= link_to "delete", user, method: :delete %></p>   
-                        <br>
+                	   <p><b><%= user.name %></b><br>
+        				<%= user.email %><br>
+                        <%= link_to "delete", user, method: :delete %></p>   
                     <% end %>  
         		<% end %>
             <% end %>
