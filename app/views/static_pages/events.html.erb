@@ -1,34 +1,140 @@
 <div class="span5">
 
-            <div class="panel">
+    <div class="panel">
+        <div class="panel-header bg-lightBlue fg-white">
+              Computer Science Events
+        </div>  
+                
+        <div class="panel-content">
+            We have worked with the entire computer science Department as well as CLubs within Computer Science to coordinate all our events into one location. <br>
+        </div>
+    </div>
 
-              <div class="panel-header bg-lightBlue fg-white">
-                    Computer Science Events
-                </div>  
-                <div class="panel-content">
-                    We have worked with all clubs as well as the department to bring all the events into one combined location for both the ease of usages for the students as well as the event organizers. <br><br>
+    <br>
+    <style>
+        .hidden_class {
+            display: none;
+        }
+    </style>
 
-                    Please contact the organizer for information about specific events.
+    <script>
+        var top_element = 0
+        var bottom_element = <%= @jobPosts.length %> * 2;
+        var iterator_start = 0;
+        var iterator_end = 21;
+
+        var page_number = 1;
+
+        function navdirection(direction){
+            var jobPosts = document.getElementById("jobPosts").childNodes;
+            if (direction == 1 && iterator_end < bottom_element){
+                iterator_start += 20;
+                iterator_end += 20;
+                page_number += 1;
+                document.getElementById("pagenumber").innerHTML = page_number
+            } else if (direction == 0 && iterator_start > top_element){
+                iterator_start -= 20;
+                iterator_end -= 20;
+                page_number -= 1;
+                document.getElementById("pagenumber").innerHTML = page_number
+            }  else {
+                console.log("Do nothing");
+            }
+                        
+            for (i=0; i<jobPosts.length; i++){
+                if (i > iterator_start && i < iterator_end) {
+                    jobPosts[i].className = ""
+                } else {
+                    jobPosts[i].className = "hidden_class";
+                }
+            }
+
+        }
+
+        function initialize(){
+            var jobPosts = document.getElementById("jobPosts").childNodes;
+            var top_element = 0;
+            var bottom_element = 21;
+            var initalized = 0;
+            console.log("loaded");
+
+            for (i=0; i<jobPosts.length; i++){
+
+                if (i > top_element && i < bottom_element) {
+                    jobPosts[i].className = ""
+                } else {
+                    jobPosts[i].className = "hidden_class";
+                }
+            }
+
+
+            $("a").click(function(){
+
+                console.log($(this).attr('id'));
+
+                var jobPosting = document.getElementById("posts").childNodes;
+
+                for(i=0; i<jobPosting.length; i++){
+                    if (jobPosting[i].className == "selected"){
+                        jobPosting[i].className = "hidden_class";
+                    }
+
+                    if (jobPosting[i].id == $(this).attr('id')){
+                        jobPosting[i].className = "selected";
+                    }
+                }
+
+            });
+
+        }
+
+        $(document).ready(initialize);
+
+    </script>
+
+    <ul id="jobPosts" class="nav nav-tabs nav-stacked">
+
+        <% @jobPosts.each do |post| %>
+            <li><a id="<%= post.id %>" ><%= post.item_title %></a></li>
+        <% end %>
+
+    </ul>
+
+<div class="row">
+    <div class="span1 offset1">
+        <button id="prev" class="btn" onclick="navdirection(0)">Prev</button>
+    </div>
+
+    <div id= "pagenumber" class="span1" style="text-align:right">1</div>
+
+    <div class="span1 offset1">
+        <button id="next" class="btn" onclick="navdirection(1)">Next</button>
+
+    </div>
+</div>
+
+             
+</div>
+
+<div class="span5">
+
+    <div class="panel">
+        <div class="panel-header">
+            Event Information
+        </div>
+
+        <div class="panel-content" id= "posts">
+            <% @jobPosts.each do |post| %>
+                <div id="<%= post.id %>" class="hidden_class">
+                    <h2><%= post.item_title %></h2>
                     <br>
-
-              </div>
-            </div>
-
-
-            <br>
-             
-          </div>
-
-
-          <div class="span5">
-
-            <div class="panel">
-                <div class="panel-header">
-                    Future Events
+                    <p>Date: <%= post.item_date %></p>
+                    <br>
+                    <p>Content: <%= post.item_text.html_safe %></p>
+                    <br>
                 </div>
-                <div class="panel-content">
-
-
-            </div>
+            <% end %>
+        </div>
              
-          </div>
+    </div>
+</div>
