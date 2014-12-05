@@ -12,3 +12,16 @@ Sean
 - Fix Feedbank Posts to include new columns + Parse Events Board
 - Modify Views to include better instrustions for Users
 - Fix Responsiveness of the site for mobile + ipad.
+
+CREATE TABLE feedbanks
+(
+  id serial NOT NULL,
+  item_id character varying(255),
+  item_url character varying(255),
+  item_title character varying(255),
+  item_date timestamp without time zone,
+  item_text text,
+  created_at timestamp without time zone NOT NULL,
+  updated_at timestamp without time zone NOT NULL,
+  CONSTRAINT feedbanks_pkey PRIMARY KEY (id)
+)
