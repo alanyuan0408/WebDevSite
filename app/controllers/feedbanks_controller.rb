@@ -5,4 +5,5 @@ class FeedbanksController < ApplicationController
 		@user_name = "Account Login"
 		@feedbanks = Feedbank.all
 	end
+
 end

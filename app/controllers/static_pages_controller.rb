@@ -50,7 +50,7 @@ class StaticPagesController < ApplicationController
     login_method
 
     @currentPage = {:jobs => "active"};
-    @jobPosts = Feedbank.where(:column_type => 1).order("id desc")
+    @jobPosts = Feedbank.where(:column_type => 1).order("id asc")
     #1 is Jobs, #2 is events
   end
 

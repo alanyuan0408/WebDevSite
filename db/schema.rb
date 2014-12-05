@@ -24,17 +24,6 @@ ActiveRecord::Schema.define(:version => 20141205023908) do
     t.integer  "column_type"
   end
 
-  create_table "items", :force => true do |t|
-    t.string   "title"
-    t.string   "contact"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-    t.string   "type_of"
-    t.binary   "content",     :limit => 15728640
-    t.text     "information", :limit => 15728640
-    t.string   "owner"
-  end
-
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
