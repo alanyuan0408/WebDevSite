@@ -8,6 +8,7 @@ class UpdateFeedBank < ActiveRecord::Migration
 	  	t.string :item_title
 	  	t.datetime :item_date
 	  	t.text :item_text
+	end
 
   end
 
