@@ -25,7 +25,8 @@ class UserMailer < ActionMailer::Base
   def custom_email(user)
 
       @user = user
-      mail(to: @user.email, subject: 'Notification Email')
+      @posts = Feedbank.find(:all, :order => "id desc", :limit => 5)
+      mail(to: @user.email, subject: 'Your Customized NewsLetter')
 
   end
 

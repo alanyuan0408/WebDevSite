@@ -38,11 +38,13 @@ task :custom_email => :environment do
 
 end
 
-task :parse_xml => :environment do
-  puts "parsing XML"
+task :alan_test => :environment do
+  puts "Send test to Alan"
 
-  doc = Nokogiri::XML(File.open("https://csc.cdf.toronto.edu/mybb/syndication.php?limit=15")) do |config|
-  config.strict.nonet
+  @user = User.find_by_name("Admin")
+
+  UserMailer.custom_email(user).deliver
+
 end
 
 end
