@@ -1,103 +1,101 @@
 <script type="text/javascript">$(initSummernote);</script>
 
- <div class="span5">
+<style>
+    .css_text {
+        width: 85%;
+    }
 
-    <style>
-        .css_text {
-            width: 85%;
+    .hidden_class {
+        display: none;
+    }
+</style>
+
+<script>
+    var top_element = 0
+    var bottom_element = <%= @users.length %> * 2;
+    var iterator_start = 0;
+    var iterator_end = 21;
+    var page_number = 1;
+
+    function navdirection(direction){
+        if (document.getElementById("studentTab").className == "active"){
+            var jobPosts = document.getElementById("userPost").childNodes;
+        } else {
+            var jobPosts = document.getElementById("creatorPost").childNodes;
         }
-    </style>
-
-        <style>
-        .hidden_class {
-            display: none;
-        }
-    </style>
-
-    <script>
-        var top_element = 0
-        var bottom_element = <%= @users.length %> * 2;
-        var iterator_start = 0;
-        var iterator_end = 21;
-
-        var page_number = 1;
-
-        function navdirection(direction){
-            if (document.getElementById("studentTab").className == "active"){
-                var jobPosts = document.getElementById("userPost").childNodes;
-            } else {
-                var jobPosts = document.getElementById("creatorPost").childNodes;
-            }
             
-            if (direction == 1 && iterator_end < bottom_element){
-                iterator_start += 20;
-                iterator_end += 20;
-                page_number += 1;
-                document.getElementById("pagenumber").innerHTML = page_number
-            } else if (direction == 0 && iterator_start > top_element){
-                iterator_start -= 20;
-                iterator_end -= 20;
-                page_number -= 1;
-                document.getElementById("pagenumber").innerHTML = page_number
-            }  else {
-                console.log("Do nothing");
-            }
+        if (direction == 1 && iterator_end < bottom_element){
+            iterator_start += 20;
+            iterator_end += 20;
+            page_number += 1;
+            document.getElementById("pagenumber").innerHTML = page_number
+        } else if (direction == 0 && iterator_start > top_element){
+            iterator_start -= 20;
+            iterator_end -= 20;
+            page_number -= 1;
+            document.getElementById("pagenumber").innerHTML = page_number
+        } else {
+            console.log("Do nothing");
+        }
                         
-            for (i=0; i<jobPosts.length; i++){
-                if (i > iterator_start && i < iterator_end) {
-                    jobPosts[i].className = ""
-                } else {
-                    jobPosts[i].className = "hidden_class";
-                }
-            }
-
-        }
-
-        function initialize(){
-            if (document.getElementById("studentTab").className == "active"){
-                var jobPosts = document.getElementById("userPost").childNodes;
+        for (i=0; i<jobPosts.length; i++){
+            if (i > iterator_start && i < iterator_end) {
+                jobPosts[i].className = ""
             } else {
-                var jobPosts = document.getElementById("creatorPost").childNodes;
+                jobPosts[i].className = "hidden_class";
             }
-            var top_element = 0;
-            var bottom_element = 21;
-            var initalized = 0;
-            console.log("loaded");
-
-            for (i=0; i<jobPosts.length; i++){
-
-                if (i > top_element && i < bottom_element) {
-                    jobPosts[i].className = ""
-                } else {
-                    jobPosts[i].className = "hidden_class";
-                }
-            }
-
-
-            $("a").click(function(){
-
-                console.log($(this).attr('id'));
-
-                var jobPosting = document.getElementById("posts").childNodes;
-
-                for(i=0; i<jobPosting.length; i++){
-                    if (jobPosting[i].className == "selected"){
-                        jobPosting[i].className = "hidden_class";
-                    }
-
-                    if (jobPosting[i].id == $(this).attr('id')){
-                        jobPosting[i].className = "selected";
-                    }
-                }
-
-            });
-
         }
 
-        $(document).ready(initialize);
+    }
 
-    </script>
+    function initialize(){
+        if (document.getElementById("studentTab").className == "active"){
+            var jobPosts = document.getElementById("userPost").childNodes;
+        } else {
+            var jobPosts = document.getElementById("creatorPost").childNodes;
+        }
 
+        var top_element = 0;
+        var bottom_element = 21;
+        var initalized = 0;
+        console.log("loaded");
+
+        for (i=0; i<jobPosts.length; i++){
+
+            if (i > top_element && i < bottom_element) {
+                jobPosts[i].className = ""
+            } else {
+                jobPosts[i].className = "hidden_class";
+            }
+        }
+
+        $("a").click(function(){
+
+            console.log($(this).attr('id'));
+
+            var jobPosting = document.getElementById("posts").childNodes;
+
+            for(i=0; i<jobPosting.length; i++){
+                if (jobPosting[i].className == "selected"){
+                    jobPosting[i].className = "hidden_class";
+                }
+
+                if (jobPosting[i].id == $(this).attr('id')){
+                    jobPosting[i].className = "selected";
+                }
+            }
+
+        });
+
+    }
+
+    $(document).ready(initialize);
+
+</script>
+
+<div onload="initalize()" >
+
+ <div class="span5">
 
     <div class="panel">
         <div class="panel-header bg-lightBlue fg-white">
@@ -208,8 +206,16 @@
                         <p><b>Approval Message:</b></p>
                         <p><%= post.approval_message %></p>
                         <br>
-                    </div>
+                    
                 <% end %>
+
+                <% if post.sent_approval %>
+                    <br>
+                    <%= button_to "Approve Creator", '/approve', {:class => "medium"} %>
+                    <%= button_to "Disapprove Creator", '/disapprove', {:class => "medium"} %>
+                <% end %>
+
+                </div>
             <% end %>
         </div>
 
@@ -217,5 +223,5 @@
     </div>
 </div>
 
-
+</div>
 

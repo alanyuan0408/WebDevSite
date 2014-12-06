@@ -57,11 +57,9 @@ $(initSummernote)</script>
 
                 <br><br>
 
-                <% if @user.email_confirmation_token != "confirmed" %>
-                    <div class="alert alert-error">
-                        Content Creators may only make posts after the Admin has approved their Account.
-                    </div>
-                <% end %>
+                <div class="alert alert-error">
+                    Content Creators may only make posts after the Admin has approved their Account.
+                </div>
 
             <% end %>
             

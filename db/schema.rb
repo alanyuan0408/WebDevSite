@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141206202909) do
+ActiveRecord::Schema.define(:version => 20141206211914) do
 
   create_table "feedbanks", :force => true do |t|
     t.string   "item_id"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20141206202909) do
     t.boolean  "sent_approval",            :default => false
     t.boolean  "confirmationMail",         :default => false
     t.string   "email_confirmation_token"
+    t.boolean  "content_disapproved",      :default => false
   end
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
