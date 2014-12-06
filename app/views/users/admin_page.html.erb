@@ -96,8 +96,6 @@
         </div>  
     
         <div class="panel-content">
-            Hello Admin.
-            <br><br>
             The number of confirmed users is <%= @confirmed_users %>
 
             <br><br>
@@ -107,17 +105,47 @@
     </div>
 
     <br>
-        <div class="panel-content">
-            <ul id="jobPosts" class="nav nav-tabs nav-stacked">
 
-                <% @users.each do |post| %>
-                    <% if !post.admin %>
-                        <li><a id="<%= post.id %>" ><%= post.name %></a></li>
+    <div class="tabbable"> <!-- Only required for left/right tabs -->
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Students</a></li>
+        <li><a href="#tab2" data-toggle="tab">Creators</a></li>
+        <li><a href="#tab3" data-toggle="tab">Posts</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+            <div class="panel-content">
+                <ul id="jobPosts" class="nav nav-tabs nav-stacked">
+
+                    <% @users.each do |post| %>
+                        <% if !post.admin %>
+                            <li><a id="<%= post.id %>" ><%= post.name %></a></li>
+                        <% end %>
                     <% end %>
-                <% end %>
 
-            </ul>
+                </ul>
+            </div>
         </div>
+        <div class="tab-pane" id="tab2">
+            <div class="panel-content">
+                <ul id="jobPosts" class="nav nav-tabs nav-stacked">
+
+                    <% @creators.each do |post| %>
+                        <% if !post.admin %>
+                            <li><a id="<%= post.id %>" ><%= post.name %></a></li>
+                        <% end %>
+                    <% end %>
+
+                </ul>
+            </div>
+        </div>
+        <div class="tab-pane" id="tab3">
+          <p>Howdy, I'm in Section 3.</p>
+        </div>
+      </div>
+    </div>
+
+
 
     <div class="row">
         <div class="span1 offset1">
@@ -159,7 +187,6 @@
                         <% end %>
                         
                         <% if post.content_creator %>
-                            <br>
                             <p>Organization: <%= post.organization %></p>
                             <p><b>Approval Message:</b></p>
                             <p><%= post.approval_message %></p>

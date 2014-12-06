@@ -9,7 +9,8 @@ class UsersController < ApplicationController
 
       if @user.admin && current_user.remember_token == @user.remember_token
         @post_request = User.where(sent_approval: true).where(content_approved: false).all
-        @users = User.all
+        @users = User.where(student_account: true).all
+        @creators = User.where(content_creator: true).all
         @confirmed_users = User.where(email_confirmation_token: "confirmed").length
         render 'admin_page'
 
