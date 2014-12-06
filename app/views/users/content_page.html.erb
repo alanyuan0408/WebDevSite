@@ -20,7 +20,7 @@ $(initSummernote)</script>
             <% if @user.content_approved %>
             	You're account is approved by the admin. All your future posts will be linked directly to our boards. Please note, the Admin reserves the right to suspend your posting privileges if the content becomes unprofessional.
 
-                            <%=simple_form_for Item.create, url: items_path do |f| %> 
+                            <%=simple_form_for Feedbank.create, url: items_path do |f| %> 
 
                 <%= f.label :title %>
                 <%= f.text_field :title, :size=>"150", placeholder: "Title of Post", :class => "css_text"  %>
@@ -83,16 +83,7 @@ $(initSummernote)</script>
             Current Posts
         </div>  
                     
-        <div class="panel-content">
-        	<% @jobPosts.each do |items| %>
-        		<h4><%= items.title %></h4>
-				<p><b>Contact: </b><%= items.contact %></p>
-				<p><b>Type_of: </b><%= items.type_of %></p>
-				<p style="white-space:pre-wrap;"><%= items.content %></p>
-				<br>
-			<% end %>
 
-        </div>
     </div>
 
     <br>          

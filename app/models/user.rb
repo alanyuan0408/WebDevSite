@@ -25,10 +25,9 @@ class User < ActiveRecord::Base
       self.account_created = true
     end
 
-    #if self.name == "Admin" && self.email = "alan.yuan@mail.utoronto.ca"
-    #  self.admin = "true"
-    #end
-    # We will create future Admin accounts by seed NOT by this horrible method
+    if self.name == "Admin" && self.email = "alan.yuan@mail.utoronto.ca"
+      self.admin = "true"
+    end
 
   end
 

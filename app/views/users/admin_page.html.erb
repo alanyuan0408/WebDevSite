@@ -8,13 +8,93 @@
         }
     </style>
 
+        <style>
+        .hidden_class {
+            display: none;
+        }
+    </style>
+
+    <script>
+        var top_element = 0
+        var bottom_element = <%= @users.length %> * 2;
+        var iterator_start = 0;
+        var iterator_end = 21;
+
+        var page_number = 1;
+
+        function navdirection(direction){
+            var jobPosts = document.getElementById("jobPosts").childNodes;
+            if (direction == 1 && iterator_end < bottom_element){
+                iterator_start += 20;
+                iterator_end += 20;
+                page_number += 1;
+                document.getElementById("pagenumber").innerHTML = page_number
+            } else if (direction == 0 && iterator_start > top_element){
+                iterator_start -= 20;
+                iterator_end -= 20;
+                page_number -= 1;
+                document.getElementById("pagenumber").innerHTML = page_number
+            }  else {
+                console.log("Do nothing");
+            }
+                        
+            for (i=0; i<jobPosts.length; i++){
+                if (i > iterator_start && i < iterator_end) {
+                    jobPosts[i].className = ""
+                } else {
+                    jobPosts[i].className = "hidden_class";
+                }
+            }
+
+        }
+
+        function initialize(){
+            var jobPosts = document.getElementById("jobPosts").childNodes;
+            var top_element = 0;
+            var bottom_element = 21;
+            var initalized = 0;
+            console.log("loaded");
+
+            for (i=0; i<jobPosts.length; i++){
+
+                if (i > top_element && i < bottom_element) {
+                    jobPosts[i].className = ""
+                } else {
+                    jobPosts[i].className = "hidden_class";
+                }
+            }
+
+
+            $("a").click(function(){
+
+                console.log($(this).attr('id'));
+
+                var jobPosting = document.getElementById("posts").childNodes;
+
+                for(i=0; i<jobPosting.length; i++){
+                    if (jobPosting[i].className == "selected"){
+                        jobPosting[i].className = "hidden_class";
+                    }
+
+                    if (jobPosting[i].id == $(this).attr('id')){
+                        jobPosting[i].className = "selected";
+                    }
+                }
+
+            });
+
+        }
+
+        $(document).ready(initialize);
+
+    </script>
+
+
     <div class="panel">
         <div class="panel-header bg-lightBlue fg-white">
             Hello Admin
         </div>  
-
-
-                    
+    
         <div class="panel-content">
             Hello Admin.
             <br><br>
@@ -23,33 +103,72 @@
             <br><br>
             <%= button_to "Sign Out", '/signout', {:class => "large"} %>
         </div>
+
     </div>
 
-    <br>          
-</div>
-
- <div class="span5">
-
-    <div class="panel">
-        <div class="panel-header bg-lightBlue fg-white">
-            Current Users
-        </div>  
-                    
+    <br>
         <div class="panel-content">
-            <% if !(@users.empty?) %>
-                <% @users.each do |user| %>
-                    <% if !user.admin %>
-                	   <p><b><%= user.name %></b><br>
-        				<%= user.email %><br>
-                        <%= link_to "delete", user, method: :delete %></p>   
-                    <% end %>  
-        		<% end %>
-            <% end %>
+            <ul id="jobPosts" class="nav nav-tabs nav-stacked">
 
+                <% @users.each do |post| %>
+                    <% if !post.admin %>
+                        <li><a id="<%= post.id %>" ><%= post.name %></a></li>
+                    <% end %>
+                <% end %>
+
+            </ul>
+        </div>
+
+    <div class="row">
+        <div class="span1 offset1">
+            <button id="prev" class="btn" onclick="navdirection(0)">Prev</button>
+        </div>
+
+        <div id= "pagenumber" class="span1" style="text-align:right">1</div>
+
+        <div class="span1 offset1">
+            <button id="next" class="btn" onclick="navdirection(1)">Next</button>
         </div>
     </div>
+       
+</div>
 
-    <br>          
+<div class="span5">
+
+    <div class="panel">
+        <div class="panel-header">
+            Users
+        </div>
+
+        <div class="panel-content" id= "posts" >
+            <% @users.each do |post| %>
+                <% if !post.admin %>
+                    <div id="<%= post.id %>" class="hidden_class">
+                        <p><b>Name: <%= post.name %></b></p>
+                        <p>Email: <%= post.email %></p>
+                        <p>Email Freq: <%= post.email_frequency %></p>
+                        <p>Web News: <%= post.web_club_newsletter %></p>
+                        <p>Research: <%= post.research %></p>
+                        <p>Jobs: <%= post.jobs %></p>
+                        <p>Events: <%= post.events %></p>
+                        <p>Expo Ticket: <%= post.expo_ticket %></p>
+                        <p>Next Send: <%= post.nextsend %></p>
+                        
+                            <% if post.content_creator %>
+                                <br>
+                                <p>Organization: <%= post.organization %></p>
+                                <p><b>Approval Message:</b></p>
+                                <p><%= post.approval_message %></p>
+                            <% end %>
+
+                        <br>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+
+             
+    </div>
 </div>
 
 
