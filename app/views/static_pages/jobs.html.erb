@@ -123,14 +123,14 @@
             Posting Information
         </div>
 
-        <div class="panel-content" id= "posts">
+        <div class="panel-content" id= "posts" >
             <% @jobPosts.each do |post| %>
-                <div id="<%= post.id %>" class="hidden_class">
+                <div id="<%= post.id %>" class="hidden_class" style="height:650px;">
                     <h2><%= post.item_title %></h2>
                     <br>
                     <p>Date: <%= post.item_date %></p>
                     <br>
-                    <p style ="word-wrap: break-word;">Content: <%= post.item_text.html_safe %></p>
+                    <p style ="word-wrap: break-word;overflow:scroll">Content: <%= post.item_text.html_safe %></p>
                     <br>
                 </div>
             <% end %>

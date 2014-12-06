@@ -20,7 +20,6 @@ class UsersController < ApplicationController
         render 'approve_creator'
 
       elsif @user.content_creator && @user.sent_approval && current_user.remember_token == @user.remember_token
-        @jobPosts = Item.where(type_of: "JobPost").where(owner: @user.name).all
         render 'content_page'
 
       elsif @user.student_account && current_user.remember_token == @user.remember_token
