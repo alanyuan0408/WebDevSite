@@ -127,11 +127,8 @@
             <% @jobPosts.each do |post| %>
                 <div id="<%= post.id %>" class="hidden_class">
                     <h2><%= post.item_title %></h2>
-                    <br>
                     <p>Date: <%= post.item_date %></p>
-                    <br>
-                    <a href="<%= post.item_url %>" >Link to the Event</a>
-                    <br>
+                    <p><a href="<%= post.item_url %>" >Link to the Event</a><p>
                     <p style ="height:417px;word-wrap: break-word;overflow-x:hidden">Content: <%= post.item_text.html_safe %></p>
                     <br>
                 </div>
