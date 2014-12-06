@@ -146,20 +146,24 @@
                     <div id="<%= post.id %>" class="hidden_class">
                         <p><b>Name: <%= post.name %></b></p>
                         <p>Email: <%= post.email %></p>
-                        <p>Email Freq: <%= post.email_frequency %></p>
-                        <p>Web News: <%= post.web_club_newsletter %></p>
-                        <p>Research: <%= post.research %></p>
-                        <p>Jobs: <%= post.jobs %></p>
-                        <p>Events: <%= post.events %></p>
-                        <p>Expo Ticket: <%= post.expo_ticket %></p>
-                        <p>Next Send: <%= post.nextsend %></p>
+
+                        <% if post.student_account %>
+                            <p>Email Freq: <%= post.email_frequency %></p>
+                            <p>Web News: <%= post.web_club_newsletter %></p>
+                            <p>Research: <%= post.research %></p>
+                            <p>Jobs: <%= post.jobs %></p>
+                            <p>Events: <%= post.events %></p>
+                            <p>Expo Ticket: <%= post.expo_ticket %></p>
+                            <p>Next Send: <%= post.nextsend %></p>
+                            <p>Email Conf: <%= post.confirmationMail %></p>
+                        <% end %>
                         
-                            <% if post.content_creator %>
-                                <br>
-                                <p>Organization: <%= post.organization %></p>
-                                <p><b>Approval Message:</b></p>
-                                <p><%= post.approval_message %></p>
-                            <% end %>
+                        <% if post.content_creator %>
+                            <br>
+                            <p>Organization: <%= post.organization %></p>
+                            <p><b>Approval Message:</b></p>
+                            <p><%= post.approval_message %></p>
+                        <% end %>
 
                         <br>
                     </div>
