@@ -23,7 +23,12 @@
         var page_number = 1;
 
         function navdirection(direction){
-            var jobPosts = document.getElementById("jobPosts").childNodes;
+            if (document.getElementById("studentTab").className == "active"){
+                var jobPosts = document.getElementById("userPost").childNodes;
+            } else {
+                var jobPosts = document.getElementById("creatorPost").childNodes;
+            }
+            
             if (direction == 1 && iterator_end < bottom_element){
                 iterator_start += 20;
                 iterator_end += 20;
@@ -49,7 +54,11 @@
         }
 
         function initialize(){
-            var jobPosts = document.getElementById("jobPosts").childNodes;
+            if (document.getElementById("studentTab").className == "active"){
+                var jobPosts = document.getElementById("userPost").childNodes;
+            } else {
+                var jobPosts = document.getElementById("creatorPost").childNodes;
+            }
             var top_element = 0;
             var bottom_element = 21;
             var initalized = 0;
@@ -108,14 +117,14 @@
 
     <div class="tabbable"> <!-- Only required for left/right tabs -->
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#tab1" data-toggle="tab">Students</a></li>
-        <li><a href="#tab2" data-toggle="tab">Creators</a></li>
-        <li><a href="#tab3" data-toggle="tab">Posts</a></li>
+        <li id="studentTab" class="active"><a href="#tab1" data-toggle="tab">Students</a></li>
+        <li id="creatorTab"><a href="#tab2" data-toggle="tab">Creators</a></li>
+        <li id="postTab"><a href="#tab3" data-toggle="tab">Posts</a></li>
       </ul>
       <div class="tab-content">
         <div class="tab-pane active" id="tab1">
             <div class="panel-content">
-                <ul id="jobPosts" class="nav nav-tabs nav-stacked">
+                <ul id="userPost" class="nav nav-tabs nav-stacked">
 
                     <% @users.each do |post| %>
                         <% if !post.admin %>
@@ -128,7 +137,7 @@
         </div>
         <div class="tab-pane" id="tab2">
             <div class="panel-content">
-                <ul id="jobPosts" class="nav nav-tabs nav-stacked">
+                <ul id="creatorPost" class="nav nav-tabs nav-stacked">
 
                     <% @creators.each do |post| %>
                         <% if !post.admin %>
@@ -140,7 +149,7 @@
             </div>
         </div>
         <div class="tab-pane" id="tab3">
-          <p>Howdy, I'm in Section 3.</p>
+
         </div>
       </div>
     </div>
@@ -165,7 +174,7 @@
 
     <div class="panel">
         <div class="panel-header">
-            Users
+            Selected Item
         </div>
 
         <div class="panel-content" id= "posts" >
@@ -175,23 +184,29 @@
                         <p><b>Name: <%= post.name %></b></p>
                         <p>Email: <%= post.email %></p>
 
-                        <% if post.student_account %>
-                            <p>Email Freq: <%= post.email_frequency %></p>
-                            <p>Web News: <%= post.web_club_newsletter %></p>
-                            <p>Research: <%= post.research %></p>
-                            <p>Jobs: <%= post.jobs %></p>
-                            <p>Events: <%= post.events %></p>
-                            <p>Expo Ticket: <%= post.expo_ticket %></p>
-                            <p>Next Send: <%= post.nextsend %></p>
-                            <p>Email Conf: <%= post.confirmationMail %></p>
-                        <% end %>
-                        
-                        <% if post.content_creator %>
-                            <p>Organization: <%= post.organization %></p>
-                            <p><b>Approval Message:</b></p>
-                            <p><%= post.approval_message %></p>
-                        <% end %>
+                        <p>Email Freq: <%= post.email_frequency %></p>
+                        <p>Web News: <%= post.web_club_newsletter %></p>
+                        <p>Research: <%= post.research %></p>
+                        <p>Jobs: <%= post.jobs %></p>
+                        <p>Events: <%= post.events %></p>
+                        <p>Expo Ticket: <%= post.expo_ticket %></p>
+                        <p>Next Send: <%= post.nextsend %></p>
+                        <p>Email Conf: <%= post.confirmationMail %></p>
 
+                        <br>
+                    </div>
+                <% end %>
+            <% end %>
+
+            <% @creators.each do |post| %>
+                <% if !post.admin %>
+                    <div id="<%= post.id %>" class="hidden_class">
+                        <p><b>Name: <%= post.name %></b></p>
+                        <p>Email: <%= post.email %></p>
+                        
+                        <p>Organization: <%= post.organization %></p>
+                        <p><b>Approval Message:</b></p>
+                        <p><%= post.approval_message %></p>
                         <br>
                     </div>
                 <% end %>
