@@ -95,7 +95,7 @@
 
     </script>
 
-    <ul id="jobPosts" class="nav nav-tabs nav-stacked">
+    <ul id="jobPosts" class="nav nav-tabs nav-stacked" onload="initialize()">
 
         <% @jobPosts.each do |post| %>
             <li><a id="<%= post.id %>" ><%= post.item_title %></a></li>
