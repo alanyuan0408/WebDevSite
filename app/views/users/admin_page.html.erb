@@ -189,11 +189,13 @@
                         <p>Expo Ticket: <%= post.expo_ticket %></p>
                         <p>Next Send: <%= post.nextsend %></p>
                         <p>Email Conf: <%= post.confirmationMail %></p>
-
+                        <p><%= link_to "delete", post, method: :delete %></p>
                         <br>
                     </div>
                 <% end %>
             <% end %>
+
+
 
             <% @creators.each do |post| %>
                 <% if !post.admin %>
@@ -204,16 +206,20 @@
                         <p>Organization: <%= post.organization %></p>
                         <p><b>Approval Message:</b></p>
                         <p><%= post.approval_message %></p>
+                        <p><%= link_to "delete", post, method: :delete %></p>
                         <br>
-                    
+
+                        <% if post.sent_approval && !post.content_approved %>
+                            <br>
+                            <%= form_for post, :url => url_for(:controller => "users", 
+                                :action => "approve_creator", :id => post.id) do |f|%>
+
+                                <%= f.submit "Approve Creator", class: "large" %>
+                            <% end %>
+                        <% end %>
+                    </div>
                 <% end %>
 
-                <% if post.sent_approval %>
-                    <br>
-                    <%= button_to "Approve Creator", '/approve', {:class => "medium"} %>
-                <% end %>
-
-                </div>
             <% end %>
         </div>
 

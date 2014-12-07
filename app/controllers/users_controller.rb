@@ -140,6 +140,11 @@ class UsersController < ApplicationController
   end
 
   def approve_creator 
+    @user  = User.find(params[:id])
+    @user.update_attribute(:content_approved, true);
 
+    @admin_user = User.find_by_name("Admin");
+    redirect_to @admin_user 
   end
+
 end

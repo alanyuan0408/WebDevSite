@@ -17,6 +17,8 @@ UoftWebSite::Application.routes.draw do
   match '/addPost', to: 'items#new'
   match '/items',   to: 'items#create'
 
+  match '/sessions/user', to: 'users#create', via: :post
+
   match '/developer',  to: 'static_pages#developer'
   match '/jobs',     to: 'static_pages#jobs'
   match '/useraccount',   to: 'static_pages#useraccount'
