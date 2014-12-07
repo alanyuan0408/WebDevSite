@@ -49,7 +49,16 @@
     }
 
     function initialize(){
-        var jobPosts = document.getElementById("jobPosts").childNodes;
+
+        //BAD CODING STYLE.
+
+        var getID = document.getElementById("jobPosts")
+
+        while(getID){
+            getID = document.getElementById("jobPosts")
+        }
+
+        var jobPosts = getID.childNodes;
 
 
         var top_element = 0;

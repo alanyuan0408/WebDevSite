@@ -54,7 +54,14 @@
         }
 
         function initialize(){
-            var jobPosts = document.getElementById("jobPosts").childNodes;
+            var getID = document.getElementById("jobPosts")
+
+            while(getID){
+                getID = document.getElementById("jobPosts")
+            }
+
+            var jobPosts - getID.childNodes;
+
             var top_element = 0;
             var bottom_element = 21;
             var initalized = 0;
