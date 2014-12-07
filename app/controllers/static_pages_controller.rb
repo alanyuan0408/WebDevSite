@@ -42,8 +42,8 @@ class StaticPagesController < ApplicationController
   def news
     login_method
 
-    @currentPage = {:events => "active"};
-    @jobPosts = Feedbank.where(:column_type => 2).order("item_date desc")
+    @currentPage = {:news => "active"};
+    @jobPosts = Feedbank.where(:column_type => 3).order("item_date desc")
     #1 is Jobs, #2 is Events
 
   end
@@ -52,7 +52,7 @@ class StaticPagesController < ApplicationController
     login_method
 
     @currentPage = {:events => "active"};
-    @jobPosts = Feedbank.where(:column_type => 3).order("item_date desc")
+    @jobPosts = Feedbank.where(:column_type => 2).order("item_date desc")
     #1 is Jobs, #2 is Events
 
   end
