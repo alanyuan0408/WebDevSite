@@ -19,7 +19,7 @@
 
     function navdirection(direction){
         if (document.getElementById("studentTab").className == "active"){
-            var jobPosts = document.getElementById("userPost").childNodes;
+            var jobPosts = document.getElementById("jobPosts").childNodes;
         } else {
             var jobPosts = document.getElementById("creatorPost").childNodes;
         }
@@ -49,7 +49,7 @@
     }
 
     function initialize(){
-        var jobPosts = document.getElementById("userPost").childNodes;
+        var jobPosts = document.getElementById("jobPosts").childNodes;
 
 
         var top_element = 0;
@@ -119,7 +119,7 @@
       <div class="tab-content">
         <div class="tab-pane active" id="tab1">
             <div class="panel-content">
-                <ul id="userPost" class="nav nav-tabs nav-stacked" onload="initialize()">
+                <ul id="jobPosts" class="nav nav-tabs nav-stacked" onload="initialize()">
 
                     <% @users.each do |post| %>
                         <% if !post.admin %>
