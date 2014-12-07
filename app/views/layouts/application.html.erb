@@ -44,17 +44,19 @@
 
 						        <li class="stick bg-green"><%= link_to "<i class='icon-mic'></i>Facebook Page".html_safe, " https://www.facebook.com/pages/Uoft-Web-Development-Club/571896212842252", :target => 'new' %></li>
 
+						        <li class="<%= @currentPage[:entrepreneur] %> stick bg-yellow"><%= link_to "<i class='icon-home'></i>Research & Entrepreneur Expo".html_safe, "/entrepreneur" %></li>
+
 						        
 						        <!-- Computer science Section -->
 						        <li class="title">Computer Science</li>
 
-						        <li class="<%= @currentPage[:events] %> stick bg-red"><%= link_to "<i class='icon-cog'></i>Computer Science Events".html_safe, "/event" %></li>
+						        <li class="<%= @currentPage[:useraccount] %> stick bg-green"><%= link_to "<i class='icon-mail'></i>".html_safe + @user_name, "/useraccount" %></li>
 
-						         <li class="<%= @currentPage[:useraccount] %> stick bg-green"><%= link_to "<i class='icon-mail'></i>".html_safe + @user_name, "/useraccount" %></li>
-
-						         <li class="<%= @currentPage[:entrepreneur] %> stick bg-yellow"><%= link_to "<i class='icon-home'></i>Research & Entrepreneur Expo".html_safe, "/entrepreneur" %></li>
+						        <li class="<%= @currentPage[:events] %> stick bg-yellow"><%= link_to "<i class='icon-cog'></i>Computer Science Events".html_safe, "/event" %></li>
 
 						         <li class="<%= @currentPage[:jobs] %> stick bg-red"><%= link_to "<i class='icon-newspaper'></i>Jobs and Opportunities".html_safe, "/jobs" %></li>
+
+						         <li class="<%= @currentPage[:news] %> stick bg-green"><%= link_to "<i class='icon-clipboard-2'></i>News Updates".html_safe, "/news" %></li>
 
 						    </ul>
 						</nav>

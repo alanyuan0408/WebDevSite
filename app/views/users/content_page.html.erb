@@ -20,36 +20,29 @@ $(initSummernote)</script>
             <% if @user.content_approved %>
             	You're account is approved by the admin. All your future posts will be linked directly to our boards. Please note, the Admin reserves the right to suspend your posting privileges if the content becomes unprofessional.
 
-                            <%=simple_form_for Feedbank.create, url: items_path do |f| %> 
+                <%= form_for Feedbank.create, url: items_path do |f| %> 
 
-                <%= f.label :title %>
-                <%= f.text_field :title, :size=>"150", placeholder: "Title of Post", :class => "css_text"  %>
+                    <%= f.label :title %>
+                    <%= f.text_field :title, :size=>"150", placeholder: "Title of Post", :class => "css_text"  %>
 
-                <%= f.label :contact %>
-                <%= f.text_field :contact, :size=>"150", :value => @user.email, :class => "css_text"  %>
+                    <%= f.label :contact %>
+                    <%= f.text_field :contact, :size=>"150", :value => @user.email, :class => "css_text"  %>
 
-                <%= f.hidden_field :owner, :value => @user.name %>
-                <%= f.hidden_field :type_of, :value => "JobPost" %>
-                <br><br>
+                    <%= f.hidden_field :owner, :value => @user.name %>
+                    <%= f.hidden_field :type_of, :value => "JobPost" %>
+                    <br><br>
 
-                <select>
-                  <option>Job Offer</option>
-                  <option>Event</option>
-                  <option>Research Opportunity</option>
-                  <option>Important Reminder</option>
-                  <option>Entreprenuership Offer</option>
-                </select>
 
-                <br><br>
+                    <br><br>
 
-                <%= f.label :content %>
-                <%= f.text_area :content, :rows => "6", placeholder: "Event Message", :class => "css_text", input_html: { class: 'summernote', id: "jobInfoInput"} %>
+                    <%= f.label :content %>
+                    <%= f.text_area :content, :rows => "6", placeholder: "Event Message", :class => "css_text", input_html: { class: 'summernote', id: "jobInfoInput"} %>
 
-                <br><br>
+                    <br><br>
 
-                <%= f.submit "Add New Post", class: "large" %>
+                    <%= f.submit "Add New Post", class: "large" %>
 
-                <br>
+                    <br>
 
             <% end %>
             <% elsif %>

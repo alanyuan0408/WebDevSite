@@ -137,5 +137,9 @@ class UsersController < ApplicationController
       @user.update_column(:email_confirmation_token, "confirmed")
       render 'users/confirmMail'
     end 
-  end 
+  end
+
+  def approve_creator 
+
+  end
 end

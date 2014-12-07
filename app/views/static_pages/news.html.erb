@@ -1,14 +1,12 @@
-
-
 <div class="span5">
 
     <div class="panel">
         <div class="panel-header bg-lightBlue fg-white">
-              Jobs and Opportunities
+              News Updates
         </div>  
                 
         <div class="panel-content">
-            The following Job Postings are provided by the Jobs and Experience section of the Computer Science Discussion Board as well as various recruiters.<br>
+            Here are all the News Updates, reminders submitted by the department and various Computer Science Leaders. <br>
         </div>
     </div>
 
@@ -123,16 +121,16 @@
 
     <div class="panel">
         <div class="panel-header">
-            Posting Information
+            News Updates
         </div>
 
-        <div class="panel-content" id= "posts" >
+        <div class="panel-content" id= "posts">
             <% @jobPosts.each do |post| %>
                 <div id="<%= post.id %>" class="hidden_class">
                     <h2><%= post.item_title %></h2>
                     <p>Date: <%= post.item_date %></p>
-                    <p><a href="<%= post.item_url %>" >Link to the CS Job Board</a><p>
-                    <div style ="height:417px;word-wrap: break-word;overflow-x:hidden"><p>Content: <%= post.item_text.html_safe %></p>
+                    <p><a href="<%= post.item_url %>" >Link to the Event</a><p>
+                    <div style ="height:417px;word-wrap: break-word;overflow-x:hidden">Content: <%= post.item_text.html_safe %></p>
                     </div>
                     <br>
                 </div>

@@ -39,11 +39,20 @@ class StaticPagesController < ApplicationController
     @number_of_participants = User.where(:expo_ticket => true).length;
   end
 
-  def events
+  def news
     login_method
 
     @currentPage = {:events => "active"};
     @jobPosts = Feedbank.where(:column_type => 2).order("item_date desc")
+    #1 is Jobs, #2 is Events
+
+  end
+
+  def events
+    login_method
+
+    @currentPage = {:events => "active"};
+    @jobPosts = Feedbank.where(:column_type => 3).order("item_date desc")
     #1 is Jobs, #2 is Events
 
   end

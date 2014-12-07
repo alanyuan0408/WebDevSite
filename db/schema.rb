@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141206211914) do
+ActiveRecord::Schema.define(:version => 20141207203038) do
 
   create_table "feedbanks", :force => true do |t|
     t.string   "item_id"
@@ -28,12 +28,13 @@ ActiveRecord::Schema.define(:version => 20141206211914) do
   create_table "items", :force => true do |t|
     t.string   "title"
     t.string   "contact"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.string   "type_of"
-    t.binary   "content",     :limit => 15728640
-    t.text     "information", :limit => 15728640
+    t.binary   "content",         :limit => 15728640
+    t.text     "information",     :limit => 15728640
     t.string   "owner"
+    t.string   "approval_status"
   end
 
   create_table "users", :force => true do |t|

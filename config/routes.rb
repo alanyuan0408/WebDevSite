@@ -23,6 +23,7 @@ UoftWebSite::Application.routes.draw do
   match '/entrepreneur', to: 'static_pages#entrepreneur'
   match '/home',      to: 'static_pages#home'
   match '/event',      to: 'static_pages#events'
+  match '/news',      to: 'static_pages#news'
 
   match '/register_expo', to: 'users#register_expo'
   match '/unregister_expo', to: 'users#unregister_expo'
