@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     if User.exists?(params[:id])
       @user = User.find(params[:id])
       @user_name = @user.name
-      @feedbank_posts = Feedbank.all
+      @feedbank_posts = Feedbank.where(user_id: @user.id)
 
       if @user.admin && current_user.remember_token == @user.remember_token
         @post_request = User.where(sent_approval: true).where(content_approved: false).all
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
         @creators = User.where(content_creator: true).order("created_at desc")
         @confirmed_users = User.where(email_confirmation_token: "confirmed").length
 
-        @user_posts = Feedbank.where(user_id: "@user.id")
+        @user_posts = Feedbank.where(approval_status: false).all
         render 'admin_page'
 
       elsif (!@user.account_selected) && current_user.remember_token == @user.remember_token

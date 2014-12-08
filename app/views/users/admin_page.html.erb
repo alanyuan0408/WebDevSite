@@ -149,7 +149,7 @@
             <div class="panel-content">
                 <ul id="feedbankPost" class="nav nav-tabs nav-stacked">
 
-                    <% @feedbank_posts.each do |post| %>
+                    <% @user_posts.each do |post| %>
                         <% if !post.approval_status %>
                             <li><a id="<%= post.id %>" ><%= post.item_title %></a></li>
                         <% end %>
@@ -230,22 +230,23 @@
 
             <% end %>
 
-            <% @feedbank_posts.each do |post| %>
-                    <div id="<%= post.id %>" class="hidden_class">
-                        <p><b>Item Title: <%= post.item_title %></b></p>
-                        <p>URL: <%= post.item_url %></p>
+            <% @user_posts.each do |post| %>
+                <div id="<%= post.id %>" class="hidden_class">
+                    <p><b>Item Title: <%= post.item_title %></b></p>
+                    <p>URL: <%= post.item_url %></p>
 
-                        <p>Date: <%= post.item_date %></p>
-                        <p>User ID: <%= post.user_id%></p>
-                        <p>Column Type: <%= post.column_type %></p>
-                        <p>Text: <%= post.item_text %></p>
-                        <p>Approval Status: <%= post.approval_status %></p>
+                    <p>Date: <%= post.item_date %></p>
+                    <p>User ID: <%= post.user_id%></p>
+                    <p>Column Type: <%= post.column_type %></p>
+                    <p>Text: <%= post.item_text %></p>
+                    <p>Approval Status: <%= post.approval_status %></p>
 
-                        <br>
+                    <br>
 
-                        <%= form_for :feedbank, :url => '/feedbanks#approve_content', :id => post.id do |f|%>
+                    <%= form_for post, :url => url_for(:controller => "feedbanks", 
+                            :action => "approve_content", :id => post.id) do |f|%>
 
-                            <%= f.submit "Approve Content", class: "large" %>
+                        <%= f.submit "Approve Post", class: "large" %>
                     <% end %>
                 </div>
             <% end %>
