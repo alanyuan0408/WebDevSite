@@ -27,7 +27,7 @@ $(initSummernote)</script>
                         <%= f.label :item_url %>
                         <%= f.text_field :item_url, :size=>"150", :class => "title_width", placeholder: "Url to the Post"  %>
 
-                        <%= f.hidden_field :user_id, :value => "@user.id" %>
+                        <%= f.hidden_field :user_id, :value => @user.id %>
                         <%= f.hidden_field :item_date, :value => Time.current %>
                         <%= f.hidden_field :approval_status, :value => "false" %>
 
@@ -81,17 +81,19 @@ $(initSummernote)</script>
                    
         <div class="panel-content">
 
-            <% if @feedbank_posts %>
-                <% @feedbank_posts.each do |post| %>
+            <% @feedbank_posts.each do |post| %>
+                <div id="<%= post.id %>" class="hidden_class">
+                    <p><b>Title: <%= post.item_title %></b></p>
+                    <p>URL: <%= post.item_url %></p>
 
-                    <h4>Item Title <%= @post.item_title %></h4>
-                    <p>Item URL <%= @post.item_url %></p>
-                    <p>Item Date <%= @post.item_date %></p>
-                    <p>Approval Status <%= @post.approval_status %></p>
+                    <p>Date: <%= post.item_date %></p>
+                    <p>User ID: <%= post.user_id%></p>
+                    <p>Column Type: <%= post.column_type %></p>
+                    <p>Text: <%= post.item_text %></p>
+                    <p>Post Approved: <%= post.approval_status %>
 
-                    <p>Item Text <%= @post.item_text %></p>
-
-                <% end %>
+                    <hr>
+                </div>
             <% end %>
         </div>
 

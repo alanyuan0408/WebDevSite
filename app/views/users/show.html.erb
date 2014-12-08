@@ -112,6 +112,7 @@
 				    <div class="panel">
 				        <div class="panel-header bg-lightBlue fg-white">
 				            Hello <%= @user.name %>
+				            <%= @user.id %>
 				        </div>  
 				                    
 				        <div class="panel-content">
@@ -126,7 +127,7 @@
 				                    <%= f.label :item_url %>
 				                    <%= f.text_field :item_url, :size=>"150", :class => "title_width", placeholder: "Url to the Post"  %>
 
-				                    <%= f.hidden_field :user_id, :value => "@user.id"%>
+				                    <%= f.hidden_field :user_id, :value => @user.id %>
 				                    <%= f.hidden_field :item_date, :value => Time.current %>
 				                    <%= f.hidden_field :approval_status, :value => "false" %>
 
