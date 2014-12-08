@@ -126,14 +126,16 @@
 
         <div class="panel-content" id= "posts">
             <% @jobPosts.each do |post| %>
-                <div id="<%= post.id %>" class="hidden_class">
-                    <h2><%= post.item_title %></h2>
-                    <p>Date: <%= post.item_date %></p>
-                    <p><a href="<%= post.item_url %>" >Link to the Event</a><p>
-                    <div style ="height:417px;word-wrap: break-word;overflow-x:hidden">Content: <%= post.item_text.html_safe %></p>
+                <% if post.approval_status %>
+                    <div id="<%= post.id %>" class="hidden_class">
+                        <h2><%= post.item_title %></h2>
+                        <p>Date: <%= post.item_date %></p>
+                        <p><a href="<%= post.item_url %>" >Link to the Event</a><p>
+                        <div style ="height:417px;word-wrap: break-word;overflow-x:hidden">Content: <%= post.item_text.html_safe %></p>
+                        </div>
+                        <br>
                     </div>
-                    <br>
-                </div>
+                <% end %>
             <% end %>
         </div>
              

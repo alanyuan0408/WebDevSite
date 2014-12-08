@@ -146,7 +146,15 @@
             </div>
         </div>
         <div class="tab-pane" id="tab3">
+            <div class="panel-content">
+                <ul id="feedbankPost" class="nav nav-tabs nav-stacked">
 
+                    <% @feedbank_posts.each do |post| %>
+                        <li><a id="<%= post.id %>" ><%= post.item_title %></a></li>
+                    <% end %>
+
+                </ul>
+            </div>
         </div>
       </div>
     </div>
@@ -188,7 +196,7 @@
                         <p>Events: <%= post.events %></p>
                         <p>Expo Ticket: <%= post.expo_ticket %></p>
                         <p>Next Send: <%= post.nextsend %></p>
-                        <p>Email Conf: <%= post.confirmationMail %></p>
+                        <p>Email Conf: <%= post.email_confirmation_token %></p>
                         <p><%= link_to "delete", post, method: :delete %></p>
                         <br>
                     </div>

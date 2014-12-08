@@ -19,32 +19,38 @@ $(initSummernote)</script>
             <% if @user.content_approved %>
             	<p>You're account has approved by the admin.</p><br>
 
-                <%= form_for Feedbank.create, url: items_path do |f| %> 
+                    <%= form_for :feedbank do |f| %> 
 
-                    <%= f.label :item_title %>
-                    <%= f.text_field :item_title, placeholder: "Title of Post", :class => "css_text"  %>
+                        <%= f.label :item_title %>
+                        <%= f.text_field :item_title, placeholder: "Title of Post", :class => "title_width"  %>
 
-                    <%= f.label :item_url %>
-                    <%= f.text_field :item_url, :size=>"150", :class => "css_text"  %>
+                        <%= f.label :item_url %>
+                        <%= f.text_field :item_url, :size=>"150", :class => "title_width", placeholder: "Url to the Post"  %>
 
-                    <%= f.label :item_date %>
-                    <%= f.text_field :item_date, :size=>"150", :class => "css_text"  %>
+                        <%= f.hidden_field :user_id, :value => "@user.id" %>
+                        <%= f.hidden_field :item_date, :value => Time.current %>
+                        <%= f.hidden_field :approval_status, :value => "false" %>
 
-                    <%= f.label :column_type %>
-                    <%= f.text_field :column_type, :size=>"150", :class => "css_text"  %>
-                    <br>
+                        <%= f.label :column_type, "Post Type" %>
 
-                    <%= f.label :item_text %>
-                    <%= f.text_area :item_text, :rows => "6", placeholder: "Event Message", :class => "css_text", input_html: { class: 'summernote', id: "jobInfoInput"} %>
+                        <%= f.select(:column_type, [["Job Post", 1], ["Event Post", 2], ["News Update", 3], ["Research", 4]]) %>
 
-                    <br>
+                        <!-- #1 is Jobs, #2 is Events, #3 is News, #4 is Research
+                                        -->
+                        <br>
+                        <br>
 
-                    <%= f.submit "Add New Post", class: "large" %>
+                        <%= f.label :item_text %>
+                        <%= f.text_area :item_text, :rows => "6", placeholder: "Event Message", :class => "full_width", input_html: { class: 'summernote', id: "jobInfoInput"} %>
 
-                    <br>
+                        <br><br>
 
-            <% end %>
-            <% elsif %>
+                        <%= f.submit "Add New Post", class: "large" %>
+
+                        <br>
+
+                    <% end %>
+                <% elsif %>
             	You're request for a content creator account is pending. Your current posts will be posted on the boards when your approval has been approved by the admin.
 
                 <br><br>
@@ -72,7 +78,22 @@ $(initSummernote)</script>
         <div class="panel-header bg-lightBlue fg-white">
             Current Posts
         </div>  
-                    
+                   
+        <div class="panel-content">
+
+            <% if @feedbank_posts %>
+                <% @feedbank_posts.each do |post| %>
+
+                    <h4>Item Title <%= @post.item_title %></h4>
+                    <p>Item URL <%= @post.item_url %></p>
+                    <p>Item Date <%= @post.item_date %></p>
+                    <p>Approval Status <%= @post.approval_status %></p>
+
+                    <p>Item Text <%= @post.item_text %></p>
+
+                <% end %>
+            <% end %>
+        </div>
 
     </div>
 

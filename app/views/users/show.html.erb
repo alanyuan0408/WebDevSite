@@ -1,8 +1,16 @@
 <div class="span9 offset1">
 
 	<style>
-		.css_text {
+		.css_text{
 			width: 85%;
+		}
+
+		.full_width {
+			width: 95%;
+		}
+
+		.title_width {
+			width: 50%;
 		}
 	</style>
 		
@@ -16,6 +24,7 @@
 	    <li class="active"><a href="#tab1" data-toggle="tab">Mailing Settings</a></li>
 	    <li><a href="#tab2" data-toggle="tab">Content Creator</a></li>
 	    <li><a href="#tab3" data-toggle="tab">Help Section</a></li>
+	    <li><a href="#tab4" data-toggle="tab">Your Posts</a></li>
 	  </ul>
 
 	  <div class="tab-content">
@@ -98,7 +107,7 @@
 
 
 	      <% else %>
-	      	 <div class="span5">
+	      	 <div class="span9">
 
 				    <div class="panel">
 				        <div class="panel-header bg-lightBlue fg-white">
@@ -109,23 +118,32 @@
 				            <% if @user.content_approved %>
 				            	<p>You're account has approved by the admin.</p><br>
 
-				                <%= form_for Feedbank.create, url: items_path do |f| %> 
+				                <%= form_for :feedbank, :url => '/feedbanks#create' do |f| %> 
 
 				                    <%= f.label :item_title %>
-				                    <%= f.text_field :item_title, placeholder: "Title of Post", :class => "css_text"  %>
+				                    <%= f.text_field :item_title, placeholder: "Title of Post", :class => "title_width"  %>
 
 				                    <%= f.label :item_url %>
-				                    <%= f.text_field :item_url, :size=>"150", :class => "css_text"  %>
+				                    <%= f.text_field :item_url, :size=>"150", :class => "title_width", placeholder: "Url to the Post"  %>
 
-				                    <%= f.label :item_date %>
-				                    <%= f.text_field :item_date, :size=>"150", :class => "css_text"  %>
+				                    <%= f.hidden_field :user_id, :value => "@user.id" %>
+				                    <%= f.hidden_field :item_date, :value => Time.current %>
+				                    <%= f.hidden_field :approval_status, :value => "false" %>
 
-				                    <%= f.label :column_type %>
-				                    <%= f.text_field :column_type, :size=>"150", :class => "css_text"  %>
+
+				                    <%= f.label :column_type, "Post Type" %>
+
+				                    <%= f.select(:column_type, [["Job Post", 1], ["Event Post", 2], ["News Update", 3],
+				                    	["Research", 4]]) %>
+
+				                    <!-- #1 is Jobs, #2 is Events, #3 is News, #4 is Research
+										-->
+
+				                    <br>
 				                    <br>
 
 				                    <%= f.label :item_text %>
-				                    <%= f.text_area :item_text, :rows => "6", placeholder: "Event Message", :class => "css_text", input_html: { class: 'summernote', id: "jobInfoInput"} %>
+				                    <%= f.text_area :item_text, :rows => "6", placeholder: "Event Message", :class => "full_width", input_html: { class: 'summernote', id: "jobInfoInput"} %>
 
 				                    <br>
 
@@ -151,18 +169,6 @@
 				    <br>          
 				</div>
 
-				 <div class="span4">
-
-				    <div class="panel">
-				        <div class="panel-header bg-lightBlue fg-white">
-				            Current Posts
-				        </div>  
-				                    
-
-				    </div>
-
-				    <br>          
-				</div>
 	      <% end %>
 	    </div>
 
@@ -181,6 +187,14 @@
 			<h4>Webpage Development</h4>
 			<p>The custom mailing system is currently designed for the Computer Science Department. I would like to personally expand a similar system for the engineering department as well as all other departments inside the University. If would like to make this a reality, please send me an email at alan.yuan@mail.utoronto.ca</p>
 
+
+	    </div>
+
+	   	<div class="tab-pane" id="tab4">
+
+	   	  <h3>Your Posts </h3><hr>
+
+	   	  
 
 	    </div>
 

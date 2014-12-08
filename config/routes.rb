@@ -1,6 +1,5 @@
 UoftWebSite::Application.routes.draw do
   resources :users
-  resources :items
   resources :feedbanks
   resources :sessions, only: [:new, :create, :destroy]
 
@@ -14,8 +13,6 @@ UoftWebSite::Application.routes.draw do
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy'
   match '/update', to: 'users#edit'
-  match '/addPost', to: 'items#new'
-  match '/items',   to: 'items#create'
 
   match '/developer',  to: 'static_pages#developer'
   match '/jobs',     to: 'static_pages#jobs'
@@ -41,6 +38,7 @@ UoftWebSite::Application.routes.draw do
   match "/500" => 'users#permissiondenied'
 
   match "/feedbanks" => 'feedbanks#show'
+  match "/feedcreate" => 'feedbanks#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
