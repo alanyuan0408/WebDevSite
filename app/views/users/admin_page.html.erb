@@ -231,7 +231,6 @@
             <% end %>
 
             <% @feedbank_posts.each do |post| %>
-                <% if !post.approval_status %>
                     <div id="<%= post.id %>" class="hidden_class">
                         <p><b>Item Title: <%= post.item_title %></b></p>
                         <p>URL: <%= post.item_url %></p>
@@ -240,16 +239,15 @@
                         <p>User ID: <%= post.user_id%></p>
                         <p>Column Type: <%= post.column_type %></p>
                         <p>Text: <%= post.item_text %></p>
+                        <p>Approval Status: <%= post.approval_status %></p>
 
                         <br>
 
-                        <%= form_for post, :url => url_for(:controller => "users", 
-                                :action => "approve_content", :id => post.id) do |f|%>
+                        <%= form_for :feedbank, :url => '/feedbanks#approve_content', :id => post.id do |f|%>
 
                             <%= f.submit "Approve Content", class: "large" %>
-                        <% end %>
-                    </div>
-                <% end %>
+                    <% end %>
+                </div>
             <% end %>
 
         </div>
