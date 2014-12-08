@@ -1,53 +1,194 @@
 <div class="span9 offset1">
+
+	<style>
+		.css_text {
+			width: 85%;
+		}
+	</style>
 		
 	<h2>Welcome <%= @user.name %></h2>
 
 	<br>
 
-	<% if @user.email_confirmation_token != "confirmed" %>
-		<div class="alert alert-error">
-			Emails will only be sent after you confirm your email.
+	<div class="tabbable">
+
+	  <ul class="nav nav-tabs">
+	    <li class="active"><a href="#tab1" data-toggle="tab">Mailing Settings</a></li>
+	    <li><a href="#tab2" data-toggle="tab">Content Creator</a></li>
+	    <li><a href="#tab3" data-toggle="tab">Help Section</a></li>
+	  </ul>
+
+	  <div class="tab-content">
+	    <div class="tab-pane active" id="tab1">
+
+	      <% if @user.email_confirmation_token != "confirmed" %>
+				<div class="alert alert-error">
+					Emails will only be sent after you confirm your email.
+				</div>
+			<% end %>
+
+			<h4>Here are your Mailing Settings</h4>
+
+			<p>Your Email will be sent in a frequency of <%= @user.email_frequency %> days</p>
+
+			<br>
+
+			<% if @user.web_club_newsletter %>
+				<p><i class='icon-checkmark'></i>  Your Email <b>will</b> include News Updates</p>
+			<% else %> 
+				<p><i class='icon-cancel-2'></i>  Your Email <b>will not</b> include News Updates</p>
+			<% end %>
+			<br>
+
+			<% if @user.research %>
+				<p><i class='icon-checkmark'></i>  Your Email <b>will</b> include Research Opportunities</p>
+			<% else %> 
+				<p><i class='icon-cancel-2'></i>  Your Email <b>will not</b> include Research Opportunities</p>
+			<% end %>
+			<br>
+
+			<% if @user.jobs %>
+				<p><i class='icon-checkmark'></i>  Your Email <b>will</b> include Job Updates</p>
+			<% else %> 
+				<p><i class='icon-cancel-2'></i>  Your Email <b>will not</b> include Job Updates</p>
+			<% end %>
+			<br>
+
+			<% if @user.events %>
+				<p><i class='icon-checkmark'></i>  Your Email <b>will</b> include Events</p>
+			<% else %> 
+				<p><i class='icon-cancel-2'></i>  Your Email <b>will not</b> include Events</p>
+			<% end %>
+
+			<br>
+
+			<%= button_to "Update Settings", '/update', {:class => "large"} %>
+	    </div>
+
+	    <div class="tab-pane" id="tab2">
+	      <% if !@user.content_creator %>
+
+	      <div class="span6">
+		                    
+		        <div class="panel-content">
+		            <h4>Request for Content Creator </h4>
+		            <br>
+		            <p>Please send a message indiciating your request for the admin to approve</p>
+		            <br>
+		            <%= form_for @user, :url => url_for(:controller => "users", 
+                                :action => "request_creator") do |f| %>
+
+		                <%= f.label :name %>
+		                <%= f.text_field :name, :value => @user.name, :class => "css_text" %>
+
+		                <%= f.label :organization %>
+		                <%= f.text_field :organization, placeholder: "organization", :class => "css_text" %>
+
+		                <%= f.label :approval_message, "Message to Admin" %>
+		                <%= f.text_area :approval_message, :rows => "6", placeholder: "Message for Administrators", :class => "css_text"  %>
+
+		                <br><br>
+
+		                <%= f.submit "Request Account", class: "large" %>
+		            <% end %>
+
+		        </div>
+
 		</div>
-	<% end %>
 
-	<h4>Here are your current settings</h4>
 
-	<p>Your Email will be sent in a frequency of <%= @user.email_frequency %> days</p>
+	      <% else %>
+	      	 <div class="span5">
+
+				    <div class="panel">
+				        <div class="panel-header bg-lightBlue fg-white">
+				            Hello <%= @user.name %>
+				        </div>  
+				                    
+				        <div class="panel-content">
+				            <% if @user.content_approved %>
+				            	<p>You're account has approved by the admin.</p><br>
+
+				                <%= form_for Feedbank.create, url: items_path do |f| %> 
+
+				                    <%= f.label :item_title %>
+				                    <%= f.text_field :item_title, placeholder: "Title of Post", :class => "css_text"  %>
+
+				                    <%= f.label :item_url %>
+				                    <%= f.text_field :item_url, :size=>"150", :class => "css_text"  %>
+
+				                    <%= f.label :item_date %>
+				                    <%= f.text_field :item_date, :size=>"150", :class => "css_text"  %>
+
+				                    <%= f.label :column_type %>
+				                    <%= f.text_field :column_type, :size=>"150", :class => "css_text"  %>
+				                    <br>
+
+				                    <%= f.label :item_text %>
+				                    <%= f.text_area :item_text, :rows => "6", placeholder: "Event Message", :class => "css_text", input_html: { class: 'summernote', id: "jobInfoInput"} %>
+
+				                    <br>
+
+				                    <%= f.submit "Add New Post", class: "large" %>
+
+				                    <br>
+
+				            <% end %>
+				            <% elsif %>
+				            	You're request for a content creator account is pending. Your current posts will be posted on the boards when your approval has been approved by the admin.
+
+				                <br><br>
+
+				                <div class="alert alert-error">
+				                    Content Creators may only make posts after the Admin has approved their Account.
+				                </div>
+
+				            <% end %>
+
+				        </div>
+				    </div>
+
+				    <br>          
+				</div>
+
+				 <div class="span4">
+
+				    <div class="panel">
+				        <div class="panel-header bg-lightBlue fg-white">
+				            Current Posts
+				        </div>  
+				                    
+
+				    </div>
+
+				    <br>          
+				</div>
+	      <% end %>
+	    </div>
+
+	   	<div class="tab-pane" id="tab3">
+
+	   	  <h3>Help Section </h3><hr>
+	     	<h4>Customized Mailing</h4>
+
+			<p>The Web Development Club would like to keep you posted with new job offers, entrepreneurship events and research opportunities. We would like to give you the freedom to customize these settings to better fit your needs. We will mailing them into your inbox based on your settings.</p>
+			<hr>
+
+			<h4>Content Creator</h4>
+			<p>We apprepicate the continued support of the students as well as the student leaders in bringing many of these events to our attention. If you would like to post anything for other students to view, please request to become a Content Creator under the Content Creator Tab</p>
+
+			<hr>
+			<h4>Webpage Development</h4>
+			<p>The custom mailing system is currently designed for the Computer Science Department. I would like to personally expand a similar system for the engineering department as well as all other departments inside the University. If would like to make this a reality, please send me an email at alan.yuan@mail.utoronto.ca</p>
+
+
+	    </div>
+
+	  </div>
+	</div>
 
 	<br>
-
-	<% if @user.web_club_newsletter %>
-		<p><i class='icon-checkmark'></i>  Your Email <b>will</b> include News Updates</p>
-	<% else %> 
-		<p><i class='icon-cancel-2'></i>  Your Email <b>will not</b> include News Updates</p>
-	<% end %>
 	<br>
-
-	<% if @user.research %>
-		<p><i class='icon-checkmark'></i>  Your Email <b>will</b> include Research Opportunities</p>
-	<% else %> 
-		<p><i class='icon-cancel-2'></i>  Your Email <b>will not</b> include Research Opportunities</p>
-	<% end %>
-	<br>
-
-	<% if @user.jobs %>
-		<p><i class='icon-checkmark'></i>  Your Email <b>will</b> include Job Updates</p>
-	<% else %> 
-		<p><i class='icon-cancel-2'></i>  Your Email <b>will not</b> include Job Updates</p>
-	<% end %>
-	<br>
-
-	<% if @user.events %>
-		<p><i class='icon-checkmark'></i>  Your Email <b>will</b> include Events</p>
-	<% else %> 
-		<p><i class='icon-cancel-2'></i>  Your Email <b>will not</b> include Events</p>
-	<% end %>
-	<br>
-
-	<p>The Web Development Club would like to keep you posted with new job offers, entrepreneurship events and research opportunities as well as our club's regular newsletters and events. Here you can change your settings on future emails and newsletters to best accomodate your personal needs.</p>
-	<br>
-
-	<%= button_to "Update Settings", '/update', {:class => "large"} %>
 
 	<%= button_to "Sign Out", '/signout', {:class => "large"} %>
 

@@ -17,8 +17,6 @@ UoftWebSite::Application.routes.draw do
   match '/addPost', to: 'items#new'
   match '/items',   to: 'items#create'
 
-  match '/sessions/user', to: 'users#create', via: :post
-
   match '/developer',  to: 'static_pages#developer'
   match '/jobs',     to: 'static_pages#jobs'
   match '/useraccount',   to: 'static_pages#useraccount'
@@ -34,6 +32,7 @@ UoftWebSite::Application.routes.draw do
   match '/creator_account', to: 'users#creator_account'
 
   match '/approve', to: 'users#approve_creator'
+  match '/request', to: 'users#request_creator'
   match '/certify', to: 'users#certify'
 
   match '/confirmation_token', to: 'users#confirmation_token'

@@ -17,10 +17,10 @@ class UsersController < ApplicationController
       elsif (!@user.account_selected) && current_user.remember_token == @user.remember_token
         render 'account_select'
 
-      elsif @user.content_creator && (!@user.sent_approval) && current_user.remember_token == @user.remember_token
+      elsif !@user.student_account && @user.content_creator && (!@user.sent_approval) && current_user.remember_token == @user.remember_token
         render 'approve_creator'
 
-      elsif @user.content_creator && @user.sent_approval && current_user.remember_token == @user.remember_token
+      elsif !@user.student_account &&  @user.content_creator && @user.sent_approval && current_user.remember_token == @user.remember_token
         render 'content_page'
 
       elsif @user.student_account && current_user.remember_token == @user.remember_token
@@ -139,6 +139,18 @@ class UsersController < ApplicationController
     end 
   end
 
+  def request_creator
+    @user = User.find_by_id(session[:remember_token])
+    @user.update_attribute(:sent_approval, true);
+    @user.update_attribute(:content_creator, true);
+    @user.update_attribute(:organization, params[:organization]);
+    @user.update_attribute(:approval_message, params[:approval_message]);
+
+    @currentPage = {:useraccount => "active"};
+    @user_name = @user.name
+    redirect_to @user
+  end
+
   def approve_creator 
     @user  = User.find(params[:id])
     @user.update_attribute(:content_approved, true);
@@ -146,5 +158,7 @@ class UsersController < ApplicationController
     @admin_user = User.find_by_name("Admin");
     redirect_to @admin_user 
   end
+
+
 
 end
