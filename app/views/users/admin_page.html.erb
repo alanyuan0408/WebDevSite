@@ -233,12 +233,12 @@
             <% @feedbank_posts.each do |post| %>
                 <% if !post.approval_status %>
                     <div id="<%= post.id %>" class="hidden_class">
-                        <p><b>ID: <%= post.item_id %></b></p>
+                        <p><b>ID: <%= post.item_title %></b></p>
                         <p>URL: <%= post.item_url %></p>
 
-                        <p>Title: <%= post.item_title %></p>
                         <p>Date: <%= post.item_date %></p>
-                        <p>Type: <%= post.user_id %></p>
+                        <p>User ID: <%= post.user_id%></p>
+                        <p>Column Type: <%= post.column_type %></p>
                         <p>Text: <%= post.item_text %></p>
 
                         <br>

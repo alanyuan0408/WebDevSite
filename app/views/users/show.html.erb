@@ -126,7 +126,7 @@
 				                    <%= f.label :item_url %>
 				                    <%= f.text_field :item_url, :size=>"150", :class => "title_width", placeholder: "Url to the Post"  %>
 
-				                    <%= f.hidden_field :user_id, :value => "@user.id" %>
+				                    <%= f.hidden_field :user_id, :value => @user.id %>
 				                    <%= f.hidden_field :item_date, :value => Time.current %>
 				                    <%= f.hidden_field :approval_status, :value => "false" %>
 
@@ -194,7 +194,20 @@
 
 	   	  <h3>Your Posts </h3><hr>
 
-	   	  
+	   	  	<% @feedbank_posts.each do |post| %>
+                <div id="<%= post.id %>" class="hidden_class">
+                    <p><b>ID: <%= post.item_title %></b></p>
+                    <p>URL: <%= post.item_url %></p>
+
+                    <p>Date: <%= post.item_date %></p>
+                    <p>User ID: <%= post.user_id%></p>
+                    <p>Column Type: <%= post.column_type %></p>
+                    <p>Text: <%= post.item_text %></p>
+                    <p>Post Approved: <%= post.approval_status %>
+
+                    <hr>
+                </div>
+            <% end %>
 
 	    </div>
 
