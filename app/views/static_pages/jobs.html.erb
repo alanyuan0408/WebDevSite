@@ -130,7 +130,7 @@
 
         <div class="panel-content" id= "posts" >
             <% @jobPosts.each do |post| %>
-                <% if !post.approval_status %>
+                <% if post.approval_status %>
                     <div id="<%= post.id %>" class="hidden_class">
                         <h2><%= post.item_title %></h2>
                         <p>Date: <%= post.item_date %></p>

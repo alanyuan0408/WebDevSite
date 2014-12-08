@@ -150,7 +150,9 @@
                 <ul id="feedbankPost" class="nav nav-tabs nav-stacked">
 
                     <% @feedbank_posts.each do |post| %>
-                        <li><a id="<%= post.id %>" ><%= post.item_title %></a></li>
+                        <% if !post.approval_status %>
+                            <li><a id="<%= post.id %>" ><%= post.item_title %></a></li>
+                        <% end %>
                     <% end %>
 
                 </ul>
@@ -203,8 +205,6 @@
                 <% end %>
             <% end %>
 
-
-
             <% @creators.each do |post| %>
                 <% if !post.admin %>
                     <div id="<%= post.id %>" class="hidden_class">
@@ -229,6 +229,23 @@
                 <% end %>
 
             <% end %>
+
+            <% @feedbank_posts.each do |post| %>
+                <% if !post.approval_status %>
+                    <div id="<%= post.id %>" class="hidden_class">
+                        <p><b>ID: <%= post.item_id %></b></p>
+                        <p>URL: <%= post.item_url %></p>
+
+                        <p>Title: <%= post.item_title %></p>
+                        <p>Date: <%= post.item_date %></p>
+                        <p>Type: <%= post.user_id %></p>
+                        <p>Text: <%= post.item_text %></p>
+
+                        <br>
+                    </div>
+                <% end %>
+            <% end %>
+
         </div>
 
              

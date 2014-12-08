@@ -98,7 +98,9 @@
     <ul id="jobPosts" class="nav nav-tabs nav-stacked" onload="initialize()">
 
         <% @jobPosts.each do |post| %>
-            <li><a id="<%= post.id %>" ><%= post.item_title %></a></li>
+            <% if post.approval_status %>
+                <li><a id="<%= post.id %>" ><%= post.item_title %></a></li>
+            <% end %>
         <% end %>
 
     </ul>
@@ -128,7 +130,7 @@
 
         <div class="panel-content" id= "posts">
             <% @jobPosts.each do |post| %>
-                <% if !post.approval_status %>
+                <% if post.approval_status %>
                     <div id="<%= post.id %>" class="hidden_class">
                         <h2><%= post.item_title %></h2>
                         <p>Date: <%= post.item_date %></p>
