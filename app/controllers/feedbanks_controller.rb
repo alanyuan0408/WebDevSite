@@ -22,8 +22,8 @@ class FeedbanksController < ApplicationController
 
   def approve_content
     @feedbank  = Feedbank.find(params[:id])
-    @feedbank.update_attribute(:approval_status, true);
-    @feedbank.save
+    @feedbank.update_attribute(:approval_status, "true");
+
 
     @admin_user = User.find_by_name("Admin");
     redirect_to @admin_user 
