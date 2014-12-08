@@ -247,6 +247,11 @@
                             :action => "approve_content", :id => post.id) do |f|%>
 
                         <%= f.submit "Approve Post", class: "large" %>
+
+                    <%= form_for post, :url => url_for(:controller => "feedbanks", 
+                            :action => "disapprove_content", :id => post.id) do |f|%>
+
+                        <%= f.submit "Approve Post", class: "large" %>
                     <% end %>
                 </div>
             <% end %>

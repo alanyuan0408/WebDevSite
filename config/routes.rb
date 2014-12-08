@@ -40,6 +40,7 @@ UoftWebSite::Application.routes.draw do
   match "/feedbanks" => 'feedbanks#show'
   match "/feedcreate" => 'feedbanks#create'
   match "/feedapprove" => 'feedbanks#approve_content'
+  match "/feeddisapprove" => 'feedbanks#disapprove_content'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
