@@ -31,7 +31,7 @@ class FeedbanksController < ApplicationController
 
   def disapprove_content
     @feedbank  = Feedbank.find(params[:id])
-    @feedbank.update_attribute(:approval_status, "true");
+    @feedbank.destroy
 
 
     @admin_user = User.find_by_name("Admin");

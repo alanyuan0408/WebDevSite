@@ -19,7 +19,7 @@ $(initSummernote)</script>
             <% if @user.content_approved %>
             	<p>You're account has approved by the admin.</p><br>
 
-                    <%= form_for :feedbank do |f| %> 
+                    <%= form_for :feedbank, :url => '/feedbanks#create' do |f| %> 
 
                         <%= f.label :item_title %>
                         <%= f.text_field :item_title, placeholder: "Title of Post", :class => "title_width"  %>
