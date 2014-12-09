@@ -50,9 +50,7 @@
 
     function initialize(){
 
-        //BAD CODING STYLE.
         var jobPosts = document.getElementById("jobPosts").childNodes;
-
 
         var top_element = 0;
         var bottom_element = 21;
@@ -82,6 +80,7 @@
                 if (jobPosting[i].id == $(this).attr('id')){
                     jobPosting[i].className = "selected";
                 }
+
             }
 
         });
