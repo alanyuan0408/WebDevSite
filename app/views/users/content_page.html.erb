@@ -2,105 +2,135 @@
 
 $(initSummernote)</script>
 
- <div class="span5">
-
     <style>
-        .css_text {
+        .css_text{
             width: 85%;
+        }
+
+        .full_width {
+            width: 95%;
+        }
+
+        .title_width {
+            width: 50%;
         }
     </style>
 
-    <div class="panel">
-        <div class="panel-header bg-lightBlue fg-white">
-            Hello <%= @user.name %>
-        </div>  
-                    
-        <div class="panel-content">
-            <% if @user.content_approved %>
-            	<p>You're account has approved by the admin.</p><br>
 
-                    <%= form_for :feedbank, :url => '/feedbanks#create' do |f| %> 
+<div class="span9 offset1">
 
-                        <%= f.label :item_title %>
-                        <%= f.text_field :item_title, placeholder: "Title of Post", :class => "title_width"  %>
+    <h2>Welcome <%= @user.name %></h2>
 
-                        <%= f.label :item_url %>
-                        <%= f.text_field :item_url, :size=>"150", :class => "title_width", placeholder: "Url to the Post"  %>
+    <br>
 
-                        <%= f.hidden_field :user_id, :value => @user.id %>
-                        <%= f.hidden_field :item_date, :value => Time.current %>
-                        <%= f.hidden_field :approval_status, :value => "false" %>
+    <div class="tabbable">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">Content Creator</a></li>
+            <li><a href="#tab2" data-toggle="tab">Your Posts</a></li>
+          </ul>   
 
-                        <%= f.label :column_type, "Post Type" %>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
 
-                        <%= f.select(:column_type, [["Job Post", 1], ["Event Post", 2], ["News Update", 3], ["Research", 4]]) %>
+                 <div class="span9">
 
-                        <!-- #1 is Jobs, #2 is Events, #3 is News, #4 is Research
-                                        -->
-                        <br>
-                        <br>
+                    <div class="panel">
+                        <div class="panel-header bg-lightBlue fg-white">
+                            Hello <%= @user.name %>
+                        </div>  
+                                    
+                        <div class="panel-content">
+                            <% if @user.content_approved %>
+                            	<p>You're account has approved by the admin.</p><br>
 
-                        <%= f.label :item_text %>
-                        <%= f.text_area :item_text, :rows => "6", placeholder: "Event Message", :class => "full_width", input_html: { class: 'summernote', id: "jobInfoInput"} %>
+                                    <%= form_for :feedbank, :url => '/feedbanks#create' do |f| %> 
 
-                        <br><br>
+                                        <%= f.label :item_title %>
+                                        <%= f.text_field :item_title, placeholder: "Title of Post", :class => "title_width"  %>
 
-                        <%= f.submit "Add New Post", class: "large" %>
+                                        <%= f.label :item_url %>
+                                        <%= f.text_field :item_url, :size=>"150", :class => "title_width", placeholder: "Url to the Post"  %>
 
-                        <br>
+                                        <%= f.hidden_field :user_id, :value => @user.id %>
+                                        <%= f.hidden_field :item_date, :value => Time.current %>
+                                        <%= f.hidden_field :approval_status, :value => "false" %>
 
-                    <% end %>
-                <% elsif %>
-            	You're request for a content creator account is pending. Your current posts will be posted on the boards when your approval has been approved by the admin.
+                                        <%= f.label :column_type, "Post Type" %>
 
-                <br><br>
+                                        <%= f.select(:column_type, [["Job Post", 1], ["Event Post", 2], ["News Update", 3], ["Research", 4]]) %>
 
-                <div class="alert alert-error">
-                    Content Creators may only make posts after the Admin has approved their Account.
+                                        <!-- #1 is Jobs, #2 is Events, #3 is News, #4 is Research
+                                                        -->
+                                        <br>
+                                        <br>
+
+                                        <%= f.label :item_text %>
+                                        <%= f.text_area :item_text, :rows => "6", placeholder: "Event Message", :class => "full_width", input_html: { class: 'summernote', id: "jobInfoInput"} %>
+
+                                        <br><br>
+
+                                        <%= f.submit "Add New Post", class: "large" %>
+
+                                        <br>
+
+                                    <% end %>
+                                <% elsif %>
+                            	You're request for a content creator account is pending. Your current posts will be posted on the boards when your approval has been approved by the admin.
+
+                                <br><br>
+
+                                <div class="alert alert-error">
+                                    Content Creators may only make posts after the Admin has approved their Account.
+                                </div>
+
+                            <% end %>
+                            
+                            <br><br>
+
+
+                			<%= button_to "Sign Out", '/signout', {:class => "large"} %>
+
+                        </div>
+                    </div>
+
+                    <br>          
+                </div>
+            </div>
+
+
+
+        <div class="tab-pane" id="tab2">
+
+             <div class="span9">
+
+                <div class="panel">
+                    <div class="panel-header bg-lightBlue fg-white">
+                        Current Posts
+                    </div>  
+                               
+                    <div class="panel-content">
+
+                        <% @feedbank_posts.each do |post| %>
+                            <div id="<%= post.id %>" class="hidden_class">
+                                <p><b>Title: <%= post.item_title %></b></p>
+                                <p>URL: <%= post.item_url %></p>
+
+                                <p>Date: <%= post.item_date %></p>
+                                <p>User ID: <%= post.user_id%></p>
+                                <p>Column Type: <%= post.column_type %></p>
+                                <p>Text: <%= post.item_text %></p>
+                                <p>Post Approved: <%= post.approval_status %>
+
+                                <hr>
+                            </div>
+                        <% end %>
+                    </div>
+
                 </div>
 
-            <% end %>
-            
-            <br><br>
-
-
-			<%= button_to "Sign Out", '/signout', {:class => "large"} %>
-
-        </div>
-    </div>
-
-    <br>          
-</div>
-
- <div class="span5">
-
-    <div class="panel">
-        <div class="panel-header bg-lightBlue fg-white">
-            Current Posts
-        </div>  
-                   
-        <div class="panel-content">
-
-            <% @feedbank_posts.each do |post| %>
-                <div id="<%= post.id %>" class="hidden_class">
-                    <p><b>Title: <%= post.item_title %></b></p>
-                    <p>URL: <%= post.item_url %></p>
-
-                    <p>Date: <%= post.item_date %></p>
-                    <p>User ID: <%= post.user_id%></p>
-                    <p>Column Type: <%= post.column_type %></p>
-                    <p>Text: <%= post.item_text %></p>
-                    <p>Post Approved: <%= post.approval_status %>
-
-                    <hr>
-                </div>
-            <% end %>
+                <br>          
+            </div>
         </div>
 
     </div>
-
-    <br>          
 </div>
-
-
-
